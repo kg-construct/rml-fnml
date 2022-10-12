@@ -1,0 +1,8 @@
+@prefix fno:     <https://w3id.org/function/ontology#> .
+@prefix grel:    <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix :        <http://example.com/> .
+
+:exe a fno:Execution ;
+    fno:executes grel:toUppercase ;
+    grel:valueParameter "This is an input STRING." ;
+    grel:stringOutput "THIS IS AN INPUT STRING." .
