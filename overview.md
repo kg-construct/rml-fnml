@@ -71,7 +71,7 @@ The execution of such function would be described as follows:
 :exe a fno:Execution ;
     fno:executes grel:toUppercase ;
     grel:valueParameter "This is an input STRING." ;
-    grel:stringOutput "THIS IS AN INPUT STRING." .
+    grel:stringOutput "THIS IS AN OUTPUT STRING." .
 ```
 
 ## FNML Example - shortcuts
