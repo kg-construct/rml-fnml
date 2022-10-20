@@ -61,7 +61,9 @@ grel:stringOut
 
 ```
 
-The execution of such function would be described as follows:
+The execution of such a function converts a string to its uppercase sibling,
+so `test` becomes `TEST` and `This is an input STRING.` becomes `THIS IS AN INPUT STRING.`.
+The latter would be described as follows using an FnO Execution description:
 
 ```turtle "example": "toUppercase FnO execution description"
 @prefix fno:     <https://w3id.org/function/ontology#> .
