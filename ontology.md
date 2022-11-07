@@ -32,13 +32,10 @@ Further, it MAY have following relations specified:
 * `rr:language` OR `rml:languageMap` OR `rr:datatype`: for processing, see [RML Language Tags](https://rml.io/specs/rml/#language-tag) and [RML Typed Literals](https://rml.io/specs/rml/#typed-literals)
 * `fnml:output`: this relationship MUST refer to exactly one of the [=Return=]s as specified by the [=Function=]. This signifies which result of the execution to use. The default value is the first [=Return=] value as specified by the [=Function=].
 
-<p class="issue" data-number="5" data-format="markdown">
-Is it still unspecified how to override the termtype of an [=Output Term map=] result?
-</p>
-
 <p class="issue" data-format="markdown">
 A [proper Term map definition in RML is pending](https://github.com/kg-construct/rml-core/issues/12).
 For now, we refer to the R2RML spec, but it is assumed these references will be updated based on the evolution of RML.
+This also means that all changes to existing definitions such as `term type` etc. are complementary to this specification.
 </p>
 
 ### fnml:ReturnMap
