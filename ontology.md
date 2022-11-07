@@ -15,7 +15,8 @@ See [=Output Term map=].
 <!-- this [=Term map=] has two classes: `fnml:OutputTermMap`, and the [=Term map=] within the context of the RML Mapping, -->
 <!-- namely, subject map, predicate map, object map, or graph map. -->
 As a consequence, the default [[RML]] processing **is extended**,
-specifically concerning the [default term type depending on whether the term map is an object map or not](https://rml.io/specs/rml/#termtype).
+specifically concerning the [default term type depending on whether the term map is an object map or not](https://rml.io/specs/rml/#termtype),
+namely, the [=Output Term map=]s default [term type](https://rml.io/specs/rml/#term-type) is `rr:Literal`.
 
 If the [=Term map=] does not have a `rr:termType` property, then its [term type](https://rml.io/specs/rml/#term-type) is:
 * `rr:Literal`, if it is an [object map](https://www.w3.org/TR/r2rml/#dfn-object-map) and at least one of the following conditions is true:
@@ -23,11 +24,6 @@ If the [=Term map=] does not have a `rr:termType` property, then its [term type]
    * It has a `rml:languageMap` and/or `rr:language` property (and thus a [language map](https://rml.io/specs/rml/#language-map) and/or a [specified language tag](https://rml.io/specs/rml/#specified-language-tag)).
    * It has a `rr:datatype` property (and thus a [specified datatype](https://rml.io/specs/rml/#specified-datatype)).
 * `rr:IRI`, otherwise.
-
-<p class="issue" data-number="2" data-format="markdown">
-It is undecided whether this extension should stay (so `rr:Literal` by default),
-or go (so `rr:IRI` by default).
-</p>
 
 An `fnml:OutputTermMap` MUST have exactly one `fnml:execution` relation.
 Further, it MAY have following relations specified:
