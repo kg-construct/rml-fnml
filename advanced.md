@@ -2,7 +2,7 @@
 
 ### Nested functions
 
-As the values of a function are represented using [=Term map=]s,
+As the values of a function are represented using [=term map=]s,
 it is possible to nest functions: you generate a term in a first function, and that term is used as an parameter value in a second function.
 
 <p class="issue" data-format="markdown">
@@ -27,11 +27,11 @@ For now, it is unclear how to handle a nested function where that nested triples
 
 <#NameMapping>
     rr:predicate dbo:title ;
-    rr:objectMap <#OutputTermMap> .
-
-<#OutputTermMap> a fnml:OutputTermMap ;
-    fnml:execution <#Execution> ;
-    fnml:output grel:stringOut .
+    rr:objectMap [
+        fnml:execution <#Execution> ;
+        fnml:output grel:stringOut
+    ] ;
+    .
 
 <#Execution> a fnml:Execution ;
     fnml:function grel:toUppercase ;
@@ -39,12 +39,11 @@ For now, it is unclear how to handle a nested function where that nested triples
         [
             a fnml:Input ;
             fnml:parameter grel:valueParam ;
-            fnml:valueMap <#OutputTermMap2>    # Link to another Output Term map to nest functions
+            fnml:valueMap [
+                fnml:execution <#Execution2> ; # Link to another function-valued term map to nest functions
+                fnml:output grel:stringOut
+            ]
         ] .
-
-<#OutputTermMap2> a fnml:OutputTermMap ;
-    fnml:execution <#Execution2> ;
-    fnml:output grel:stringOut .
 
 <#Execution2> a fnml:Execution ;               # First, replace spaces with dashes from the `name` reference
     fnml:function grel:string_replace ;

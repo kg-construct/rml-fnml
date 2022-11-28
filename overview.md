@@ -6,17 +6,17 @@ we combine [[RML]] with declarative function descriptions in [[FnO]].
 Within [[FnO]], [=Function=]s and [=Execution=]s are described.
 Within FNML, we refer to [=Execution=]s that link to specific [=Function=]s.
 
-[=Triples map=]s generate output triples from input data.
-We use an intermediate [=Output Term map=] to use a specific output (via a [=FNML Return map=]) of an [=FNML Execution=].
+[=triples map=]s generate output triples from input data.
+We use an intermediate [=function-valued term map=] to use a specific output (via a [=FNML Return map=]) of an [=FNML Execution=].
 That [=FNML Execution=] specifies which [[FnO]] function to use (via a [=FNML Function map=])
-and uses [=FNML Input=]s to link input data (via regular [[RML]] [=Term map=]s)
+and uses [=FNML Input=]s to link input data (via regular [[RML]] [=term map=]s)
 to [=Parameter=]s (via [=FNML Parameter map=]s).
 
 <p class="note" data-format="markdown">
 If an execution returns multiple outputs (eg, a result and a status code),
 by referring to the same execution,
 you can use both outputs in different locations of the same mapping.
-If you leave out the intermediate [=Output Term Map=], you don't allow for reuse,
+If you leave out the intermediate [=function-valued term map=], you don't allow for reuse,
 which means that you cannot specify the difference between
 'using 2 outputs from one execution' vs 'use a different output from 2 different executions'.
 </p>
@@ -81,27 +81,27 @@ The latter would be described as follows using an FnO Execution description:
 To connect this function with the RML mapping document, we make use of FNML, see below, which makes maximal use of shortcuts.
 
 <figure>
-<pre class="mermaid nohighlight override">
+<pre class="mermaid nohighlight override" style="width: 100%">
 graph LR
-    T3M([Triples map])
-    T3M-->|predicate-object map| POM([Predicate-object map])
+    T3M([triples map])
+    T3M-->|predicateObjectMap| POM([predicate-object map])
     POM -->|objectMap| FM
-    %% FM([Function Term map]):::fnml
-    FM([Output Term map]):::fnml
-    %% FM -->|function value| Ex([Triples map])
+    %% FM([Function term map]):::fnml
+    FM([function-valued term map]):::fnml
+    %% FM -->|function value| Ex([triples map])
     FM -->|execution| Ex([FNML Execution]):::fnml
-    %% FM -->|execution| Ex([Function Triples map]):::fnml
-    %% FM -->|function value| Ex([Function Triples map]):::fnml
+    %% FM -->|execution| Ex([Function triples map]):::fnml
+    %% FM -->|function value| Ex([Function triples map]):::fnml
     FM -->|output| J(grel:stringOut):::fno
     Ex -->|function| Fn(grel:toUpperCase):::fno
-    %% Ex -->|predicate-object map| ExPOM([Predicate-object map])
+    %% Ex -->|predicateObjectMap| ExPOM([predicate-object map])
     %% ExPOM -->|predicate| ExP(fno:executes):::fno
     %% ExPOM -->|object map| ExO([Object map])
     %% ExO -->|constant| ExO1(grel:toUpperCase):::fno
     Ex -->|input| ParamPOM([FNML Input]):::fnml
-    %% Ex -->|predicate-object map| ParamPOM([Predicate-object map])
+    %% Ex -->|predicateObjectMap| ParamPOM([predicate-object map])
     ParamPOM -->|parameter| P2(grel:valueParam):::fno
-    ParamPOM -->|valueMap| O1(Term map)
+    ParamPOM -->|valueMap| O1(term map)
     %% ParamPOM -->|predicate| P2(grel:str_value):::fno
     %% ParamPOM -->|object map| O1([Object map])
     O1 --> |template| Ot1("{lastname}"):::kfno
@@ -121,34 +121,32 @@ graph LR
 
 ```turtle "example": "using toUppercase in an RML mapping"
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix fnml: <http://example.com/fnml#> .
+@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#Person_Mapping>
-    rml:logicalSource <#LogicalSource> ;      # Specify the data source
-    rr:subjectMap <#SubjectMap> ;             # Specify the subject
-    rr:predicateObjectMap <#NameMapping> .    # Specify the predicate-object-map
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap <#SubjectMap> ;
+    rr:predicateObjectMap <#NameMapping> .
 
 <#NameMapping>
-    rr:predicate dbo:title ;                  # Specify the predicate
-    rr:objectMap <#OutputTermMap> .           # Specify the object-map
-
-<#OutputTermMap> a fnml:OutputTermMap ;        # An Output Term map
-    fnml:execution <#Execution> ;              # Link to an FNML Execution
-    fnml:output grel:stringOut .               # Specify which return of the referenced function to use
+    rr:predicate dbo:title ;
+    rr:objectMap [                             # A function-valued term map
+        fnml:execution <#Execution> ;          # Link to an FNML Execution
+        fnml:output grel:stringOut             # Specify which return of the referenced function to use, if omitted, the first specified return is used
+    ] .
 
 <#Execution> a fnml:Execution ;                # A new class
     fnml:function grel:toUppercase ;           # Specify which FnO function
-    fnml:input                                 # Specify the inputs
-        [
-            a fnml:Input ;                     # A new class
-            fnml:parameter grel:valueParam ;   # Specify this specific parameter
-            fnml:valueMap [                    # Link to the term map that creates the input value
-                rml:reference "name"           # Specify the reference within the data source
-            ]
-        ] .
+    fnml:input [                               # Specify the inputs
+        a fnml:Input ;                         # A new class
+        fnml:parameter grel:valueParam ;       # Specify this specific parameter
+        fnml:valueMap [                        # Link to the term map that creates the input value
+            rml:reference "name"               # Specify the reference within the data source
+        ]
+    ] .
 ```
 
 The `name`-value is not referenced directly,
@@ -170,19 +168,18 @@ The same example, but written without shortcuts, is as follows:
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#Person_Mapping>
-    rml:logicalSource <#LogicalSource> ;      # Specify the data source
-    rr:subjectMap <#SubjectMap> ;             # Specify the subject
-    rr:predicateObjectMap <#NameMapping> .    # Specify the predicate-object-map
+    rml:logicalSource <#LogicalSource> ;       # Specify the data source
+    rr:subjectMap <#SubjectMap> ;              # Specify the subject
+    rr:predicateObjectMap <#NameMapping> .     # Specify the predicate-object-map
 
 <#NameMapping>
-    rr:predicate dbo:title ;                  # Specify the predicate
-    rr:objectMap <#OutputTermMap> .           # Specify the object-map
-
-<#OutputTermMap> a fnml:OutputTermMap ;        # An Output Term map
-    fnml:execution <#Execution> ;              # Link to an FNML Execution
-    fnml:outputMap [
-        a fnml:ReturnMap ;
-        rr:constant grel:stringOut             # Specify which return of the referenced function to use
+    rr:predicate dbo:title ;                   # Specify the predicate
+    rr:objectMap [                             # Specify the object-map: a function-valued term map
+        fnml:execution <#Execution> ;          # Link to an FNML Execution
+        fnml:outputMap [
+            a fnml:ReturnMap ;
+            rr:constant grel:stringOut         # Specify which return of the referenced function to use
+        ]
     ] .
 
 <#Execution> a fnml:Execution ;                # A new class

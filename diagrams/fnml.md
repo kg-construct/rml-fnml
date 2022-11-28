@@ -2,25 +2,25 @@
 
 ```mermaid
 graph LR
-    T3M([Triples map])
-    T3M-->|predicate-object map| POM([Predicate-object map])
+    T3M([triples map])
+    T3M-->|predicateObjectMap| POM([predicate-object map])
     POM -->|objectMap| FM
-    %% FM([Function Term map]):::fnml
-    FM([Output Term map]):::fnml
-    %% FM -->|function value| Ex([Triples map])
+    %% FM([Function term map]):::fnml
+    FM([function-valued term map]):::fnml
+    %% FM -->|function value| Ex([triples map])
     FM -->|execution| Ex([FNML Execution]):::fnml
-    %% FM -->|execution| Ex([Function Triples map]):::fnml
-    %% FM -->|function value| Ex([Function Triples map]):::fnml
+    %% FM -->|execution| Ex([Function triples map]):::fnml
+    %% FM -->|function value| Ex([Function triples map]):::fnml
     FM -->|output| J(grel:stringOut):::fno
     Ex -->|function| Fn(grel:toUpperCase):::fno
-    %% Ex -->|predicate-object map| ExPOM([Predicate-object map])
+    %% Ex -->|predicateObjectMap| ExPOM([predicate-object map])
     %% ExPOM -->|predicate| ExP(fno:executes):::fno
     %% ExPOM -->|object map| ExO([Object map])
     %% ExO -->|constant| ExO1(grel:toUpperCase):::fno
     Ex -->|input| ParamPOM([FNML Input]):::fnml
-    %% Ex -->|predicate-object map| ParamPOM([Predicate-object map])
+    %% Ex -->|predicateObjectMap| ParamPOM([predicate-object map])
     ParamPOM -->|parameter| P2(grel:valueParam):::fno
-    ParamPOM -->|valueMap| O1(Term map)
+    ParamPOM -->|valueMap| O1(term map)
     %% ParamPOM -->|predicate| P2(grel:str_value):::fno
     %% ParamPOM -->|object map| O1([Object map])
     O1 --> |template| Ot1("{lastname}"):::kfno

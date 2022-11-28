@@ -5,27 +5,28 @@ We use terms defined in the FNML ontology to link [[RML]] with [[FNO]].
 The ontology namespace is [http://semweb.mmlab.be/ns/fnml#](http://semweb.mmlab.be/ns/fnml#),
 the preferred prefix is `fnml:`.
 
-### fnml:OutputTermMap
+### function-valued term map
 
-See [=Output Term map=].
+A [=function-valued term map=] is a [=term map=] that is represented by a resource that has exactly one `fnml:execution`.
+The value of the `fnml:execution` property must be a valid [=FNML Execution=].
 
-`fnml:OutputTermMap` is a subclass of [rr:TermMap](http://www.w3.org/ns/r2rml#TermMap).
-<!-- to denote that this [=Term map=] is also an [=execution term map=]. -->
-<!-- Specifically, this means that, when an [=execution term map=] is used within an <a>RML mapping</a>, -->
-<!-- this [=Term map=] has two classes: `fnml:OutputTermMap`, and the [=Term map=] within the context of the RML Mapping, -->
-<!-- namely, subject map, predicate map, object map, or graph map. -->
 As a consequence, the default [[RML]] processing **is extended**,
 specifically concerning the [default term type depending on whether the term map is an object map or not](https://rml.io/specs/rml/#termtype),
-namely, the [=Output Term map=]s default [term type](https://rml.io/specs/rml/#term-type) is `rr:Literal`.
+namely, the [=function-valued term map=]s default [term type](https://rml.io/specs/rml/#term-type) is `rr:Literal`.
+The change is included below with changes highlighted in bold.
 
-If the [=Term map=] does not have a `rr:termType` property, then its [term type](https://rml.io/specs/rml/#term-type) is:
+---
+
+If the [=term map=] does not have a `rr:termType` property, then its [term type](https://rml.io/specs/rml/#term-type) is:
 * `rr:Literal`, if it is an [object map](https://www.w3.org/TR/r2rml/#dfn-object-map) and at least one of the following conditions is true:
-   * It is a [reference-based term map](https://rml.io/specs/rml/#reference-valued-term-map),  **or an [=Output Term map=]**
+   * It is a [reference-valued term map](https://rml.io/specs/rml/#reference-valued-term-map),  **or an [=function-valued term map=]**
    * It has a `rml:languageMap` and/or `rr:language` property (and thus a [language map](https://rml.io/specs/rml/#language-map) and/or a [specified language tag](https://rml.io/specs/rml/#specified-language-tag)).
    * It has a `rr:datatype` property (and thus a [specified datatype](https://rml.io/specs/rml/#specified-datatype)).
 * `rr:IRI`, otherwise.
 
-An `fnml:OutputTermMap` MUST have exactly one `fnml:execution` relation.
+---
+
+A [=function-valued term map=] MUST have exactly one `fnml:execution` relation.
 Further, it MAY have following relations specified:
 
 * `rr:termType`: for processing, see paragraph above
@@ -33,7 +34,7 @@ Further, it MAY have following relations specified:
 * `fnml:output`: this relationship MUST refer to exactly one of the [=Return=]s as specified by the [=Function=]. This signifies which result of the execution to use. The default value is the first [=Return=] value as specified by the [=Function=].
 
 <p class="issue" data-format="markdown">
-A [proper Term map definition in RML is pending](https://github.com/kg-construct/rml-core/issues/12).
+A [proper term map definition in RML is pending](https://github.com/kg-construct/rml-core/issues/12).
 For now, we refer to the R2RML spec, but it is assumed these references will be updated based on the evolution of RML.
 This also means that all changes to existing definitions such as `term type` etc. are complementary to this specification.
 </p>
@@ -69,9 +70,9 @@ All default [[RML]] processing holds,
 
 ### fnml:execution
 
-Links [=Output Term map=] with [=FNML Execution=].
+Links [=function-valued term map=] with [=FNML Execution=].
 
-Domain: fnml:OutputTermMap
+Domain: rr:TermMap
 
 Range: fnml:Execution
 
@@ -80,9 +81,9 @@ It has domain [=fnml:ExecutionTermMap=] and range [=fnml:Execution=]. -->
 
 ### fnml:outputMap
 
-Links [=Output Term map=] with [=FNML Return map=].
+Links [=function-valued term map=] with [=FNML Return map=].
 
-Domain: fnml:OutputTermMap
+Domain: rr:TermMap
 
 Range: fnml:ReturnMap
 
@@ -95,9 +96,9 @@ It has domain [=fnml:ExecutionTermMap=]. -->
 
 ### fnml:functionMap
 
-Links [=Output Term map=] with [=Function=].
+Links [=function-valued term map=] with [=Function=].
 
-Domain: fnml:OutputTermMap
+Domain: rr:TermMap
 
 Range: fno:Function
 
@@ -132,7 +133,7 @@ It has domain [=fnml:ParameterMap=]. -->
 
 ### fnml:valueMap
 
-Links [=FNML Input=] with a [=Term map=].
+Links [=FNML Input=] with a [=term map=].
 
 Domain: fnml:Input
 
