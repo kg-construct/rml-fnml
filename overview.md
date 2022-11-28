@@ -13,7 +13,7 @@ and uses [=FNML Input=]s to link input data (via regular [[RML]] [=term map=]s)
 to [=Parameter=]s (via [=FNML Parameter map=]s).
 
 <p class="note" data-format="markdown">
-If an execution returns multiple outputs (eg, a result and a status code),
+If an execution returns multiple returning outputs (eg, a result and a status code),
 by referring to the same execution,
 you can use both outputs in different locations of the same mapping.
 If you leave out the intermediate [=function-valued term map=], you don't allow for reuse,
@@ -92,7 +92,7 @@ graph LR
     FM -->|execution| Ex([FNML Execution]):::fnml
     %% FM -->|execution| Ex([Function triples map]):::fnml
     %% FM -->|function value| Ex([Function triples map]):::fnml
-    FM -->|output| J(grel:stringOut):::fno
+    FM -->|return| J(grel:stringOut):::fno
     Ex -->|function| Fn(grel:toUpperCase):::fno
     %% Ex -->|predicateObjectMap| ExPOM([predicate-object map])
     %% ExPOM -->|predicate| ExP(fno:executes):::fno
@@ -135,7 +135,7 @@ graph LR
     rr:predicate dbo:title ;
     rr:objectMap [                             # A function-valued term map
         fnml:execution <#Execution> ;          # Link to an FNML Execution
-        fnml:output grel:stringOut             # Specify which return of the referenced function to use, if omitted, the first specified return is used
+        fnml:return grel:stringOut             # Specify which return of the referenced function to use, if omitted, the first specified return is used
     ] .
 
 <#Execution> a fnml:Execution ;                # A new class
@@ -154,7 +154,7 @@ instead, its value is used as `grel:valueParam`-parameter
 for the `grel:toUppercase`-function.
 After execution, the `grel:stringOut` result of that function is returned to generate the object
 within the `<#NameMapping>`.
-We make use of an intermediate `<#OutputTermMap>` so that we can reuse the output of an execution in multiple TermMaps.
+We make use of an intermediate [=function-valued term map=] so that we can reuse the returning output of an execution in multiple TermMaps.
 
 ## FNML Example - no shortcuts
 
@@ -176,7 +176,7 @@ The same example, but written without shortcuts, is as follows:
     rr:predicate dbo:title ;                   # Specify the predicate
     rr:objectMap [                             # Specify the object-map: a function-valued term map
         fnml:execution <#Execution> ;          # Link to an FNML Execution
-        fnml:outputMap [
+        fnml:returnMap [
             a fnml:ReturnMap ;
             rr:constant grel:stringOut         # Specify which return of the referenced function to use
         ]

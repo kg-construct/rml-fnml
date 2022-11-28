@@ -13,7 +13,7 @@
     rr:predicate dbo:title ;                   # Specify the predicate
     rr:objectMap [                             # Specify the object-map: a function-valued term map
         fnml:execution <#Execution> ;          # Link to an FNML Execution
-        fnml:outputMap [
+        fnml:returnMap [
             a fnml:ReturnMap ;
             rr:constant grel:stringOut         # Specify which return of the referenced function to use
         ]

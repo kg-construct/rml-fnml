@@ -11,7 +11,7 @@ graph LR
     FM -->|execution| Ex([FNML Execution]):::fnml
     %% FM -->|execution| Ex([Function triples map]):::fnml
     %% FM -->|function value| Ex([Function triples map]):::fnml
-    FM -->|output| J(grel:stringOut):::fno
+    FM -->|return| J(grel:stringOut):::fno
     Ex -->|function| Fn(grel:toUpperCase):::fno
     %% Ex -->|predicateObjectMap| ExPOM([predicate-object map])
     %% ExPOM -->|predicate| ExP(fno:executes):::fno

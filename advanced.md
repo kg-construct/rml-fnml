@@ -29,7 +29,7 @@ For now, it is unclear how to handle a nested function where that nested triples
     rr:predicate dbo:title ;
     rr:objectMap [
         fnml:execution <#Execution> ;
-        fnml:output grel:stringOut
+        fnml:return grel:stringOut
     ] ;
     .
 
@@ -41,7 +41,7 @@ For now, it is unclear how to handle a nested function where that nested triples
             fnml:parameter grel:valueParam ;
             fnml:valueMap [
                 fnml:execution <#Execution2> ; # Link to another function-valued term map to nest functions
-                fnml:output grel:stringOut
+                fnml:return grel:stringOut
             ]
         ] .
 

@@ -31,7 +31,7 @@ Further, it MAY have following relations specified:
 
 * `rr:termType`: for processing, see paragraph above
 * `rr:language` OR `rml:languageMap` OR `rr:datatype`: for processing, see [RML Language Tags](https://rml.io/specs/rml/#language-tag) and [RML Typed Literals](https://rml.io/specs/rml/#typed-literals)
-* `fnml:output`: this relationship MUST refer to exactly one of the [=Return=]s as specified by the [=Function=]. This signifies which result of the execution to use. The default value is the first [=Return=] value as specified by the [=Function=].
+* `fnml:return`: this relationship MUST refer to exactly one of the [=Return=]s as specified by the [=Function=]. This signifies which result of the execution to use. The default value is the first [=Return=] value as specified by the [=Function=].
 
 <p class="issue" data-format="markdown">
 A [proper term map definition in RML is pending](https://github.com/kg-construct/rml-core/issues/12).
@@ -79,7 +79,7 @@ Range: fnml:Execution
 <!-- fnml:execution connects the RDF dataset generating triples map via a [fnml:ExecutionTermMap] with a [=fnml:Execution=].
 It has domain [=fnml:ExecutionTermMap=] and range [=fnml:Execution=]. -->
 
-### fnml:outputMap
+### fnml:returnMap
 
 Links [=function-valued term map=] with [=FNML Return map=].
 
@@ -87,11 +87,11 @@ Domain: rr:TermMap
 
 Range: fnml:ReturnMap
 
-#### fnml:output
+#### fnml:return
 
-[=constant shortcut property=] of fnml:outputMap.
+[=constant shortcut property=] of fnml:returnMap.
 
-<!-- <dfn class="lint-ignore">fnml:output</dfn> connects the RDF dataset generating triples map via a [fnml:ExecutionTermMap] with an output predicate.
+<!-- <dfn class="lint-ignore">fnml:return</dfn> connects the RDF dataset generating triples map via a [fnml:ExecutionTermMap] with an output predicate.
 It has domain [=fnml:ExecutionTermMap=]. -->
 
 ### fnml:functionMap

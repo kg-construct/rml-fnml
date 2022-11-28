@@ -46,7 +46,7 @@ A [=term map=] MUST be exactly one of the following:
 
 ### FNML
 
-- A <dfn>function-valued term map</dfn>: a [=term map=], where the generated term is one specific output (of an [=Execution=]).
+- A <dfn>function-valued term map</dfn>: a [=term map=], where the generated term is one specific returned output (of an [=Execution=]).
   - This allows to reuse the same execution in different locations of the [=triples map=], and potentially use different outputs of the same execution.
   - It links to an [=FNML Execution=] and a [=FNML Return map=].
 - A <dfn>FNML Return map</dfn>: a [=term map=] that MUST generate a named node. That named node specifies the [=Return=] of the referenced [=Function=].
