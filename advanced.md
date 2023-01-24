@@ -57,12 +57,12 @@ For now, it is unclear how to handle a nested function where that nested triples
         ] ,
         [
             a fnml:Input ;
-            fnml:input grel:param_find ;
+            fnml:parameter grel:param_find ;
             fnml:value " "
         ] ,
         [
             a fnml:Input ;
-            fnml:input grel:param_replace  ;
+            fnml:parameter grel:param_replace  ;
             fnml:value "-"
         ] .
 ```
