@@ -85,6 +85,8 @@ To connect this function with the RML mapping document, we make use of FNML, see
 graph LR
     T3M([triples map])
     T3M-->|predicateObjectMap| POM([predicate-object map])
+    T3M-->|subject map| FM
+    POM -->|predicate| FM
     POM -->|objectMap| FM
     %% FM([Function term map]):::fnml
     FM([function-valued term map]):::fnml
