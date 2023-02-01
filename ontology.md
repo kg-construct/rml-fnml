@@ -4,6 +4,12 @@ We use terms defined in the FNML ontology to link [[RML]] with [[FNO]].
 
 The ontology namespace is [http://semweb.mmlab.be/ns/fnml#](http://semweb.mmlab.be/ns/fnml#),
 the preferred prefix is `fnml:`.
+See below for how FNML introduced terms align with RML Core.
+
+<figure id="figure-diagram">
+  <img src="./diagrams/diagram.png" alt="FNML diagram" />
+  <figcaption>Visual overview of how FNML introduced terms align with RML Core</figcaption>
+</figure>
 
 ### function-valued term map
 
@@ -175,7 +181,3 @@ It is still an open issue to joining values across data sources _with_ join cond
 see, e.g. test case [RMLFNOTC0019](https://github.com/RMLio/rml-fno-test-cases/tree/master/RMLFNOTC0019-CSV).
 </p>
 </div>
-
-<p class="issue" data-number="4" data-format="markdown">
-The mapping challenge [Join on literals](https://github.com/kg-construct/mapping-challenges/pull/29) also influences this spec.
-</p>

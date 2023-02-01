@@ -78,7 +78,7 @@ The latter would be described as follows using an FnO Execution description:
 
 ## FNML Example - shortcuts
 
-To connect this function with the RML mapping document, we make use of FNML, see below, which makes maximal use of shortcuts.
+To connect this function with the RML mapping document, we make use of FNML, see below for an example, which makes maximal use of shortcuts.
 
 <figure>
 <pre class="mermaid nohighlight override" style="width: 100%">
