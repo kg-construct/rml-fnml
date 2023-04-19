@@ -13,8 +13,12 @@
 
 <http://w3id.org/rml/fnml/> rdf:type owl:Ontology ;
                         dc:description "RML-FNML provides data transformations for generating knowledge graphs from (semi-)structured data"@en ;
-                        dc:modified "2023-03-18" ;
+                        dc:modified "2023-04-19" ;
                         dc:title "RML-FNML"@en ;
+                        dc:contributor "Ben de Meester" ;
+                        dc:contributor "Samaneh Jozashoori" ;
+                        dc:contributor "Ana Iglesias Molina" ;
+                        dc:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
                         vann:preferredNamespaceUri "http://w3id.org/rml/fnml/" .
 
 #################################################################
