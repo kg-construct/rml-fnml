@@ -6,9 +6,9 @@ graph LR
     T3M-->|predicateObjectMap| POM([predicate-object map])
     POM -->|objectMap| FM
     %% FM([Function term map]):::fnml
-    FM([function-valued term map]):::fnml
+    FM([function-valued expression map]):::fnml
     %% FM -->|function value| Ex([triples map])
-    FM -->|execution| Ex([FNML Execution]):::fnml
+    FM -->|execution| Ex([Function Execution]):::fnml
     %% FM -->|execution| Ex([Function triples map]):::fnml
     %% FM -->|function value| Ex([Function triples map]):::fnml
     FM -->|return| J(grel:stringOut):::fno
@@ -17,7 +17,7 @@ graph LR
     %% ExPOM -->|predicate| ExP(fno:executes):::fno
     %% ExPOM -->|object map| ExO([Object map])
     %% ExO -->|constant| ExO1(grel:toUpperCase):::fno
-    Ex -->|input| ParamPOM([FNML Input]):::fnml
+    Ex -->|input| ParamPOM([Input]):::fnml
     %% Ex -->|predicateObjectMap| ParamPOM([predicate-object map])
     ParamPOM -->|parameter| P2(grel:valueParam):::fno
     ParamPOM -->|valueMap| O1(term map)

@@ -27,45 +27,46 @@ Definitions taken from [[RML]] or [[[R2RML]]]:
 - An <dfn>RML mapping</dfn>: defined in [[RML]] at <https://rml.io/specs/rml/#rml-mapping>.
 - A <dfn>triples map</dfn>: defined in [[RML]] at <https://rml.io/specs/rml/#triples-map>.
 - A <dfn>term map</dfn>: defined in [[RML]] at <https://rml.io/specs/rml/#term-map>.
+- a <dfn>expression map</dfn>: defined in [[RML]] at <https://kg-construct.github.io/rml-core/RML-core/#expression-map-rml-expressionmap>.
 <!-- - An <dfn>RML processor</dfn> is a tool that interprets the <a>RML mapping</a> and executes its rules to generate RDF triples. -->
 - A <dfn>constant shortcut property</dfn>: defined in [[R2RML]] at <https://www.w3.org/TR/r2rml/#dfn-constant-shortcut-property>.
 
-Within this specification, the [=term map=] definition is extended by adding new possible properties and thus also a new type of term map.
+Within this specification, the [=expression map=] definition is extended by adding new possible properties and thus also a new type of expression map.
 The change is included below with changes highlighted in bold.
 
 ---
 
-A [=term map=] MUST be exactly one of the following:
+An [=expression map=] can have the following properties:
 
-- a [constant-valued term map](https://rml.io/specs/rml/#constant-valued-term-map),
-- a [reference-valued term map](https://rml.io/specs/rml/#reference-valued-term-map),
-- a [template-valued term map](https://rml.io/specs/rml/#template-valued-term-map),
-- **a [=function-valued term map=]**.
+- 0 or 1 rr:constant
+- 0 or 1 rml:reference
+- 0 or 1 rr:template
+- **0 or 1 rml:functionExecution**
 
 ---
 
 ### FNML
 
-- A <dfn>function-valued term map</dfn>: a [=term map=], where the generated term is one specific returned output (of an [=Execution=]).
+- A <dfn>function-valued expression map</dfn>: an [=expression map=], where the generated term is one specific returned output (of an [=Execution=]).
   - This allows to reuse the same execution in different locations of the [=triples map=], and potentially use different outputs of the same execution.
-  - It links to an [=FNML Execution=] and a [=FNML Return map=].
-- A <dfn>FNML Return map</dfn>: a [=term map=] that MUST generate a named node. That named node specifies the [=Return=] of the referenced [=Function=].
+  - It links to a [=Function Execution=] and a [=Return map=].
+- A <dfn>Return map</dfn>: a [=term map=] that MUST generate a named node. That named node specifies the [=Return=] of the referenced [=Function=].
   - This can also be specified using a [=constant shortcut property=].
   - This can also be omitted, if so, the first return value as specified in the [=Function=] is used.
-- An <dfn>FNML Execution</dfn>: a construct that provides a way to bind concrete values to [=Parameter=]s of a [=Function=].
-  The [=Function=] is specified using an [=FNML Function map=] and the [=Parameter=]s are specified using [=FNML Input=]s.
-  - As such, an FNML Execution can be seen as a way to describe [=Execution=]s.
-- An <dfn>FNML Function map</dfn>: a [=term map=] that MUST generate a named node. That named node specifies the referenced [=Function=].
+- A <dfn>Function Execution</dfn>: a construct that provides a way to bind concrete values to [=Parameter=]s of a [=Function=].
+  The [=Function=] is specified using an [=Function map=] and the [=Parameter=]s are specified using [=Input=]s.
+  - As such, an Function Execution can be seen as a way to describe [=Execution=]s.
+- An <dfn>Function map</dfn>: a [=term map=] that MUST generate a named node. That named node specifies the referenced [=Function=].
   - This can also be specified using a [=constant shortcut property=].
-- An <dfn>FNML Input</dfn>: a construct to pairwise connect a value (via a [=term map=]) to a [=FNML Parameter map=].
+- An <dfn>Input</dfn>: a construct to pairwise connect a value (via a [=term map=]) to a [=Parameter map=].
   - This [=term map=] generates the input value that should be bound to the [=Parameter=] of the referenced [=Function=].
   - This [=term map=] refers to values from the [=triples map=]s iteration.
     Note that these [=term map=]s are handled just like regular [=term maps=] within a [=triples map=]:
     [The references of all term maps of a triples map (subject map, predicate maps, object maps, graph maps) must be references to rows/records/elements/objects that exist in the triples map's logical source](https://rml.io/specs/rml/#mapping-logical-sources).
-- An <dfn>FNML Parameter map</dfn>: a [=term map=] that MUST generate a named node. That named node specifies the referenced [=Parameter=].
+- A <dfn>Parameter map</dfn>: a [=term map=] that MUST generate a named node. That named node specifies the referenced [=Parameter=].
   - This can also be specified using a [=constant shortcut property=].
 
 <p class="note" data-format="markdown">
-It is currently assumed that an [=function-valued term map=] always returns an RDF term [[rdf-concepts]].
+It is currently assumed that a [=function-valued expression map=] always returns an RDF term [[rdf-concepts]].
 How a list of RDF terms is handled, is out of scope of this spec, but discussed at [[[CollectionsContainers]]].
 </p>

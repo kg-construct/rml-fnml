@@ -2,8 +2,8 @@
 
 We use terms defined in the FNML ontology to link [[RML]] with [[FNO]].
 
-The ontology namespace is [http://semweb.mmlab.be/ns/fnml#](http://semweb.mmlab.be/ns/fnml#),
-the preferred prefix is `fnml:`.
+The ontology namespace is [http://w3id.org/rml/](http://w3id.org/rml/),
+the preferred prefix is `rml:`.
 See below for how FNML introduced terms align with RML Core.
 
 <figure id="figure-diagram">
@@ -11,33 +11,33 @@ See below for how FNML introduced terms align with RML Core.
   <figcaption>Visual overview of how FNML introduced terms align with RML Core</figcaption>
 </figure>
 
-### function-valued term map
+### function-valued expression map
 
-A [=function-valued term map=] is a [=term map=] that is represented by a resource that has exactly one `fnml:execution`.
-The value of the `fnml:execution` property must be a valid [=FNML Execution=].
+A [=function-valued expression map=] is an [=expression map=] that is represented by a resource that has exactly one `rml:functionExecution`.
+The value of the `rml:functionExecution` property must be a valid [=Execution=].
 
 As a consequence, the default [[RML]] processing **is extended**,
 specifically concerning the [default term type depending on whether the term map is an object map or not](https://rml.io/specs/rml/#termtype),
-namely, the [=function-valued term map=]s default [term type](https://rml.io/specs/rml/#term-type) is `rr:Literal`.
+namely, the [=function-valued expression map=]s default [term type](https://rml.io/specs/rml/#term-type) is `rr:Literal`.
 The change is included below with changes highlighted in bold.
 
 ---
 
 If the [=term map=] does not have a `rr:termType` property, then its [term type](https://rml.io/specs/rml/#term-type) is:
 * `rr:Literal`, if it is an [object map](https://www.w3.org/TR/r2rml/#dfn-object-map) and at least one of the following conditions is true:
-   * It is a [reference-valued term map](https://rml.io/specs/rml/#reference-valued-term-map),  **or an [=function-valued term map=]**
+   * It is a [reference-valued term map](https://rml.io/specs/rml/#reference-valued-term-map),  **or a [=function-valued expression map=]**
    * It has a `rml:languageMap` and/or `rr:language` property (and thus a [language map](https://rml.io/specs/rml/#language-map) and/or a [specified language tag](https://rml.io/specs/rml/#specified-language-tag)).
    * It has a `rr:datatype` property (and thus a [specified datatype](https://rml.io/specs/rml/#specified-datatype)).
 * `rr:IRI`, otherwise.
 
 ---
 
-A [=function-valued term map=] MUST have exactly one `fnml:execution` relation.
+A [=function-valued expression map=] MUST have exactly one `rml:functionExecution` relation.
 Further, it MAY have following relations specified:
 
 * `rr:termType`: for processing, see paragraph above
 * `rr:language` OR `rml:languageMap` OR `rr:datatype`: for processing, see [RML Language Tags](https://rml.io/specs/rml/#language-tag) and [RML Typed Literals](https://rml.io/specs/rml/#typed-literals)
-* `fnml:return`: this relationship MUST refer to exactly one of the [=Return=]s as specified by the [=Function=]. This signifies which result of the execution to use. The default value is the first [=Return=] value as specified by the [=Function=].
+* `rml:return`: this relationship MUST refer to exactly one of the [=Return=]s as specified by the [=Function=]. This signifies which result of the execution to use. The default value is the first [=Return=] value as specified by the [=Function=].
 
 <p class="issue" data-format="markdown">
 A [proper term map definition in RML is pending](https://github.com/kg-construct/rml-core/issues/12).
@@ -45,133 +45,90 @@ For now, we refer to the R2RML spec, but it is assumed these references will be 
 This also means that all changes to existing definitions such as `term type` etc. are complementary to this specification.
 </p>
 
-### fnml:ReturnMap
+### rml:ReturnMap
 
-See [=FNML Return map=].
+See [=Return map=].
 
-### fnml:Execution
+### rml:FunctionExecution
 
-See [=FNML Execution=].
+See [=Function Execution=].
 
-<!-- <dfn class="lint-ignore">fnml:Execution</dfn> is a class to denote an [=FnML execution=].
-It is referred from a [=fnml:ExecutionTermMap=] via the predicate `fnml:execution`.
-It refers to an FnO [=function description=] via the predicate `fnml:function`,
-and to zero or more input parameters via the predicate `fnml:inputParameter`. -->
+<!-- <dfn class="lint-ignore">rml:FunctionExecution</dfn> is a class to denote a [=Function Execution=].
+It is referred from a [=rml:ExecutionTermMap=] via the predicate `rml:functionExecution`.
+It refers to an FnO [=function description=] via the predicate `rml:function`,
+and to zero or more input parameters via the predicate `rml:inputParameter`. -->
 
-### fnml:FunctionMap
+### rml:FunctionMap
 
-See [=FNML Function map=].
+See [=Function map=].
 
-### fnml:Input
+### rml:Input
 
-See [=FNML Input=].
+See [=Input=].
 
-### fnml:ParameterMap
+### rml:ParameterMap
 
-See [=FNML Parameter map=].
+See [=Parameter map=].
 
-<!-- <dfn>fnml:ParameterMap</dfn> is a subclass of [rr:TermMap](http://www.w3.org/ns/r2rml#TermMap).
-All default [[RML]] processing holds,
-**with the same extension as with the [=fnml:ExecutionTermMap=]**. -->
+### rml:functionExecution
 
-### fnml:execution
+Links [=function-valued expression map=] with [=Function Execution=].
 
-Links [=function-valued term map=] with [=FNML Execution=].
+Domain: rml:ExpressionMap
 
-Domain: rr:TermMap
+Range: rml:FunctionExecution
 
-Range: fnml:Execution
+### rml:returnMap
 
-<!-- fnml:execution connects the RDF dataset generating triples map via a [fnml:ExecutionTermMap] with a [=fnml:Execution=].
-It has domain [=fnml:ExecutionTermMap=] and range [=fnml:Execution=]. -->
+Links [=function-valued expression map=] with [=Return map=].
 
-### fnml:returnMap
+Domain: rml:ExpressionMap
 
-Links [=function-valued term map=] with [=FNML Return map=].
+Range: rml:ReturnMap
 
-Domain: rr:TermMap
+#### rml:return
 
-Range: fnml:ReturnMap
+[=constant shortcut property=] of rml:returnMap.
 
-#### fnml:return
+### rml:functionMap
 
-[=constant shortcut property=] of fnml:returnMap.
+Links [=function-valued expression map=] with [=Function=].
 
-<!-- <dfn class="lint-ignore">fnml:return</dfn> connects the RDF dataset generating triples map via a [fnml:ExecutionTermMap] with an output predicate.
-It has domain [=fnml:ExecutionTermMap=]. -->
-
-### fnml:functionMap
-
-Links [=function-valued term map=] with [=Function=].
-
-Domain: rr:TermMap
+Domain: rml:ExpressionMap
 
 Range: fno:Function
 
-#### fnml:function
+#### rml:function
 
-[=constant shortcut property=] of fnml:functionMap.
+[=constant shortcut property=] of rml:functionMap.
 
-<!-- <dfn class="lint-ignore">fnml:function</dfn> connects the [fnml:Execution] with an FnO [=function description=].
-It has domain [=fnml:Execution=] and range [fno:Function](https://w3id.org/function/ontology#Function). -->
+### rml:input
 
-### fnml:input
+Links [=Execution=] with [=Input=]s
 
-Links [=FNML Execution=] with [=FNML Input=]s
+### rml:parameterMap
 
-<!-- <dfn class="lint-ignore">fnml:inputParameter</dfn> connects the [fnml:Execution] with zero or more [=fnml:ParameterMap=]s.
-It has domain [=fnml:Execution=] and range [=fnml:ParameterMap=]. -->
+Links [=Input=] with [=Parameter map=].
 
-### fnml:parameterMap
+Domain: rml:Input
 
-Links [=FNML Input=] with [=FNML Parameter map=].
+Range: rml:ParameterMap
 
-Domain: fnml:Input
+#### rml:parameter
 
-Range: fnml:ParameterMap
+[=constant shortcut property=] of rml:parameterMap
 
-<!-- <dfn class="lint-ignore">fnml:input</dfn> connects the [=fnml:ParameterMap=] with a function input parameter predicate.
-It has domain [=fnml:ParameterMap=]. -->
+### rml:inputValueMap
 
-#### fnml:parameter
+Links [=Input=] with a [=term map=].
 
-[=constant shortcut property=] of fnml:parameterMap
-
-### fnml:valueMap
-
-Links [=FNML Input=] with a [=term map=].
-
-Domain: fnml:Input
+Domain: rml:Input
 
 Range: rr:TermMap
 
-#### fnml:value
+#### rml:inputValue
 
-[=constant shortcut property=] of fnml:valueMap
-
-<!-- <dfn class="lint-ignore">fnml:inputValue</dfn> connects the [=fnml:ParameterMap=] with a function input value.
-This value is generated using [=term map=]s.
-It has domain [=fnml:ParameterMap=] and range [=term map=]. -->
-
-<!-- #### Logical source
-
-The logical source is the same as the logical source of the triples map that refers to the [=fnml:Execution=].
-It is thus passed on from the triples map over the [=fnml:Execution=] to the [=fnml:ParameterMap=].
-An [=fnml:Execution=] or [=fnml:ParameterMap=] can be reused across triple maps, however,
-the logical source is determined at runtime and thus is always a single logical source, namely, the one specified by the triples map that is cuurently being processed.
-An engine needs to take into account which triples map is currently processed, to know which logical source's iterations to use for an [=fnml:Execution=] or [=fnml:ParameterMap=].
-
-<p class="issue" data-format="markdown">
-The assumption is that this handling of a logical source is the same behavior as, e.g., a term map definition that is being reused across triples maps, however, that doesn't seem to be clearly specified in the [currently R2RML specification](https://www.w3.org/2001/sw/rdb2rdf/r2rml/#dfn-triples-map)
-</p>
-
-<p class="issue" data-format="markdown">
-For an old example on joining values across data sources, without join conditions, see test case [RMLFNOTC009](https://github.com/RMLio/rml-fno-test-cases/tree/master/RMLFNOTC0009-CSV).
-</p>
-
-<p class="issue" data-number="2" data-format="markdown">
-It is still an open issue to joining values across data sources _with_ join conditions
-</p> -->
+[=constant shortcut property=] of rml:inputValueMap
 
 <div class="practice">
 

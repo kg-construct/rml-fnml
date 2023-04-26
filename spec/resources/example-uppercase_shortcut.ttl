@@ -1,7 +1,6 @@
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#Person_Mapping>
@@ -11,17 +10,17 @@
 
 <#NameMapping>
     rr:predicate dbo:title ;
-    rr:objectMap [                             # A function-valued term map
-        fnml:execution <#Execution> ;          # Link to an FNML Execution
-        fnml:return grel:stringOut             # Specify which return of the referenced function to use, if omitted, the first specified return is used
+    rr:objectMap [                             # A function-valued expression map
+        rml:functionExecution <#Execution> ;   # Link to a Function Execution
+        rml:return grel:stringOut              # Specify which return of the referenced function to use, if omitted, the first specified return is used
     ] .
 
-<#Execution> a fnml:Execution ;                # A new class
-    fnml:function grel:toUppercase ;           # Specify which FnO function
-    fnml:input [                               # Specify the inputs
-        a fnml:Input ;                         # A new class
-        fnml:parameter grel:valueParam ;       # Specify this specific parameter
-        fnml:valueMap [                        # Link to the term map that creates the input value
+<#Execution> a rml:FunctionExecution ;         # A new class
+    rml:function grel:toUppercase ;            # Specify which FnO function
+    rml:input [                                # Specify the inputs
+        a rml:Input ;                          # A new class
+        rml:parameter grel:valueParam ;        # Specify this specific parameter
+        rml:inputValueMap [                    # Link to the term map that creates the input value
             rml:reference "name"               # Specify the reference within the data source
         ]
     ] .

@@ -2,7 +2,7 @@
 
 ### Nested functions
 
-As the values of a function are represented using [=term map=]s,
+As the values of a function are represented using [=expression map=]s,
 it is possible to nest functions: you generate a term in a first function, and that term is used as an parameter value in a second function.
 
 <p class="issue" data-format="markdown">
@@ -15,7 +15,6 @@ For now, it is unclear how to handle a nested function where that nested triples
 
 ```turtle "example": "use nested function"
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
@@ -28,41 +27,41 @@ For now, it is unclear how to handle a nested function where that nested triples
 <#NameMapping>
     rr:predicate dbo:title ;
     rr:objectMap [
-        fnml:execution <#Execution> ;
-        fnml:return grel:stringOut
+        rml:functionExecution <#Execution> ;
+        rml:return grel:stringOut
     ] ;
     .
 
-<#Execution> a fnml:Execution ;
-    fnml:function grel:toUppercase ;
-    fnml:input
+<#Execution> a rml:FunctionExecution ;
+    rml:function grel:toUppercase ;
+    rml:input
         [
-            a fnml:Input ;
-            fnml:parameter grel:valueParam ;
-            fnml:valueMap [
-                fnml:execution <#Execution2> ; # Link to another function-valued term map to nest functions
-                fnml:return grel:stringOut
+            a rml:Input ;
+            rml:parameter grel:valueParam ;
+            rml:InputValueMap [
+                rml:functionExecution <#Execution2> ; # Link to another function-valued expression map to nest functions
+                rml:return grel:stringOut
             ]
         ] .
 
-<#Execution2> a fnml:Execution ;               # First, replace spaces with dashes from the `name` reference
-    fnml:function grel:string_replace ;
-    fnml:input
+<#Execution2> a rml:FunctionExecution ;               # First, replace spaces with dashes from the `name` reference
+    rml:function grel:string_replace ;
+    rml:input
         [
-            a fnml:Input ;
-            fnml:parameter grel:valueParam ;
-            fnml:valueMap [
+            a rml:Input ;
+            rml:parameter grel:valueParam ;
+            rml:InputValueMap [
                 rml:reference "name"
             ]
         ] ,
         [
-            a fnml:Input ;
-            fnml:parameter grel:param_find ;
-            fnml:value " "
+            a rml:Input ;
+            rml:parameter grel:param_find ;
+            rml:inputValue " "
         ] ,
         [
-            a fnml:Input ;
-            fnml:parameter grel:param_replace  ;
-            fnml:value "-"
+            a rml:Input ;
+            rml:parameter grel:param_replace  ;
+            rml:inputValue "-"
         ] .
 ```

@@ -7,16 +7,16 @@ Within [[FnO]], [=Function=]s and [=Execution=]s are described.
 Within FNML, we refer to [=Execution=]s that link to specific [=Function=]s.
 
 [=triples map=]s generate output triples from input data.
-We use an intermediate [=function-valued term map=] to use a specific output (via a [=FNML Return map=]) of an [=FNML Execution=].
-That [=FNML Execution=] specifies which [[FnO]] function to use (via a [=FNML Function map=])
-and uses [=FNML Input=]s to link input data (via regular [[RML]] [=term map=]s)
-to [=Parameter=]s (via [=FNML Parameter map=]s).
+We use an intermediate [=function-valued expression map=] to use a specific output (via a [=Return map=]) of a [=Function Execution=].
+That [=Function Execution=] specifies which [[FnO]] function to use (via a [=Function map=])
+and uses [=Input=]s to link input data (via regular [[RML]] [=term map=]s)
+to [=Parameter=]s (via [=Parameter map=]s).
 
 <p class="note" data-format="markdown">
 If an execution returns multiple returning outputs (eg, a result and a status code),
 by referring to the same execution,
 you can use both outputs in different locations of the same mapping.
-If you leave out the intermediate [=function-valued term map=], you don't allow for reuse,
+If you leave out the intermediate [=function-valued expression map=], you don't allow for reuse,
 which means that you cannot specify the difference between
 'using 2 outputs from one execution' vs 'use a different output from 2 different executions'.
 </p>
@@ -89,9 +89,9 @@ graph LR
     POM -->|predicate| FM
     POM -->|objectMap| FM
     %% FM([Function term map]):::fnml
-    FM([function-valued term map]):::fnml
+    FM([function-valued expression map]):::fnml
     %% FM -->|function value| Ex([triples map])
-    FM -->|execution| Ex([FNML Execution]):::fnml
+    FM -->|execution| Ex([Function Execution]):::fnml
     %% FM -->|execution| Ex([Function triples map]):::fnml
     %% FM -->|function value| Ex([Function triples map]):::fnml
     FM -->|return| J(grel:stringOut):::fno
@@ -100,7 +100,7 @@ graph LR
     %% ExPOM -->|predicate| ExP(fno:executes):::fno
     %% ExPOM -->|object map| ExO([Object map])
     %% ExO -->|constant| ExO1(grel:toUpperCase):::fno
-    Ex -->|input| ParamPOM([FNML Input]):::fnml
+    Ex -->|input| ParamPOM([Input]):::fnml
     %% Ex -->|predicateObjectMap| ParamPOM([predicate-object map])
     ParamPOM -->|parameter| P2(grel:valueParam):::fno
     ParamPOM -->|valueMap| O1(term map)
@@ -123,9 +123,8 @@ graph LR
 
 ```turtle "example": "using toUppercase in an RML mapping"
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#Person_Mapping>
@@ -135,17 +134,17 @@ graph LR
 
 <#NameMapping>
     rr:predicate dbo:title ;
-    rr:objectMap [                             # A function-valued term map
-        fnml:execution <#Execution> ;          # Link to an FNML Execution
-        fnml:return grel:stringOut             # Specify which return of the referenced function to use, if omitted, the first specified return is used
+    rr:objectMap [                             # A function-valued expression map
+        rml:functionExecution <#Execution> ;   # Link to a Function Execution
+        rml:return grel:stringOut              # Specify which return of the referenced function to use, if omitted, the first specified return is used
     ] .
 
-<#Execution> a fnml:Execution ;                # A new class
-    fnml:function grel:toUppercase ;           # Specify which FnO function
-    fnml:input [                               # Specify the inputs
-        a fnml:Input ;                         # A new class
-        fnml:parameter grel:valueParam ;       # Specify this specific parameter
-        fnml:valueMap [                        # Link to the term map that creates the input value
+<#Execution> a rml:FunctionExecution ;         # A new class
+    rml:function grel:toUppercase ;            # Specify which FnO function
+    rml:input [                                # Specify the inputs
+        a rml:Input ;                          # A new class
+        rml:parameter grel:valueParam ;        # Specify this specific parameter
+        rml:inputValueMap [                    # Link to the term map that creates the input value
             rml:reference "name"               # Specify the reference within the data source
         ]
     ] .
@@ -156,7 +155,7 @@ instead, its value is used as `grel:valueParam`-parameter
 for the `grel:toUppercase`-function.
 After execution, the `grel:stringOut` result of that function is returned to generate the object
 within the `<#NameMapping>`.
-We make use of an intermediate [=function-valued term map=] so that we can reuse the returning output of an execution in multiple TermMaps.
+We make use of an intermediate [=function-valued expression map=] so that we can reuse the returning output of an execution in multiple TermMaps.
 
 ## FNML Example - no shortcuts
 
@@ -164,9 +163,8 @@ The same example, but written without shortcuts, is as follows:
 
 ```turtle "example": "using toUppercase in an RML mapping without shortcuts"
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#Person_Mapping>
@@ -176,27 +174,27 @@ The same example, but written without shortcuts, is as follows:
 
 <#NameMapping>
     rr:predicate dbo:title ;                   # Specify the predicate
-    rr:objectMap [                             # Specify the object-map: a function-valued term map
-        fnml:execution <#Execution> ;          # Link to an FNML Execution
-        fnml:returnMap [
-            a fnml:ReturnMap ;
+    rr:objectMap [                             # Specify the object-map: a function-valued expression map
+        rml:functionExecution <#Execution> ;   # Link to a Function Execution
+        rml:returnMap [
+            a rml:ReturnMap ;
             rr:constant grel:stringOut         # Specify which return of the referenced function to use
         ]
     ] .
 
-<#Execution> a fnml:Execution ;                # A new class
-    fnml:functionMap [
-        a fnml:FunctionMap ;
+<#Execution> a rml:FunctionExecution ;         # A new class
+    rml:functionMap [
+        a rml:FunctionMap ;
         rr:constant grel:toUppercase           # Specify which FnO function
     ] ;
-    fnml:input                                 # Specify the inputs
+    rml:input                                  # Specify the inputs
         [
-            a fnml:Input ;                     # A new class
-            fnml:parameterMap [
-                a fnml:ParameterMap ;
+            a rml:Input ;                      # A new class
+            rml:parameterMap [
+                a rml:ParameterMap ;
                 rr:constant grel:valueParam ;  # Specify this specific parameter
             ] ;
-            fnml:valueMap [                    # Link to the term map that creates the input value
+            rml:inputValueMap [                    # Link to the term map that creates the input value
                 a rr:TermMap ;
                 rml:reference "name"           # Specify the reference within the data source
             ]
