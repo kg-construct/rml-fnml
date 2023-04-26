@@ -1,21 +1,21 @@
 ###############################################################################
-# RMLF Parameter Map shape                                                    #
+# RML Parameter Map shape                                                    #
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix schema: <http://schema.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rml: <http://w3id.org/rml/core/> .
-@prefix rmlf: <http://w3id.org/rml/fnml/> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLFParameterMapShape
+schema:RMLParameterMapShape
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;
-    sh:name "rmlf:ParameterMap" ;
+    sh:name "rml:ParameterMap" ;
     sh:description """
     Represents a paramter map of a function.
     """ ;
+    sh:targetObjectsOf rml:parameterMap ;
+
 
     # rml:constant
     sh:property [
@@ -41,7 +41,7 @@ schema:RMLFParameterMapShape
         or a Literal.
         """ ;
         sh:message """
-        rml:termType must be either rml:IRI for an rmlf:ReturnMap.
+        rml:termType must be either rml:IRI for an rml:ReturnMap.
         May only be provided once.
         """ ;
         sh:maxCount 1 ;

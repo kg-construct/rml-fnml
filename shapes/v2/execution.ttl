@@ -1,75 +1,73 @@
 ###############################################################################
-# RMLF Execution shape                                                        #
+# RML Execution shape                                                        #
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix schema: <http://schema.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rml: <http://w3id.org/rml/core/> .
-@prefix rmlf: <http://w3id.org/rml/fnml/> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLFExecutionShape
+schema:RMLFunctionExecutionShape
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;
-    sh:name "rmlf:ExecutionMap" ;
+    sh:name "rml:FunctionExecution" ;
     sh:description """
-    Represents a Execution.
+    Represents a Function Execution.
     """ ;
+    sh:targetObjectsOf rml:functionExecution ;
 
-    # Exactly one rmlf:function or rmlf:functionMap is required 
+    # Exactly one rml:function or rml:functionMap is required 
     sh:property [
-        sh:path [sh:alternativePath (rmlf:function 
-                                     rmlf:functionMap)] ;
-        sh:name "rmlf:function/rmlf:functionMap" ;
+        sh:path [sh:alternativePath (rml:function 
+                                     rml:functionMap)] ;
+        sh:name "rml:function/rml:functionMap" ;
         sh:description """
-        Exactly one rmlf:function or rmlf:functionMap is required.
+        Exactly one rml:function or rml:functionMap is required.
         """ ;
         sh:message """
-        Exactly one rmlf:function or rmlf:functionMap is required.
+        Exactly one rml:function or rml:functionMap is required.
         """ ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
 
-    # rmlf:functionMap non-shortcut
+    # rml:functionMap non-shortcut
     sh:property [
-        sh:path rmlf:functionMap ;
-        sh:name "rmlf:functionMap" ;
+        sh:path rml:functionMap ;
+        sh:name "rml:functionMap" ;
         sh:description """
         FnO function to execute.
         """ ;
         sh:message """
-        rmlf:functionMap must be an IRI or Blank node.
+        rml:functionMap must be an IRI or Blank node.
         """ ;
         sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:node schema:RMLFFunctionMap;
+        sh:node schema:RMLFunctionMap;
     ] ;
 
-    # rmlf:function shortcut
+    # rml:function shortcut
     sh:property [
-        sh:path rmlf:function ;
-        sh:name "rmlf:function" ;
+        sh:path rml:function ;
+        sh:name "rml:function" ;
         sh:description """
         FnO function to execute.
         """ ;
         sh:message """
-        rmlf:function must be an IRI.
+        rml:function must be an IRI.
         """ ;
         sh:nodeKind sh:IRI ;
     ] ;
 
-    # rmlf:input
+    # rml:input
     sh:property [
-        sh:path rmlf:input ;
-        sh:name "rmlf:input" ;
+        sh:path rml:input ;
+        sh:name "rml:input" ;
         sh:description """
         Input parameters for the function.
         """ ;
         sh:message """
-        rmlf:input must be a IRI, provided once.
+        rml:input must be an IRI or Blank node.
         """ ;
-        sh:maxCount 1 ;
-        sh:nodeKind sh:IRI ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
     ] ;
 .

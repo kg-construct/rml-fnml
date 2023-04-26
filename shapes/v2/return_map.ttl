@@ -1,21 +1,20 @@
 ###############################################################################
-# RMLF Return Map shape                                                       #
+# RML Return Map shape                                                       #
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix schema: <http://schema.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rml: <http://w3id.org/rml/core/> .
-@prefix rmlf: <http://w3id.org/rml/fnml/> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLFReturnMapShape
+schema:RMLReturnMapShape
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;
-    sh:name "rmlf:ReturnMap" ;
+    sh:name "rml:ReturnMap" ;
     sh:description """
     Represents a return map.
     """ ;
+    sh:targetObjectsOf rml:returnMap ;
 
     # rml:constant
     sh:property [
@@ -41,7 +40,7 @@ schema:RMLFReturnMapShape
         or a Literal.
         """ ;
         sh:message """
-        rml:termType must be either rml:IRI for an rmlf:ReturnMap.
+        rml:termType must be either rml:IRI for an rml:ReturnMap.
         May only be provided once.
         """ ;
         sh:maxCount 1 ;

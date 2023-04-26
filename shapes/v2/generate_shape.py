@@ -11,8 +11,7 @@ from rdflib import plugin
 SUBSHAPE_FORMAT = 'turtle'
 SUBSHAPE_GLOB_PATTERN = '*.ttl'
 SHACL = Namespace('http://www.w3.org/ns/shacl#')
-RML = Namespace('http://w3id.org/rml/core/')
-RMLF = Namespace('http://w3id.org/rml/fnml/')
+RML = Namespace('http://w3id.org/rml/')
 
 
 class TurtleWithPrefixes(TurtleSerializer):
@@ -36,7 +35,6 @@ class ShapeGenerator:
         self._shape = Graph()
         self._shape.bind('sh', SHACL)
         self._shape.bind('rml', RML)
-        self._shape.bind('rmlf', RMLF)
         # Register TurtleWithPrefixes serializer as 'tortoise' format
         plugin.register('tortoise',
                         plugin.Serializer,
@@ -49,13 +47,12 @@ class ShapeGenerator:
         """
         print('Reading subshapes:')
         for sub_shape in glob(self._glob_pattern):
-            if 'fnml.ttl' in sub_shape:
+            if 'fnml' in sub_shape:
                 continue
             print(f"\t{sub_shape}")
             g = Graph()
             g.bind('sh', SHACL)
             g.bind('rml', RML)
-            g.bind('rmlf', RMLF)
             self._shape += g.parse(sub_shape, format=self._rdf_format)
 
         print(f'Writing shape to {self._destination}')

@@ -1,104 +1,103 @@
 ###############################################################################
-# RMLF Input shape                                                            #
+# RML Input shape                                                            #
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix schema: <http://schema.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rml: <http://w3id.org/rml/core/> .
-@prefix rmlf: <http://w3id.org/rml/fnml/> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLFInputShape
+schema:RMLInputShape
     a sh:NodeShape ;
-    sh:ignoredProperties (rdf:type) ;
-    sh:name "rmlf:Input" ;
+    sh:name "rml:Input" ;
     sh:description """
     Represents an Input for a function.
     """ ;
+    sh:targetObjectsOf rml:input ;
 
-    # Exactly one rmlf:parameter or rmlf:parameterMap is required 
+    # Exactly one rml:parameter or rml:parameterMap is required 
     sh:property [
-        sh:path [sh:alternativePath (rmlf:parameter 
-                                     rmlf:parameterMap)] ;
-        sh:name "rmlf:parameter/rmlf:parameterMap" ;
+        sh:path [sh:alternativePath (rml:parameter 
+                                     rml:parameterMap)] ;
+        sh:name "rml:parameter/rml:parameterMap" ;
         sh:description """
-        Exactly one rmlf:parameter or rmlf:parameterMap is required.
+        Exactly one rml:parameter or rml:parameterMap is required.
         """ ;
         sh:message """
-        Exactly one rmlf:parameter or rmlf:parameterMap is required.
+        Exactly one rml:parameter or rml:parameterMap is required.
         """ ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
 
-    # rmlf:parameterMap non-shortcut
+    # rml:parameterMap non-shortcut
     sh:property [
-        sh:path rmlf:parameterMap ;
-        sh:name "rmlf:parameterMap" ;
+        sh:path rml:parameterMap ;
+        sh:name "rml:parameterMap" ;
         sh:description """
         Parameters to supply to FnO function.
         """ ;
         sh:message """
-        rmlf:parameterMap must be an IRI or Blank node.
+        rml:parameterMap must be an IRI or Blank node.
         """ ;
         sh:nodeKind sh:BlankNodeOrIRI ;
-        sh:node schema:RMLFParameterMap;
+        sh:node schema:RMLParameterMap;
         sh:maxCount 1 ;
     ] ;
 
-    # rmlf:parameter shortcut
+    # rml:parameter shortcut
     sh:property [
-        sh:path rmlf:parameter ;
-        sh:name "rmlf:parameter" ;
+        sh:path rml:parameter ;
+        sh:name "rml:parameter" ;
         sh:description """
         Parameters to supply to FnO function.
         """ ;
         sh:message """
-        rmlf:parameter must be an IRI.
+        rml:parameter must be an IRI.
         """ ;
         sh:nodeKind sh:IRI ;
         sh:maxCount 1 ;
     ] ;
 
-    # Exactly one rmlf:value or rmlf:valueMap is required 
+    # Exactly one rml:inputValue or rml:inputValueMap is required 
     sh:property [
-        sh:path [sh:alternativePath (rmlf:value 
-                                     rmlf:valueMap)] ;
-        sh:name "rmlf:value/rmlf:valueMap" ;
+        sh:path [sh:alternativePath (rml:inputValue 
+                                     rml:inputValueMap)] ;
+        sh:name "rml:inputValue/rml:inputValueMap" ;
         sh:description """
-        Exactly one rmlf:value or rmlf:valueMap is required.
+        Exactly one rml:inputValue or rml:inputValueMap is required.
         """ ;
         sh:message """
-        Exactly one rmlf:value or rmlf:valueMap is required.
+        Exactly one rml:inputValue or rml:inputValueMap is required.
         """ ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
     ] ;
 
-    # rmlf:valueMap
+    # rml:inputValueMap
     sh:property [
-        sh:path rmlf:valueMap ;
-        sh:name "rmlf:valueMap" ;
+        sh:path rml:inputValueMap ;
+        sh:name "rml:inputValueMap" ;
         sh:description """
         Values of the parameters.
         """ ;
         sh:message """
-        rmlf:valueMap must be an IRI or Blank node, provided once.
+        rml:inputValueMap must be an IRI or Blank node, provided once.
         """ ;
         sh:maxCount 1 ;
         sh:nodeKind sh:BlankNodeOrIRI ;
     ] ;
 
-    # rmlf:value shortcut
+    # rml:inputValue shortcut
     sh:property [
-        sh:path rmlf:value ;
-        sh:name "rmlf:value" ;
+        sh:path rml:inputValue ;
+        sh:name "rml:inputValue" ;
         sh:description """
         Parameters to supply to FnO function.
         """ ;
         sh:message """
-        rmlf:value must be a string Literal.
+        rml:inputValue must be a string Literal.
         """ ;
         sh:nodeKind sh:Literal ;
         sh:datatype xsd:string ;
