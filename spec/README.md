@@ -1,3 +1,3 @@
-# fnml-spec
+# rml-fnml
 
-RML+FnO specification
+FNML specification
