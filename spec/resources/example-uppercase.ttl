@@ -1,7 +1,6 @@
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix fnml: <http://semweb.mmlab.be/ns/fnml#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rml: <http://w3id.org/rml/> .
 @prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#Person_Mapping>
@@ -11,27 +10,27 @@
 
 <#NameMapping>
     rr:predicate dbo:title ;                   # Specify the predicate
-    rr:objectMap [                             # Specify the object-map: a function-valued term map
-        fnml:execution <#Execution> ;          # Link to an FNML Execution
-        fnml:returnMap [
-            a fnml:ReturnMap ;
+    rr:objectMap [                             # Specify the object-map: a function-valued expression map
+        rml:functionExecution <#Execution> ;   # Link to a Function Execution
+        rml:returnMap [
+            a rml:ReturnMap ;
             rr:constant grel:stringOut         # Specify which return of the referenced function to use
         ]
     ] .
 
-<#Execution> a fnml:Execution ;                # A new class
-    fnml:functionMap [
-        a fnml:FunctionMap ;
+<#Execution> a rml:FunctionExecution ;         # A new class
+    rml:functionMap [
+        a rml:FunctionMap ;
         rr:constant grel:toUppercase           # Specify which FnO function
     ] ;
-    fnml:input                                 # Specify the inputs
+    rml:input                                  # Specify the inputs
         [
-            a fnml:Input ;                     # A new class
-            fnml:parameterMap [
-                a fnml:ParameterMap ;
+            a rml:Input ;                      # A new class
+            rml:parameterMap [
+                a rml:ParameterMap ;
                 rr:constant grel:valueParam ;  # Specify this specific parameter
             ] ;
-            fnml:valueMap [                    # Link to the term map that creates the input value
+            rml:inputValueMap [                # Link to the term map that creates the input value
                 a rr:TermMap ;
                 rml:reference "name"           # Specify the reference within the data source
             ]
