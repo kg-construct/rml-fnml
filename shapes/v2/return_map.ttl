@@ -1,0 +1,67 @@
+###############################################################################
+# RMLF Return Map shape                                                       #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/core/> .
+@prefix rmlf: <http://w3id.org/rml/fnml/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLFReturnMapShape
+    a sh:NodeShape ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rmlf:ReturnMap" ;
+    sh:description """
+    Represents a return map.
+    """ ;
+
+    # rml:constant
+    sh:property [
+        sh:path rml:constant ;
+        sh:name "rml:constant" ;
+        sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+        sh:message """
+        rml:constant must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:termType
+    sh:property [
+        sh:path rml:termType ;
+        sh:name "rml:termType" ;
+        sh:description """
+        An IRI indicating whether subject or object generated using the value 
+        from column name specified should be an IRI reference, blank node,
+        or a Literal.
+        """ ;
+        sh:message """
+        rml:termType must be either rml:IRI for an rmlf:ReturnMap.
+        May only be provided once.
+        """ ;
+        sh:maxCount 1 ;
+        sh:in (rml:IRI) ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:logicalTarget
+    sh:property [
+        sh:path rml:logicalTarget ;
+        sh:name "rml:logicalTarget" ;
+        sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+        sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:minCount 0 ;
+        sh:maxCount 1 ;
+    ] ;
+.

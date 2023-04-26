@@ -1,0 +1,253 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://w3id.org/rml/core/> .
+@prefix rmlf: <http://w3id.org/rml/fnml/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://schema.org/RMLFExecutionShape> a sh:NodeShape ;
+    sh:description """
+    Represents a Execution.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "rmlf:ExecutionMap" ;
+    sh:property [ sh:description """
+        Exactly one rmlf:function or rmlf:functionMap is required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rmlf:function or rmlf:functionMap is required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rmlf:function/rmlf:functionMap" ;
+            sh:path [ sh:alternativePath ( rmlf:function rmlf:functionMap ) ] ],
+        [ sh:description """
+        FnO function to execute.
+        """ ;
+            sh:message """
+        rmlf:functionMap must be an IRI or Blank node.
+        """ ;
+            sh:name "rmlf:functionMap" ;
+            sh:node <http://schema.org/RMLFFunctionMap> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rmlf:functionMap ],
+        [ sh:description """
+        FnO function to execute.
+        """ ;
+            sh:message """
+        rmlf:function must be an IRI.
+        """ ;
+            sh:name "rmlf:function" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rmlf:function ],
+        [ sh:description """
+        Input parameters for the function.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rmlf:input must be a IRI, provided once.
+        """ ;
+            sh:name "rmlf:input" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rmlf:input ] .
+
+<http://schema.org/RMLFFunctionMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents a function map.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "rmlf:FunctionMap" ;
+    sh:property [ sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+            sh:message """
+        rml:constant must be an IRI.
+        """ ;
+            sh:name "rml:constant" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:constant ],
+        [ sh:description """
+        An IRI indicating whether subject or object generated using the value 
+        from column name specified should be an IRI reference, blank node,
+        or a Literal.
+        """ ;
+            sh:in ( rml:IRI ) ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:termType must be either rml:IRI for an rmlf:ReturnMap.
+        May only be provided once.
+        """ ;
+            sh:name "rml:termType" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:termType ],
+        [ sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:logicalTarget" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:logicalTarget ] .
+
+<http://schema.org/RMLFInputShape> a sh:NodeShape ;
+    sh:description """
+    Represents an Input for a function.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "rmlf:Input" ;
+    sh:property [ sh:description """
+        Values of the parameters.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rmlf:valueMap must be an IRI or Blank node, provided once.
+        """ ;
+            sh:name "rmlf:valueMap" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rmlf:valueMap ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        Parameters to supply to FnO function.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rmlf:value must be a string Literal.
+        """ ;
+            sh:name "rmlf:value" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rmlf:value ],
+        [ sh:description """
+        Exactly one rmlf:parameter or rmlf:parameterMap is required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rmlf:parameter or rmlf:parameterMap is required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rmlf:parameter/rmlf:parameterMap" ;
+            sh:path [ sh:alternativePath ( rmlf:parameter rmlf:parameterMap ) ] ],
+        [ sh:description """
+        Parameters to supply to FnO function.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rmlf:parameterMap must be an IRI or Blank node.
+        """ ;
+            sh:name "rmlf:parameterMap" ;
+            sh:node <http://schema.org/RMLFParameterMap> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rmlf:parameterMap ],
+        [ sh:description """
+        Parameters to supply to FnO function.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rmlf:parameter must be an IRI.
+        """ ;
+            sh:name "rmlf:parameter" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rmlf:parameter ],
+        [ sh:description """
+        Exactly one rmlf:value or rmlf:valueMap is required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rmlf:value or rmlf:valueMap is required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rmlf:value/rmlf:valueMap" ;
+            sh:path [ sh:alternativePath ( rmlf:value rmlf:valueMap ) ] ] .
+
+<http://schema.org/RMLFParameterMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents a paramter map of a function.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "rmlf:ParameterMap" ;
+    sh:property [ sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+            sh:message """
+        rml:constant must be an IRI.
+        """ ;
+            sh:name "rml:constant" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:constant ],
+        [ sh:description """
+        An IRI indicating whether subject or object generated using the value 
+        from column name specified should be an IRI reference, blank node,
+        or a Literal.
+        """ ;
+            sh:in ( rml:IRI ) ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:termType must be either rml:IRI for an rmlf:ReturnMap.
+        May only be provided once.
+        """ ;
+            sh:name "rml:termType" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:termType ],
+        [ sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:logicalTarget" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:logicalTarget ] .
+
+<http://schema.org/RMLFReturnMapShape> a sh:NodeShape ;
+    sh:description """
+    Represents a return map.
+    """ ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:name "rmlf:ReturnMap" ;
+    sh:property [ sh:description """
+        A property for indicating whether a term map is a constant-valued term 
+        map.
+        """ ;
+            sh:message """
+        rml:constant must be an IRI.
+        """ ;
+            sh:name "rml:constant" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:constant ],
+        [ sh:description """
+        An IRI indicating whether subject or object generated using the value 
+        from column name specified should be an IRI reference, blank node,
+        or a Literal.
+        """ ;
+            sh:in ( rml:IRI ) ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:termType must be either rml:IRI for an rmlf:ReturnMap.
+        May only be provided once.
+        """ ;
+            sh:name "rml:termType" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:termType ],
+        [ sh:description """
+        A logical target is any target to where generated RDF triples are
+        exported to.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Zero or one rml:logicalTarget is required to export RDF triples.
+        """ ;
+            sh:minCount 0 ;
+            sh:name "rml:logicalTarget" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:logicalTarget ] .
+

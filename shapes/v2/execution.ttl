@@ -1,0 +1,75 @@
+###############################################################################
+# RMLF Execution shape                                                        #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/core/> .
+@prefix rmlf: <http://w3id.org/rml/fnml/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLFExecutionShape
+    a sh:NodeShape ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:name "rmlf:ExecutionMap" ;
+    sh:description """
+    Represents a Execution.
+    """ ;
+
+    # Exactly one rmlf:function or rmlf:functionMap is required 
+    sh:property [
+        sh:path [sh:alternativePath (rmlf:function 
+                                     rmlf:functionMap)] ;
+        sh:name "rmlf:function/rmlf:functionMap" ;
+        sh:description """
+        Exactly one rmlf:function or rmlf:functionMap is required.
+        """ ;
+        sh:message """
+        Exactly one rmlf:function or rmlf:functionMap is required.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rmlf:functionMap non-shortcut
+    sh:property [
+        sh:path rmlf:functionMap ;
+        sh:name "rmlf:functionMap" ;
+        sh:description """
+        FnO function to execute.
+        """ ;
+        sh:message """
+        rmlf:functionMap must be an IRI or Blank node.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RMLFFunctionMap;
+    ] ;
+
+    # rmlf:function shortcut
+    sh:property [
+        sh:path rmlf:function ;
+        sh:name "rmlf:function" ;
+        sh:description """
+        FnO function to execute.
+        """ ;
+        sh:message """
+        rmlf:function must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rmlf:input
+    sh:property [
+        sh:path rmlf:input ;
+        sh:name "rmlf:input" ;
+        sh:description """
+        Input parameters for the function.
+        """ ;
+        sh:message """
+        rmlf:input must be a IRI, provided once.
+        """ ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+.
