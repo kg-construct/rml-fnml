@@ -15,14 +15,21 @@ from rdflib import Graph
 
 from mapping_validator import MappingValidator
 
-TEST_CASES_DIR = os.path.join(os.path.abspath('../../test-cases'), '*/*.ttl')
-SHAPE_FILE = os.path.abspath('fnml.ttl')
+TEST_CASES_DIR = os.path.join(os.path.abspath('../test-cases'),
+                              '*/mapping.ttl')
+FNML_SHAPE_FILE = os.path.abspath('fnml.ttl')
+SHACL_SHAPE_FILE = os.path.abspath('shacl.ttl')
 
 
 class MappingValidatorTests(unittest.TestCase):
     def _validate_rules(self, path: str) -> None:
         rules = Graph().parse(path, format='turtle')
-        mapping_validator = MappingValidator(SHAPE_FILE)
+        mapping_validator = MappingValidator(FNML_SHAPE_FILE)
+        mapping_validator.validate(rules)
+
+    def _validate_shapes(self, path: str) -> None:
+        rules = Graph().parse(path, format='turtle')
+        mapping_validator = MappingValidator(SHACL_SHAPE_FILE)
         mapping_validator.validate(rules)
 
     def test_non_existing_mapping_rules(self) -> None:
@@ -40,6 +47,17 @@ class MappingValidatorTests(unittest.TestCase):
         print(f'Testing validation with: {path}')
         self._validate_rules(path)
 
+    def test_validation_shapes(self) -> None:
+        """
+        Test if our SHACL shapes are valid according to the W3C Recommdendation
+        of SHACL. Validation with the official SHACL shapes for SHACL.
+
+        See https://www.w3.org/TR/shacl/#shacl-shacl
+        """
+        path = './fnml.ttl'
+        print(f'Testing shape with: {path}')
+        self._validate_shapes(path)
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Execute tests for SHACL '
@@ -54,4 +72,5 @@ if __name__ == '__main__':
                         datefmt='%Y-%m-%d %H:%M:%S')
 
     print(TEST_CASES_DIR)
-    unittest.main(failfast=False)
+    unittest.main(failfast=True)
+

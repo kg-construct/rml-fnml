@@ -40,7 +40,7 @@ schema:RMLFunctionMapShape
         or a Literal.
         """ ;
         sh:message """
-        rml:termType must be either rml:IRI for an rmlf:ReturnMap.
+        rml:termType must be either rml:IRI for an rml:ReturnMap.
         May only be provided once.
         """ ;
         sh:maxCount 1 ;
