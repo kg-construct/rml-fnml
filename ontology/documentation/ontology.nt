@@ -6,7 +6,6 @@
 <http://w3id.org/rml/fnml/> <http://purl.org/dc/elements/1.1/license> <http://purl.org/NET/rdflicense/cc-by4.0> .
 <http://w3id.org/rml/fnml/> <http://purl.org/dc/elements/1.1/modified> "2023-04-19" .
 <http://w3id.org/rml/fnml/> <http://purl.org/dc/elements/1.1/title> "RML-FNML"@en .
-<http://w3id.org/rml/fnml/> <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/fnml/" .
 # 
 # 
 # #################################################################
@@ -64,23 +63,23 @@
 # #################################################################
 # 
 # 
-# http://w3id.org/rml/execution
-<http://w3id.org/rml/execution> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://w3id.org/rml/execution> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/TermMap> .
-<http://w3id.org/rml/TermMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/rml/execution> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/rml/Execution> .
-<http://w3id.org/rml/execution> <http://www.w3.org/2000/01/rdf-schema#comment> "Denotes the execution of a function with its required input parameters and values."@en .
-<http://w3id.org/rml/execution> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/fnml/> .
-<http://w3id.org/rml/execution> <http://www.w3.org/2000/01/rdf-schema#label> "execution" .
-# 
 # http://w3id.org/rml/function
 <http://w3id.org/rml/function> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://w3id.org/rml/function> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/Execution> .
+<http://w3id.org/rml/function> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/FunctionExecution> .
 <http://w3id.org/rml/function> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2000/01/rdf-schema#Resource> .
 <http://www.w3.org/2000/01/rdf-schema#Resource> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <http://w3id.org/rml/function> <http://www.w3.org/2000/01/rdf-schema#comment> "Specifies a data transformation function."@en .
 <http://w3id.org/rml/function> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/fnml/> .
 <http://w3id.org/rml/function> <http://www.w3.org/2000/01/rdf-schema#label> "function" .
+# 
+# http://w3id.org/rml/functionExecution
+<http://w3id.org/rml/functionExecution> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/rml/functionExecution> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/ExpressionMap> .
+<http://w3id.org/rml/ExpressionMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/rml/functionExecution> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/rml/FunctionExecution> .
+<http://w3id.org/rml/functionExecution> <http://www.w3.org/2000/01/rdf-schema#comment> "Denotes the execution of a function with its required input parameters and values."@en .
+<http://w3id.org/rml/functionExecution> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/fnml/> .
+<http://w3id.org/rml/functionExecution> <http://www.w3.org/2000/01/rdf-schema#label> "function execution" .
 # 
 # http://w3id.org/rml/functionMap
 <http://w3id.org/rml/functionMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
@@ -92,11 +91,27 @@
 # 
 # http://w3id.org/rml/input
 <http://w3id.org/rml/input> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://w3id.org/rml/input> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/Execution> .
+<http://w3id.org/rml/input> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/FunctionExecution> .
 <http://w3id.org/rml/input> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/rml/Input> .
 <http://w3id.org/rml/input> <http://www.w3.org/2000/01/rdf-schema#comment> "Specifies the Input element of a Function Map."@en .
 <http://w3id.org/rml/input> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/fnml/> .
 <http://w3id.org/rml/input> <http://www.w3.org/2000/01/rdf-schema#label> "input" .
+# 
+# http://w3id.org/rml/inputValue
+<http://w3id.org/rml/inputValue> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/rml/inputValue> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/Input> .
+<http://w3id.org/rml/inputValue> <http://www.w3.org/2000/01/rdf-schema#comment> "Specifies the value of a parameter of a function."@en .
+<http://w3id.org/rml/inputValue> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/fnml/> .
+<http://w3id.org/rml/inputValue> <http://www.w3.org/2000/01/rdf-schema#label> "value" .
+# 
+# http://w3id.org/rml/inputValueMap
+<http://w3id.org/rml/inputValueMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<http://w3id.org/rml/inputValueMap> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/Input> .
+<http://w3id.org/rml/inputValueMap> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/rml/TermMap> .
+<http://w3id.org/rml/TermMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/rml/inputValueMap> <http://www.w3.org/2000/01/rdf-schema#comment> "A Value map element to generate the value of a parameter of a function."@en .
+<http://w3id.org/rml/inputValueMap> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/fnml/> .
+<http://w3id.org/rml/inputValueMap> <http://www.w3.org/2000/01/rdf-schema#label> "value map" .
 # 
 # http://w3id.org/rml/parameter
 <http://w3id.org/rml/parameter> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
@@ -116,27 +131,19 @@
 # 
 # http://w3id.org/rml/return
 <http://w3id.org/rml/return> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://w3id.org/rml/return> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/TermMap> .
+<http://w3id.org/rml/return> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/ExpressionMap> .
 <http://w3id.org/rml/return> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2000/01/rdf-schema#Resource> .
-<http://w3id.org/rml/return> <http://www.w3.org/2000/01/rdf-schema#comment> "Specifies a the return output of a function."@en .
+<http://w3id.org/rml/return> <http://www.w3.org/2000/01/rdf-schema#comment> "Specifies the return output of a function."@en .
 <http://w3id.org/rml/return> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/fnml/> .
 <http://w3id.org/rml/return> <http://www.w3.org/2000/01/rdf-schema#label> "return" .
 # 
 # http://w3id.org/rml/returnMap
 <http://w3id.org/rml/returnMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://w3id.org/rml/returnMap> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/TermMap> .
+<http://w3id.org/rml/returnMap> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/ExpressionMap> .
 <http://w3id.org/rml/returnMap> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/rml/ReturnMap> .
 <http://w3id.org/rml/returnMap> <http://www.w3.org/2000/01/rdf-schema#comment> "A Return Map element to generate the return output of a function."@en .
 <http://w3id.org/rml/returnMap> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/fnml/> .
 <http://w3id.org/rml/returnMap> <http://www.w3.org/2000/01/rdf-schema#label> "return map" .
-# 
-# http://w3id.org/rml/valueMap
-<http://w3id.org/rml/valueMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
-<http://w3id.org/rml/valueMap> <http://www.w3.org/2000/01/rdf-schema#domain> <http://w3id.org/rml/Input> .
-<http://w3id.org/rml/valueMap> <http://www.w3.org/2000/01/rdf-schema#range> <http://w3id.org/rml/TermMap> .
-<http://w3id.org/rml/valueMap> <http://www.w3.org/2000/01/rdf-schema#comment> "A Value map element to generate the value of a parameter of a function."@en .
-<http://w3id.org/rml/valueMap> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/fnml/> .
-<http://w3id.org/rml/valueMap> <http://www.w3.org/2000/01/rdf-schema#label> "value map" .
 # 
 # 
 # 
@@ -147,11 +154,13 @@
 # #################################################################
 # 
 # 
-# http://w3id.org/rml/Execution
-<http://w3id.org/rml/Execution> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<http://w3id.org/rml/Execution> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents an execution."@en .
-<http://w3id.org/rml/Execution> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/fnml/> .
-<http://w3id.org/rml/Execution> <http://www.w3.org/2000/01/rdf-schema#label> "Execution" .
+# http://w3id.org/rml/ExpressionMap
+# 
+# http://w3id.org/rml/FunctionExecution
+<http://w3id.org/rml/FunctionExecution> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<http://w3id.org/rml/FunctionExecution> <http://www.w3.org/2000/01/rdf-schema#comment> "Represents a function execution."@en .
+<http://w3id.org/rml/FunctionExecution> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://w3id.org/rml/fnml/> .
+<http://w3id.org/rml/FunctionExecution> <http://www.w3.org/2000/01/rdf-schema#label> "Function Execution" .
 # 
 # http://w3id.org/rml/FunctionMap
 <http://w3id.org/rml/FunctionMap> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .

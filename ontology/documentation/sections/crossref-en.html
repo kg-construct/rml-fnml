@@ -4,7 +4,7 @@ This section provides details for each class and property defined by RML-FNML.
    <h3 id="classes-headline" class="list">Classes</h3>
    <ul class="hlist">
       <li>
-         <a href="#http://w3id.org/rml/Execution" title="http://w3id.org/rml/Execution">Execution</a>
+         <a href="#http://w3id.org/rml/FunctionExecution" title="http://w3id.org/rml/FunctionExecution">Function Execution</a>
       </li>
       <li>
          <a href="#http://w3id.org/rml/FunctionMap" title="http://w3id.org/rml/FunctionMap">Function Map</a>
@@ -19,15 +19,15 @@ This section provides details for each class and property defined by RML-FNML.
          <a href="#http://w3id.org/rml/ReturnMap" title="http://w3id.org/rml/ReturnMap">Return Map</a>
       </li>
    </ul>
-   <div class="entity" id="http://w3id.org/rml/Execution">
-      <h3>Execution<sup class="type-c" title="class">c</sup>
+   <div class="entity" id="http://w3id.org/rml/FunctionExecution">
+      <h3>Function Execution<sup class="type-c" title="class">c</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> http://w3id.org/rml/Execution</p>
+         <strong>IRI:</strong> http://w3id.org/rml/FunctionExecution</p>
       <div class="comment">
-         <span class="markdown">Represents an execution.</span>
+         <span class="markdown">Represents a function execution.</span>
       </div>
       <dl class="definedBy">
          <dt>Is defined by</dt>
@@ -44,7 +44,7 @@ This section provides details for each class and property defined by RML-FNML.
          </dd>
          <dt>is in range of</dt>
          <dd>
-            <a href="#http://w3id.org/rml/execution" title="http://w3id.org/rml/execution">execution</a>
+            <a href="#http://w3id.org/rml/functionExecution" title="http://w3id.org/rml/functionExecution">function execution</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
       </dl>
@@ -102,7 +102,8 @@ This section provides details for each class and property defined by RML-FNML.
             <a href="#http://w3id.org/rml/functionMap" title="http://w3id.org/rml/functionMap">function map</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#http://w3id.org/rml/parameter" title="http://w3id.org/rml/parameter">parameter</a>
             <sup class="type-op" title="object property">op</sup>, <a href="#http://w3id.org/rml/parameterMap" title="http://w3id.org/rml/parameterMap">parameter map</a>
-            <sup class="type-op" title="object property">op</sup>, <a href="#http://w3id.org/rml/valueMap" title="http://w3id.org/rml/valueMap">value map</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://w3id.org/rml/inputValue" title="http://w3id.org/rml/inputValue">value</a>
+            <sup class="type-op" title="object property">op</sup>, <a href="#http://w3id.org/rml/inputValueMap" title="http://w3id.org/rml/inputValueMap">value map</a>
             <sup class="type-op" title="object property">op</sup>
          </dd>
          <dt>is in range of</dt>
@@ -178,10 +179,10 @@ This section provides details for each class and property defined by RML-FNML.
    <h3 id="properties" class="list">Object Properties</h3>
    <ul class="hlist">
       <li>
-         <a href="#http://w3id.org/rml/execution" title="http://w3id.org/rml/execution">execution</a>
+         <a href="#http://w3id.org/rml/function" title="http://w3id.org/rml/function">function</a>
       </li>
       <li>
-         <a href="#http://w3id.org/rml/function" title="http://w3id.org/rml/function">function</a>
+         <a href="#http://w3id.org/rml/functionExecution" title="http://w3id.org/rml/functionExecution">function execution</a>
       </li>
       <li>
          <a href="#http://w3id.org/rml/functionMap" title="http://w3id.org/rml/functionMap">function map</a>
@@ -202,42 +203,12 @@ This section provides details for each class and property defined by RML-FNML.
          <a href="#http://w3id.org/rml/returnMap" title="http://w3id.org/rml/returnMap">return map</a>
       </li>
       <li>
-         <a href="#http://w3id.org/rml/valueMap" title="http://w3id.org/rml/valueMap">value map</a>
+         <a href="#http://w3id.org/rml/inputValue" title="http://w3id.org/rml/inputValue">value</a>
+      </li>
+      <li>
+         <a href="#http://w3id.org/rml/inputValueMap" title="http://w3id.org/rml/inputValueMap">value map</a>
       </li>
    </ul>
-   <div class="entity" id="http://w3id.org/rml/execution">
-      <h3>execution<sup class="type-op" title="object property">op</sup>
-         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
-         </span>
-      </h3>
-      <p>
-         <strong>IRI:</strong> http://w3id.org/rml/execution</p>
-      <div class="comment">
-         <span class="markdown">Denotes the execution of a function with its required input parameters and values.</span>
-      </div>
-      <dl class="definedBy">
-         <dt>Is defined by</dt>
-         <dd>
-            <a href="http://w3id.org/rml/fnml/">http://w3id.org/rml/fnml/</a>
-         </dd>
-      </dl>
-      <div class="description">
-         <dl>
-            <dt>has domain</dt>
-            <dd>
-               <a href="http://w3id.org/rml/TermMap"
-                  target="_blank"
-                  title="http://w3id.org/rml/TermMap">term map</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-            <dt>has range</dt>
-            <dd>
-               <a href="#http://w3id.org/rml/Execution" title="http://w3id.org/rml/Execution">Execution</a>
-               <sup class="type-c" title="class">c</sup>
-            </dd>
-         </dl>
-      </div>
-   </div>
    <div class="entity" id="http://w3id.org/rml/function">
       <h3>function<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
@@ -258,7 +229,7 @@ This section provides details for each class and property defined by RML-FNML.
          <dl>
             <dt>has domain</dt>
             <dd>
-               <a href="#http://w3id.org/rml/Execution" title="http://w3id.org/rml/Execution">Execution</a>
+               <a href="#http://w3id.org/rml/FunctionExecution" title="http://w3id.org/rml/FunctionExecution">Function Execution</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
@@ -266,6 +237,39 @@ This section provides details for each class and property defined by RML-FNML.
                <a href="http://www.w3.org/2000/01/rdf-schema#Resource"
                   target="_blank"
                   title="http://www.w3.org/2000/01/rdf-schema#Resource">resource</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://w3id.org/rml/functionExecution">
+      <h3>function execution<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/rml/functionExecution</p>
+      <div class="comment">
+         <span class="markdown">Denotes the execution of a function with its required input parameters and values.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://w3id.org/rml/fnml/">http://w3id.org/rml/fnml/</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="http://w3id.org/rml/ExpressionMap"
+                  target="_blank"
+                  title="http://w3id.org/rml/ExpressionMap">expression map</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+            <dt>has range</dt>
+            <dd>
+               <a href="#http://w3id.org/rml/FunctionExecution" title="http://w3id.org/rml/FunctionExecution">Function Execution</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
          </dl>
@@ -322,7 +326,7 @@ This section provides details for each class and property defined by RML-FNML.
          <dl>
             <dt>has domain</dt>
             <dd>
-               <a href="#http://w3id.org/rml/Execution" title="http://w3id.org/rml/Execution">Execution</a>
+               <a href="#http://w3id.org/rml/FunctionExecution" title="http://w3id.org/rml/FunctionExecution">Function Execution</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
@@ -405,7 +409,7 @@ This section provides details for each class and property defined by RML-FNML.
       <p>
          <strong>IRI:</strong> http://w3id.org/rml/return</p>
       <div class="comment">
-         <span class="markdown">Specifies a the return output of a function.</span>
+         <span class="markdown">Specifies the return output of a function.</span>
       </div>
       <dl class="definedBy">
          <dt>Is defined by</dt>
@@ -417,9 +421,9 @@ This section provides details for each class and property defined by RML-FNML.
          <dl>
             <dt>has domain</dt>
             <dd>
-               <a href="http://w3id.org/rml/TermMap"
+               <a href="http://w3id.org/rml/ExpressionMap"
                   target="_blank"
-                  title="http://w3id.org/rml/TermMap">term map</a>
+                  title="http://w3id.org/rml/ExpressionMap">expression map</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
@@ -452,9 +456,9 @@ This section provides details for each class and property defined by RML-FNML.
          <dl>
             <dt>has domain</dt>
             <dd>
-               <a href="http://w3id.org/rml/TermMap"
+               <a href="http://w3id.org/rml/ExpressionMap"
                   target="_blank"
-                  title="http://w3id.org/rml/TermMap">term map</a>
+                  title="http://w3id.org/rml/ExpressionMap">expression map</a>
                <sup class="type-c" title="class">c</sup>
             </dd>
             <dt>has range</dt>
@@ -465,13 +469,39 @@ This section provides details for each class and property defined by RML-FNML.
          </dl>
       </div>
    </div>
-   <div class="entity" id="http://w3id.org/rml/valueMap">
+   <div class="entity" id="http://w3id.org/rml/inputValue">
+      <h3>value<sup class="type-op" title="object property">op</sup>
+         <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
+         </span>
+      </h3>
+      <p>
+         <strong>IRI:</strong> http://w3id.org/rml/inputValue</p>
+      <div class="comment">
+         <span class="markdown">Specifies the value of a parameter of a function.</span>
+      </div>
+      <dl class="definedBy">
+         <dt>Is defined by</dt>
+         <dd>
+            <a href="http://w3id.org/rml/fnml/">http://w3id.org/rml/fnml/</a>
+         </dd>
+      </dl>
+      <div class="description">
+         <dl>
+            <dt>has domain</dt>
+            <dd>
+               <a href="#http://w3id.org/rml/Input" title="http://w3id.org/rml/Input">Input</a>
+               <sup class="type-c" title="class">c</sup>
+            </dd>
+         </dl>
+      </div>
+   </div>
+   <div class="entity" id="http://w3id.org/rml/inputValueMap">
       <h3>value map<sup class="type-op" title="object property">op</sup>
          <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a>
          </span>
       </h3>
       <p>
-         <strong>IRI:</strong> http://w3id.org/rml/valueMap</p>
+         <strong>IRI:</strong> http://w3id.org/rml/inputValueMap</p>
       <div class="comment">
          <span class="markdown">A Value map element to generate the value of a parameter of a function.</span>
       </div>

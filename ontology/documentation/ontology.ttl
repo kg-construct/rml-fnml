@@ -13,8 +13,7 @@
                              <http://purl.org/dc/elements/1.1/description> "RML-FNML provides data transformations for generating knowledge graphs from (semi-)structured data"@en ;
                              <http://purl.org/dc/elements/1.1/license> <http://purl.org/NET/rdflicense/cc-by4.0> ;
                              <http://purl.org/dc/elements/1.1/modified> "2023-04-19" ;
-                             <http://purl.org/dc/elements/1.1/title> "RML-FNML"@en ;
-                             <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/fnml/" .
+                             <http://purl.org/dc/elements/1.1/title> "RML-FNML"@en .
 
 #################################################################
 #    Annotation properties
@@ -76,22 +75,22 @@
 #    Object Properties
 #################################################################
 
-###  http://w3id.org/rml/execution
-<http://w3id.org/rml/execution> rdf:type owl:ObjectProperty ;
-                                rdfs:domain <http://w3id.org/rml/TermMap> ;
-                                rdfs:range <http://w3id.org/rml/Execution> ;
-                                rdfs:comment "Denotes the execution of a function with its required input parameters and values."@en ;
-                                rdfs:isDefinedBy <http://w3id.org/rml/fnml/> ;
-                                rdfs:label "execution" .
-
-
 ###  http://w3id.org/rml/function
 <http://w3id.org/rml/function> rdf:type owl:ObjectProperty ;
-                               rdfs:domain <http://w3id.org/rml/Execution> ;
+                               rdfs:domain <http://w3id.org/rml/FunctionExecution> ;
                                rdfs:range rdfs:Resource ;
                                rdfs:comment "Specifies a data transformation function."@en ;
                                rdfs:isDefinedBy <http://w3id.org/rml/fnml/> ;
                                rdfs:label "function" .
+
+
+###  http://w3id.org/rml/functionExecution
+<http://w3id.org/rml/functionExecution> rdf:type owl:ObjectProperty ;
+                                        rdfs:domain <http://w3id.org/rml/ExpressionMap> ;
+                                        rdfs:range <http://w3id.org/rml/FunctionExecution> ;
+                                        rdfs:comment "Denotes the execution of a function with its required input parameters and values."@en ;
+                                        rdfs:isDefinedBy <http://w3id.org/rml/fnml/> ;
+                                        rdfs:label "function execution" .
 
 
 ###  http://w3id.org/rml/functionMap
@@ -105,11 +104,28 @@
 
 ###  http://w3id.org/rml/input
 <http://w3id.org/rml/input> rdf:type owl:ObjectProperty ;
-                            rdfs:domain <http://w3id.org/rml/Execution> ;
+                            rdfs:domain <http://w3id.org/rml/FunctionExecution> ;
                             rdfs:range <http://w3id.org/rml/Input> ;
                             rdfs:comment "Specifies the Input element of a Function Map."@en ;
                             rdfs:isDefinedBy <http://w3id.org/rml/fnml/> ;
                             rdfs:label "input" .
+
+
+###  http://w3id.org/rml/inputValue
+<http://w3id.org/rml/inputValue> rdf:type owl:ObjectProperty ;
+                                 rdfs:domain <http://w3id.org/rml/Input> ;
+                                 rdfs:comment "Specifies the value of a parameter of a function."@en ;
+                                 rdfs:isDefinedBy <http://w3id.org/rml/fnml/> ;
+                                 rdfs:label "value" .
+
+
+###  http://w3id.org/rml/inputValueMap
+<http://w3id.org/rml/inputValueMap> rdf:type owl:ObjectProperty ;
+                                    rdfs:domain <http://w3id.org/rml/Input> ;
+                                    rdfs:range <http://w3id.org/rml/TermMap> ;
+                                    rdfs:comment "A Value map element to generate the value of a parameter of a function."@en ;
+                                    rdfs:isDefinedBy <http://w3id.org/rml/fnml/> ;
+                                    rdfs:label "value map" .
 
 
 ###  http://w3id.org/rml/parameter
@@ -132,40 +148,35 @@
 
 ###  http://w3id.org/rml/return
 <http://w3id.org/rml/return> rdf:type owl:ObjectProperty ;
-                             rdfs:domain <http://w3id.org/rml/TermMap> ;
+                             rdfs:domain <http://w3id.org/rml/ExpressionMap> ;
                              rdfs:range rdfs:Resource ;
-                             rdfs:comment "Specifies a the return output of a function."@en ;
+                             rdfs:comment "Specifies the return output of a function."@en ;
                              rdfs:isDefinedBy <http://w3id.org/rml/fnml/> ;
                              rdfs:label "return" .
 
 
 ###  http://w3id.org/rml/returnMap
 <http://w3id.org/rml/returnMap> rdf:type owl:ObjectProperty ;
-                                rdfs:domain <http://w3id.org/rml/TermMap> ;
+                                rdfs:domain <http://w3id.org/rml/ExpressionMap> ;
                                 rdfs:range <http://w3id.org/rml/ReturnMap> ;
                                 rdfs:comment "A Return Map element to generate the return output of a function."@en ;
                                 rdfs:isDefinedBy <http://w3id.org/rml/fnml/> ;
                                 rdfs:label "return map" .
 
 
-###  http://w3id.org/rml/valueMap
-<http://w3id.org/rml/valueMap> rdf:type owl:ObjectProperty ;
-                               rdfs:domain <http://w3id.org/rml/Input> ;
-                               rdfs:range <http://w3id.org/rml/TermMap> ;
-                               rdfs:comment "A Value map element to generate the value of a parameter of a function."@en ;
-                               rdfs:isDefinedBy <http://w3id.org/rml/fnml/> ;
-                               rdfs:label "value map" .
-
-
 #################################################################
 #    Classes
 #################################################################
 
-###  http://w3id.org/rml/Execution
-<http://w3id.org/rml/Execution> rdf:type owl:Class ;
-                                rdfs:comment "Represents an execution."@en ;
-                                rdfs:isDefinedBy <http://w3id.org/rml/fnml/> ;
-                                rdfs:label "Execution" .
+###  http://w3id.org/rml/ExpressionMap
+<http://w3id.org/rml/ExpressionMap> rdf:type owl:Class .
+
+
+###  http://w3id.org/rml/FunctionExecution
+<http://w3id.org/rml/FunctionExecution> rdf:type owl:Class ;
+                                        rdfs:comment "Represents a function execution."@en ;
+                                        rdfs:isDefinedBy <http://w3id.org/rml/fnml/> ;
+                                        rdfs:label "Function Execution" .
 
 
 ###  http://w3id.org/rml/FunctionMap
