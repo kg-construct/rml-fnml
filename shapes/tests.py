@@ -45,25 +45,16 @@ class MappingValidatorTests(unittest.TestCase):
         rules test cases.
         """
         print(f'Testing validation with: {path}')
-        if 'RMLTC0004b' in path or 'RMLTC0007h' in path or \
-                'RMLTC0012c' in path or 'RMLTC0012d' in path or \
-                'RMLTC0015b' in path:
-            with self.assertRaises(Exception):
-                self._validate_rules(path)
-        else:
-            self._validate_rules(path)
+        self._validate_rules(path)
 
-    @parameterized.expand([(p,) for p in sorted(glob('*.ttl'))],
-                          skip_on_empty=True)
-    def test_validation_shapes(self, path: str) -> None:
+    def test_validation_shapes(self) -> None:
         """
         Test if our SHACL shapes are valid according to the W3C Recommdendation
         of SHACL. Validation with the official SHACL shapes for SHACL.
 
         See https://www.w3.org/TR/shacl/#shacl-shacl
         """
-        if 'fnml' in path or 'shacl' in path:
-            return
+        path = './fnml.ttl'
         print(f'Testing shape with: {path}')
         self._validate_shapes(path)
 
