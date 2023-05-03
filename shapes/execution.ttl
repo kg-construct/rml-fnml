@@ -1,0 +1,73 @@
+###############################################################################
+# RML Execution shape                                                        #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLFunctionExecutionShape
+    a sh:NodeShape ;
+    sh:name "rml:FunctionExecution" ;
+    sh:description """
+    Represents a Function Execution.
+    """ ;
+    sh:targetObjectsOf rml:functionExecution ;
+
+    # Exactly one rml:function or rml:functionMap is required 
+    sh:property [
+        sh:path [sh:alternativePath (rml:function 
+                                     rml:functionMap)] ;
+        sh:name "rml:function/rml:functionMap" ;
+        sh:description """
+        Exactly one rml:function or rml:functionMap is required.
+        """ ;
+        sh:message """
+        Exactly one rml:function or rml:functionMap is required.
+        """ ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+    # rml:functionMap non-shortcut
+    sh:property [
+        sh:path rml:functionMap ;
+        sh:name "rml:functionMap" ;
+        sh:description """
+        FnO function to execute.
+        """ ;
+        sh:message """
+        rml:functionMap must be an IRI or Blank node.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node schema:RMLFunctionMap;
+    ] ;
+
+    # rml:function shortcut
+    sh:property [
+        sh:path rml:function ;
+        sh:name "rml:function" ;
+        sh:description """
+        FnO function to execute.
+        """ ;
+        sh:message """
+        rml:function must be an IRI.
+        """ ;
+        sh:nodeKind sh:IRI ;
+    ] ;
+
+    # rml:input
+    sh:property [
+        sh:path rml:input ;
+        sh:name "rml:input" ;
+        sh:description """
+        Input parameters for the function.
+        """ ;
+        sh:message """
+        rml:input must be an IRI or Blank node.
+        """ ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+    ] ;
+.

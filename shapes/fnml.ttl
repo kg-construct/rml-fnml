@@ -1,0 +1,173 @@
+@prefix brick: <https://brickschema.org/schema/Brick#> .
+@prefix csvw: <http://www.w3.org/ns/csvw#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix odrl: <http://www.w3.org/ns/odrl/2/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qb: <http://purl.org/linked-data/cube#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix schema: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix wgs: <https://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://schema.org/RMLFunctionExecutionShape> a sh:NodeShape ;
+    sh:description """
+    Represents a Function Execution.
+    """ ;
+    sh:name "rml:FunctionExecution" ;
+    sh:property [ sh:description """
+        Exactly one rml:function or rml:functionMap is required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rml:function or rml:functionMap is required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:function/rml:functionMap" ;
+            sh:path [ sh:alternativePath ( rml:function rml:functionMap ) ] ],
+        [ sh:description """
+        FnO function to execute.
+        """ ;
+            sh:message """
+        rml:functionMap must be an IRI or Blank node.
+        """ ;
+            sh:name "rml:functionMap" ;
+            sh:node <http://schema.org/RMLFunctionMap> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:functionMap ],
+        [ sh:description """
+        FnO function to execute.
+        """ ;
+            sh:message """
+        rml:function must be an IRI.
+        """ ;
+            sh:name "rml:function" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:function ],
+        [ sh:description """
+        Input parameters for the function.
+        """ ;
+            sh:message """
+        rml:input must be an IRI or Blank node.
+        """ ;
+            sh:name "rml:input" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:input ] ;
+    sh:targetObjectsOf rml:functionExecution .
+
+<http://schema.org/RMLFunctionMapShape> a sh:NodeShape ;
+    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ ] ) ;
+    sh:description """
+    Represents a Function Map.
+    """ ;
+    sh:name "FunctionMap" ;
+    sh:targetObjectsOf rml:functionMap .
+
+<http://schema.org/RMLInputShape> a sh:NodeShape ;
+    sh:description """
+    Represents an Input for a function.
+    """ ;
+    sh:name "rml:Input" ;
+    sh:property [ sh:description """
+        Exactly one rml:parameter or rml:parameterMap is required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rml:parameter or rml:parameterMap is required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:parameter/rml:parameterMap" ;
+            sh:path [ sh:alternativePath ( rml:parameter rml:parameterMap ) ] ],
+        [ sh:description """
+        Values of the parameters.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:inputValueMap must be an IRI or Blank node, provided once.
+        """ ;
+            sh:name "rml:inputValueMap" ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:inputValueMap ],
+        [ sh:datatype xsd:string ;
+            sh:description """
+        Parameters to supply to FnO function.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:inputValue must be a string Literal.
+        """ ;
+            sh:name "rml:inputValue" ;
+            sh:nodeKind sh:Literal ;
+            sh:path rml:inputValue ],
+        [ sh:description """
+        Parameters to supply to FnO function.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:parameterMap must be an IRI or Blank node.
+        """ ;
+            sh:name "rml:parameterMap" ;
+            sh:node <http://schema.org/RMLParameterMap> ;
+            sh:nodeKind sh:BlankNodeOrIRI ;
+            sh:path rml:parameterMap ],
+        [ sh:description """
+        Parameters to supply to FnO function.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        rml:parameter must be an IRI.
+        """ ;
+            sh:name "rml:parameter" ;
+            sh:nodeKind sh:IRI ;
+            sh:path rml:parameter ],
+        [ sh:description """
+        Exactly one rml:inputValue or rml:inputValueMap is required.
+        """ ;
+            sh:maxCount 1 ;
+            sh:message """
+        Exactly one rml:inputValue or rml:inputValueMap is required.
+        """ ;
+            sh:minCount 1 ;
+            sh:name "rml:inputValue/rml:inputValueMap" ;
+            sh:path [ sh:alternativePath ( rml:inputValue rml:inputValueMap ) ] ] ;
+    sh:targetObjectsOf rml:input .
+
+<http://schema.org/RMLParameterMapShape> a sh:NodeShape ;
+    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ ] ) ;
+    sh:description """
+    Represents a Parameter Map of a function.
+    """ ;
+    sh:name "ParameterMap" ;
+    sh:targetObjectsOf rml:parameterMap .
+
+<http://schema.org/RMLReturnMapShape> a sh:NodeShape ;
+    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ ] ) ;
+    sh:description """
+    Represents a Return Map.
+    """ ;
+    sh:name "ReturnMap" ;
+    sh:targetObjectsOf rml:returnMap .
+
+<http://schema.org/RMLLogicalTargetPropertiesShape> a sh:NodeShape .
+
+<http://schema.org/RMLTermMapShape> a sh:NodeShape .
+

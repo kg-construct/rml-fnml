@@ -1,0 +1,27 @@
+###############################################################################
+# RML Function Map shape                                                     #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+###############################################################################
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix schema: <http://schema.org/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+
+schema:RMLFunctionMapShape
+    a sh:NodeShape ;
+    sh:name "FunctionMap" ;
+    sh:description """
+    Represents a Function Map.
+    """ ;
+    sh:targetObjectsOf rml:functionMap ;
+
+    sh:and (
+        # Inherited shapes
+        schema:RMLTermMapShape
+        schema:RMLLogicalTargetPropertiesShape
+        # Function Map specific shapes
+        [
+        ]
+    ) ;
+.

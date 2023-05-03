@@ -1,0 +1,50 @@
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+
+<#Person_Mapping>
+    rml:logicalSource <#LogicalSource> ;
+    rr:subjectMap <#SubjectMap> ;
+    rr:predicateObjectMap <#NameMapping> .
+
+<#NameMapping>
+    rr:predicate dbo:title ;
+    rr:objectMap [
+        rml:functionExecution <#Execution> ;
+        rml:return grel:stringOut
+    ] ;
+    .
+
+<#Execution> a rml:FunctionExecution ;
+    rml:function grel:toUppercase ;
+    rml:input
+        [
+            a rml:Input ;
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:functionExecution <#Execution2> ; # Link to another function-valued expression map to nest functions
+                rml:return grel:stringOut
+            ]
+        ] .
+
+<#Execution2> a rml:FunctionExecution ;               # First, replace spaces with dashes from the `name` reference
+    rml:function grel:string_replace ;
+    rml:input
+        [
+            a rml:Input ;
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:reference "name"
+            ]
+        ] ,
+        [
+            a rml:Input ;
+            rml:input grel:param_find ;
+            rml:inputValue " "
+        ] ,
+        [
+            a rml:Input ;
+            rml:input grel:param_replace  ;
+            rml:inputValue "-"
+        ] .
