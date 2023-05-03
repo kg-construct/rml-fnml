@@ -1,5 +1,5 @@
 ###############################################################################
-# RML Execution shape                                                        #
+# RML FunctionExecution shape                                                        #
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
