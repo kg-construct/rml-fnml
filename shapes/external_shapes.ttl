@@ -1,5 +1,5 @@
 ###############################################################################
-# RML Parameter Map shape                                                    #
+# RML FNML external resources shapes                                          #
 # Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
@@ -8,20 +8,13 @@
 @prefix rml: <http://w3id.org/rml/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
 
-schema:RMLParameterMapShape
-    a sh:NodeShape ;
-    sh:name "ParameterMap" ;
-    sh:description """
-    Represents a Parameter Map of a function.
-    """ ;
-    sh:targetObjectsOf rml:parameterMap ;
+# Shapes are defined in the corresponding repositories of each specification
+# Provide their IRI as stub to allow validation in FNML.
 
-    sh:and (
-        # Inherited shapes
-        schema:RMLTermMapShape
-        schema:RMLLogicalTargetPropertiesShape
-        # Parameter Map specific shapes
-        [
-        ]
-    ) ;
+schema:RMLTermMapShape
+    a sh:NodeShape;   
+.
+
+schema:RMLLogicalTargetPropertiesShape
+    a sh:NodeShape;
 .
