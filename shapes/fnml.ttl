@@ -17,7 +17,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rml: <http://w3id.org/rml/> .
-@prefix schema: <https://schema.org/> .
+@prefix : <http://w3id.org/rml/shapes/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
@@ -29,7 +29,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://schema.org/RMLFunctionExecutionShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLFunctionExecutionShape> a sh:NodeShape ;
     sh:description """
     Represents a Function Execution.
     """ ;
@@ -51,7 +51,7 @@
         rml:functionMap must be an IRI or Blank node.
         """ ;
             sh:name "rml:functionMap" ;
-            sh:node <http://schema.org/RMLFunctionMap> ;
+            sh:node <http://w3id.org/rml/shapes/RMLFunctionMap> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path rml:functionMap ],
         [ sh:description """
@@ -74,15 +74,15 @@
             sh:path rml:input ] ;
     sh:targetObjectsOf rml:functionExecution .
 
-<http://schema.org/RMLFunctionMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ ] ) ;
+<http://w3id.org/rml/shapes/RMLFunctionMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ ] ) ;
     sh:description """
     Represents a Function Map.
     """ ;
     sh:name "FunctionMap" ;
     sh:targetObjectsOf rml:functionMap .
 
-<http://schema.org/RMLInputShape> a sh:NodeShape ;
+<http://w3id.org/rml/shapes/RMLInputShape> a sh:NodeShape ;
     sh:description """
     Represents an Input for a function.
     """ ;
@@ -126,7 +126,7 @@
         rml:parameterMap must be an IRI or Blank node.
         """ ;
             sh:name "rml:parameterMap" ;
-            sh:node <http://schema.org/RMLParameterMap> ;
+            sh:node <http://w3id.org/rml/shapes/RMLParameterMap> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path rml:parameterMap ],
         [ sh:description """
@@ -151,23 +151,23 @@
             sh:path [ sh:alternativePath ( rml:inputValue rml:inputValueMap ) ] ] ;
     sh:targetObjectsOf rml:input .
 
-<http://schema.org/RMLParameterMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ ] ) ;
+<http://w3id.org/rml/shapes/RMLParameterMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ ] ) ;
     sh:description """
     Represents a Parameter Map of a function.
     """ ;
     sh:name "ParameterMap" ;
     sh:targetObjectsOf rml:parameterMap .
 
-<http://schema.org/RMLReturnMapShape> a sh:NodeShape ;
-    sh:and ( <http://schema.org/RMLTermMapShape> <http://schema.org/RMLLogicalTargetPropertiesShape> [ ] ) ;
+<http://w3id.org/rml/shapes/RMLReturnMapShape> a sh:NodeShape ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ ] ) ;
     sh:description """
     Represents a Return Map.
     """ ;
     sh:name "ReturnMap" ;
     sh:targetObjectsOf rml:returnMap .
 
-<http://schema.org/RMLLogicalTargetPropertiesShape> a sh:NodeShape .
+<http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> a sh:NodeShape .
 
-<http://schema.org/RMLTermMapShape> a sh:NodeShape .
+<http://w3id.org/rml/shapes/RMLTermMapShape> a sh:NodeShape .
 
