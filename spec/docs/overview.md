@@ -6,17 +6,17 @@ we combine [[RML]] with declarative function descriptions in [[FnO]].
 Within [[FnO]], [=Function=]s and [=Execution=]s are described.
 Within FNML, we refer to [=Execution=]s that link to specific [=Function=]s.
 
-[=triples map=]s generate output triples from input data.
-We use an intermediate [=function-valued expression map=] to use a specific output (via a [=Return map=]) of a [=Function Execution=].
-That [=Function Execution=] specifies which [[FnO]] function to use (via a [=Function map=])
-and uses [=Input=]s to link input data (via regular [[RML]] [=term map=]s)
-to [=Parameter=]s (via [=Parameter map=]s).
+[=Triples Map=]s generate output triples from input data.
+We use an intermediate [=Function-valued Expression Map=] to use a specific output (via a [=Return Map=]) of a [=Function Execution=].
+That [=Function Execution=] specifies which [[FnO]] function to use (via a [=Function Map=])
+and uses [=Input=]s to link input data (via regular [[RML]] [=Term Map=]s)
+to [=Parameter=]s (via [=Parameter Map=]s).
 
 <p class="note" data-format="markdown">
 If an execution returns multiple returning outputs (eg, a result and a status code),
 by referring to the same execution,
 you can use both outputs in different locations of the same mapping.
-If you leave out the intermediate [=function-valued expression map=], you don't allow for reuse,
+If you leave out the intermediate [=Function-valued Expression Map=], you don't allow for reuse,
 which means that you cannot specify the difference between
 'using 2 outputs from one execution' vs 'use a different output from 2 different executions'.
 </p>
@@ -155,7 +155,7 @@ instead, its value is used as `grel:valueParam`-parameter
 for the `grel:toUppercase`-function.
 After execution, the `grel:stringOut` result of that function is returned to generate the object
 within the `<#NameMapping>`.
-We make use of an intermediate [=function-valued expression map=] so that we can reuse the returning output of an execution in multiple TermMaps.
+We make use of an intermediate [=Function-valued Expression Map=] so that we can reuse the returning output of an execution in multiple TermMaps.
 
 ## FNML Example - no shortcuts
 

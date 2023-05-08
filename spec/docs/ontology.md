@@ -11,32 +11,32 @@ See below for how FNML introduced terms align with RML Core.
   <figcaption>Visual overview of how FNML introduced terms align with RML Core</figcaption>
 </figure>
 
-### function-valued expression map
+### Function-valued Expression Map
 
-A [=function-valued expression map=] is an [=expression map=] that is represented by a resource that has exactly one `rml:functionExecution`.
+A [=Function-valued Expression Map=] is an [=Expression Map=] that is represented by a resource that has exactly one `rml:functionExecution`.
 The value of the `rml:functionExecution` property must be a valid [=Execution=].
 
 As a consequence, the default [[RML]] processing **is extended**,
-specifically concerning the [default term type depending on whether the term map is an object map or not](https://rml.io/specs/rml/#termtype),
-namely, the [=function-valued expression map=]s default [term type](https://rml.io/specs/rml/#term-type) is `rr:Literal`.
+specifically concerning the [default term type depending on whether the Term Map is an Object Map or not](https://w3id.org/rml/core/spec),
+namely, the [=Function-valued Expression Map=]s default [term type](http://w3id.org/rml/core/spec) is `rml:Literal`.
 The change is included below with changes highlighted in bold.
 
 ---
 
-If the [=term map=] does not have a `rr:termType` property, then its [term type](https://rml.io/specs/rml/#term-type) is:
-* `rr:Literal`, if it is an [object map](https://www.w3.org/TR/r2rml/#dfn-object-map) and at least one of the following conditions is true:
-   * It is a [reference-valued term map](https://rml.io/specs/rml/#reference-valued-term-map),  **or a [=function-valued expression map=]**
-   * It has a `rml:languageMap` and/or `rr:language` property (and thus a [language map](https://rml.io/specs/rml/#language-map) and/or a [specified language tag](https://rml.io/specs/rml/#specified-language-tag)).
-   * It has a `rr:datatype` property (and thus a [specified datatype](https://rml.io/specs/rml/#specified-datatype)).
-* `rr:IRI`, otherwise.
+If the [=Term Map=] does not have a `rml:termType` property, then its [term type](http://w3id.org/rml/core/spec) is:
+* `rml:Literal`, if it is an [Object Map](http://w3id.org/rml/core/) and at least one of the following conditions is true:
+   * It is a [reference-valued Term Map](http://w3id.org/rml/core/spec),  **or a [=Function-valued Expression Map=]**
+   * It has a `rml:languageMap` and/or `rml:language` property (and thus a [Language Map](http://w3id.org/rml/core/spec) and/or a [specified language tag](http://w3id.org/rml/core)).
+   * It has a `rml:datatype` property (and thus a [specified datatype](http://w3id.org/rml/core/spec)).
+* `rml:IRI`, otherwise.
 
 ---
 
-A [=function-valued expression map=] MUST have exactly one `rml:functionExecution` relation.
+A [=Function-valued Expression Map=] MUST have exactly one `rml:functionExecution` relation.
 Further, it MAY have following relations specified:
 
-* `rr:termType`: for processing, see paragraph above
-* `rr:language` OR `rml:languageMap` OR `rr:datatype`: for processing, see [RML Language Tags](https://rml.io/specs/rml/#language-tag) and [RML Typed Literals](https://rml.io/specs/rml/#typed-literals)
+* `rml:termType`: for processing, see paragraph above
+* `rml:language` OR `rml:languageMap` OR `rml:datatype`: for processing, see [RML Language Tags](http://w3id.org/rml/core/spec/) and [RML Typed Literals](http://w3id.org/rml/core/spec/)
 * `rml:return`: this relationship MUST refer to exactly one of the [=Return=]s as specified by the [=Function=]. This signifies which result of the execution to use. The default value is the first [=Return=] value as specified by the [=Function=].
 
 <p class="issue" data-format="markdown">
@@ -124,7 +124,7 @@ Links [=Input=] with a [=term map=].
 
 Domain: rml:Input
 
-Range: rr:TermMap
+Range: rml:TermMap
 
 #### rml:inputValue
 
@@ -134,7 +134,7 @@ Range: rr:TermMap
 
 <span class="practicelab">Joining using data transformations</span>
 
-<p class="practicedesc" data-format="markdown">When you specifically want to have join conditions, you should use functions within [rr:joinCondition](https://www.w3.org/TR/r2rml/#foreign-key),
+<p class="practicedesc" data-format="markdown">When you specifically want to have join conditions, you should use functions within [rml:joinCondition](https://www.w3.org/TR/r2rml/#foreign-key),
 see, e.g. test case [RMLFNOTC0019](https://github.com/RMLio/rml-fno-test-cases/tree/master/RMLFNOTC0019-CSV).
 </p>
 </div>

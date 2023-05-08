@@ -2,7 +2,7 @@
 
 ### Nested functions
 
-As the values of a function are represented using [=expression map=]s,
+As the values of a function are represented using [=Expression Map=]s,
 it is possible to nest functions: you generate a term in a first function, and that term is used as an parameter value in a second function.
 
 <p class="issue" data-format="markdown">
@@ -10,7 +10,7 @@ For an old example, see [RMLFNOTC0018](https://github.com/RMLio/rml-fno-test-cas
 </p>
 
 <p class="issue" data-number="3" data-format="markdown">
-For now, it is unclear how to handle a nested function where that nested triplesmap contains a join condition.
+For now, it is unclear how to handle a nested function where that nested Triples Map contains a join condition.
 </p>
 
 ```turtle "example": "use nested function"
