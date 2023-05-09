@@ -2,6 +2,11 @@
 
 The FNML specification, SHACL shapes, test-cases, and ontology.
 
+- Specification: http://w3id.org/rml/fnml/spec
+- Ontology: http://w3id.org/rml/fnml/
+- SHACL shapes: http://w3id.org/rml/fnml/shapes
+- Test-cases: [test-cases](./test-cases)
+
 ## License
 
 RML-FNML (c) by W3C Community Group on Knowledge Graph Construction
