@@ -57,7 +57,7 @@ An [=Expression Map=] can have the following properties:
   The [=Function=] is specified using an [=Function Map=] and the [=Parameter=]s are specified using [=Input=]s.
   - As such, an Function Execution can be seen as a way to describe [=Execution=]s.
 - An <dfn>Function Map</dfn>: a [=Term Map=] that MUST generate a named node. That named node specifies the referenced [=Function=].
-  - This can also be specified using a [=constant shortcut property=].
+  - This can also be specified using a [=constant expression shortcut property=].
 - An <dfn>Input</dfn>: a construct to pairwise connect a value (via a [=Term Map=]) to a [=Parameter Map=].
   - This [=Term Map=] generates the input value that should be bound to the [=Parameter=] of the referenced [=Function=].
   - This [=Term Map=] refers to values from the [=Triples Map=]s iteration.
