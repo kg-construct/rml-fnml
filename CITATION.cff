@@ -1,0 +1,16 @@
+title: "RML-FNML: Ontology, specification, shapes and test cases"
+license: CC-BY-4.0
+authors:
+  - family-names: De Meester
+    given-names: Ben
+  - family-names: Jozashoori
+    given-names: Samaneh
+  - family-names: Iglesias-Molina
+    given-names: Ana
+  - family-names: Van Assche
+    given-names: Dylan
+cff-version: 1.0.0
+version: 0.1.0
+doi: 10.5281/zenodo.7919856
+date-released: 2023-05-10
+url: "https://w3id.org/rml/fnml"
