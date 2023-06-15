@@ -9,16 +9,24 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vaem: <http://www.linkedmodel.org/schema/vaem#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
 @base <http://w3id.org/rml/> .
 
 <http://w3id.org/rml/fnml/> rdf:type owl:Ontology ;
                         dc:description "RML-FNML provides data transformations for generating knowledge graphs from (semi-)structured data"@en ;
-                        dc:modified "2023-04-19" ;
                         dc:title "RML-FNML"@en ;
                         dc:contributor "Ben de Meester" ;
                         dc:contributor "Samaneh Jozashoori" ;
                         dc:contributor "Ana Iglesias Molina" ;
-                        dc:license <http://purl.org/NET/rdflicense/cc-by4.0> .
+                        dc:license <http://purl.org/NET/rdflicense/cc-by4.0> ;
+                        vann:preferredNamespaceUri "http://w3id.org/rml/" ;
+                        vann:preferredNamespacePrefix "rml" ;
+                        dc:publisher <https://www.w3.org/community/kg-construct/> ;
+                        bibo:status "draft" ;
+                        owl:versionIRI <http://w3id.org/rml/fnml> ;
+                        owl:versionInfo "0.1.0" ;
+                        dc:created "2023-03-14" ;
+                        dc:modified "2023-06-15" .
 
 #################################################################
 #    Annotation properties

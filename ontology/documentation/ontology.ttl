@@ -1,19 +1,26 @@
-@prefix : <http://w3id.org/rml/fnml/> .
+@prefix : <http://w3id.org/rml/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://w3id.org/rml/fnml/> .
+@base <http://w3id.org/rml/> .
 
 <http://w3id.org/rml/fnml/> rdf:type owl:Ontology ;
+                             owl:versionIRI <http://w3id.org/rml/fnml> ;
                              <http://purl.org/dc/terms/contributor> "Ana Iglesias Molina" ,
-                                                                           "Ben de Meester" ,
-                                                                           "Samaneh Jozashoori" ;
+                                                                    "Ben de Meester" ,
+                                                                    "Samaneh Jozashoori" ;
+                             <http://purl.org/dc/terms/created> "2023-03-14" ;
                              <http://purl.org/dc/terms/description> "RML-FNML provides data transformations for generating knowledge graphs from (semi-)structured data"@en ;
                              <http://purl.org/dc/terms/license> <http://purl.org/NET/rdflicense/cc-by4.0> ;
-                             <http://purl.org/dc/terms/modified> "2023-04-19" ;
-                             <http://purl.org/dc/terms/title> "RML-FNML"@en .
+                             <http://purl.org/dc/terms/modified> "2023-06-15" ;
+                             <http://purl.org/dc/terms/publisher> <https://www.w3.org/community/kg-construct/> ;
+                             <http://purl.org/dc/terms/title> "RML-FNML"@en ;
+                             <http://purl.org/ontology/bibo/status> "draft" ;
+                             <http://purl.org/vocab/vann/preferredNamespacePrefix> "rml" ;
+                             <http://purl.org/vocab/vann/preferredNamespaceUri> "http://w3id.org/rml/" ;
+                             owl:versionInfo "0.1.0" .
 
 #################################################################
 #    Annotation properties
@@ -25,6 +32,10 @@
 
 ###  http://purl.org/dc/terms/contributor
 <http://purl.org/dc/terms/contributor> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/created
+<http://purl.org/dc/terms/created> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/terms/creator
@@ -53,6 +64,10 @@
 
 ###  http://purl.org/dc/terms/title
 <http://purl.org/dc/terms/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/ontology/bibo/status
+<http://purl.org/ontology/bibo/status> rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/vocab/vann/preferredNamespacePrefix
