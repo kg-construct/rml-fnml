@@ -7,7 +7,7 @@ the preferred prefix is `rml:`.
 See below for how FNML introduced terms align with RML Core.
 
 <figure id="figure-diagram">
-  <img src="./diagrams/diagram.png" alt="FNML diagram" />
+  <img src="../diagrams/diagram.png" alt="FNML diagram" />
   <figcaption>Visual overview of how FNML introduced terms align with RML Core</figcaption>
 </figure>
 
@@ -88,7 +88,7 @@ Range: rml:ReturnMap
 
 #### rml:return
 
-[=constant shortcut property=] of rml:returnMap.
+[=constant expression shortcut property=] of rml:returnMap.
 
 ### rml:functionMap
 
@@ -100,7 +100,7 @@ Range: fno:Function
 
 #### rml:function
 
-[=constant shortcut property=] of rml:functionMap.
+[=constant expression shortcut property=] of rml:functionMap.
 
 ### rml:input
 
@@ -116,7 +116,7 @@ Range: rml:ParameterMap
 
 #### rml:parameter
 
-[=constant shortcut property=] of rml:parameterMap
+[=constant expression shortcut property=] of rml:parameterMap
 
 ### rml:inputValueMap
 
@@ -128,7 +128,7 @@ Range: rml:TermMap
 
 #### rml:inputValue
 
-[=constant shortcut property=] of rml:inputValueMap
+[=constant expression shortcut property=] of rml:inputValueMap
 
 <div class="practice">
 
