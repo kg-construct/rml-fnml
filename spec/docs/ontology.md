@@ -92,11 +92,11 @@ Range: rml:ReturnMap
 
 ### rml:functionMap
 
-Links [=function-valued expression map=] with [=Function=].
+Links a [=Function Execution=] with [=Function=].
 
-Domain: rml:ExpressionMap
+Domain: rml:FunctionExecution
 
-Range: fno:Function
+Range: rml:FunctionMap
 
 #### rml:function
 
