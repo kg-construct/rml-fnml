@@ -31,6 +31,6 @@
         [
             rml:parameter idlab-fn:str ;
             rml:inputValueMap [
-                rml:reference "Name"
+                rml:reference "url"
             ];
         ] .
