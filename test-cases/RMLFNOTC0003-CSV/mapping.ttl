@@ -11,7 +11,10 @@
 
 <TriplesMap1>
     rml:logicalSource [
-        rml:source "student.csv";
+        rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
+          rml:path "student.csv"
+        ];
         rml:referenceFormulation rml:CSV
     ];
     rml:subjectMap [
