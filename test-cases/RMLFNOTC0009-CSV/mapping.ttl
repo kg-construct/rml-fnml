@@ -11,7 +11,10 @@
 
 <#Person_Mapping>
     rml:logicalSource [
-        rml:source "test/fno/nested_function/student.csv";
+        rml:source [ a rml:RelativePathSource;
+          rml:root rml:MappingDirectory;
+          rml:path "student.csv"
+        ];
         rml:referenceFormulation rml:CSV
     ];
     rml:subjectMap [
