@@ -1,16 +1,15 @@
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://w3id.org/rml/> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;
-    rr:subjectMap <#SubjectMap> ;
-    rr:predicateObjectMap <#NameMapping> .
+    rml:subjectMap <#SubjectMap> ;
+    rml:predicateObjectMap <#NameMapping> .
 
 <#NameMapping>
-    rr:predicate dbo:title ;
-    rr:objectMap [                             # A function-valued expression map
+    rml:predicate dbo:title ;
+    rml:objectMap [                            # A function-valued expression map
         rml:functionExecution <#Execution> ;   # Link to a Function Execution
         rml:return grel:stringOut              # Specify which return of the referenced function to use, if omitted, the first specified return is used
     ] .

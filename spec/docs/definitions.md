@@ -38,9 +38,9 @@ The change is included below with changes highlighted in bold.
 
 An [=Expression Map=] can have the following properties:
 
-- 0 or 1 rr:constant
+- 0 or 1 rml:constant
 - 0 or 1 rml:reference
-- 0 or 1 rr:template
+- 0 or 1 rml:template
 - **0 or 1 rml:functionExecution**
 
 ---

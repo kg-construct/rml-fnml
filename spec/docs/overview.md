@@ -108,16 +108,15 @@ graph LR
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://w3id.org/rml/> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;
-    rr:subjectMap <#SubjectMap> ;
-    rr:predicateObjectMap <#NameMapping> .
+    rml:subjectMap <#SubjectMap> ;
+    rml:predicateObjectMap <#NameMapping> .
 
 <#NameMapping>
-    rr:predicate dbo:title ;
-    rr:objectMap [                             # A function-valued expression map
+    rml:predicate dbo:title ;
+    rml:objectMap [                            # A function-valued expression map
         rml:functionExecution <#Execution> ;   # Link to a Function Execution
         rml:return grel:stringOut              # Specify which return of the referenced function to use, if omitted, the first specified return is used
     ] .
@@ -148,37 +147,36 @@ The same example, but written without shortcuts, is as follows:
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://w3id.org/rml/> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;       # Specify the data source
-    rr:subjectMap <#SubjectMap> ;              # Specify the subject
-    rr:predicateObjectMap <#NameMapping> .     # Specify the predicate-object-map
+    rml:subjectMap <#SubjectMap> ;              # Specify the subject
+    rml:predicateObjectMap <#NameMapping> .     # Specify the predicate-object-map
 
 <#NameMapping>
-    rr:predicate dbo:title ;                   # Specify the predicate
-    rr:objectMap [                             # Specify the object-map: a function-valued expression map
+    rml:predicate dbo:title ;                   # Specify the predicate
+    rml:objectMap [                             # Specify the object-map: a function-valued expression map
         rml:functionExecution <#Execution> ;   # Link to a Function Execution
         rml:returnMap [
             a rml:ReturnMap ;
-            rr:constant grel:stringOut         # Specify which return of the referenced function to use
+            rml:constant grel:stringOut         # Specify which return of the referenced function to use
         ]
     ] .
 
 <#Execution> a rml:FunctionExecution ;         # A new class
     rml:functionMap [
         a rml:FunctionMap ;
-        rr:constant grel:toUppercase           # Specify which FnO function
+        rml:constant grel:toUppercase           # Specify which FnO function
     ] ;
     rml:input                                  # Specify the inputs
         [
             a rml:Input ;                      # A new class
             rml:parameterMap [
                 a rml:ParameterMap ;
-                rr:constant grel:valueParam ;  # Specify this specific parameter
+                rml:constant grel:valueParam ;  # Specify this specific parameter
             ] ;
             rml:inputValueMap [                    # Link to the term map that creates the input value
-                a rr:TermMap ;
+                a rml:TermMap ;
                 rml:reference "name"           # Specify the reference within the data source
             ]
         ] .
