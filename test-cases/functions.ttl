@@ -1,0 +1,52 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fno:     <https://w3id.org/function/ontology#> .
+@prefix grel:    <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+grel:toUpperCase
+    a                   fno:Function ;
+    fno:name            "to Uppercase" ;
+    rdfs:label          "to Uppercase" ;
+    dcterms:description "Returns the input with all letters in upper case." ;
+    fno:expects         ( grel:valueParam ) ;
+    fno:returns         ( grel:stringOut ) .
+
+grel:valueParam
+    a             fno:Parameter ;
+    fno:name      "input value" ;
+    rdfs:label    "input value" ;
+    fno:predicate grel:valueParameter ;
+    fno:type      xsd:string ;
+    fno:required  "true"^^xsd:boolean .
+
+grel:stringOut
+    a             fno:Output ;
+    fno:name      "output string" ;
+    rdfs:label    "output string" ;
+    fno:predicate grel:stringOutput ;
+    fno:type      xsd:string .
+
+grel:string_replace
+   a                   fno:Function ;
+   fno:name            "replace" ;
+   dcterms:description "replace" ;
+   fno:expects         ( grel:valueParam grel:param_find grel:param_replace ) ;
+   fno:returns         ( grel:stringOut ) .
+
+grel:param_find
+    a             fno:Parameter ;
+    fno:name      "f" ;
+    rdfs:label    "f" ;
+    fno:predicate grel:p_string_find ;
+    fno:type      xsd:string ;
+    fno:required  "true"^^xsd:boolean .
+
+grel:param_replace
+    a             fno:Parameter ;
+    fno:name      "r" ;
+    rdfs:label    "r" ;
+    fno:predicate grel:p_string_replace ;
+    fno:type      xsd:string ;
+    fno:required  "true"^^xsd:boolean .

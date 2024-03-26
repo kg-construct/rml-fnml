@@ -4,6 +4,8 @@ Each test case is within a subfolder of this folder.
 
 If no output.nq file is present, an error is expected.
 
+All function descriptions are locally available under [functions.ttl](./functions.ttl)
+
 ## Open issues for which there are no test cases
 
 |                              title                              |                                                                  purpose                                                                 |
