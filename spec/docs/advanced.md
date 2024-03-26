@@ -16,17 +16,16 @@ For now, it is unclear how to handle a nested function where that nested Triples
 ```turtle "example": "use nested function"
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://w3id.org/rml/> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;
-    rr:subjectMap <#SubjectMap> ;
-    rr:predicateObjectMap <#NameMapping> .
+    rml:subjectMap <#SubjectMap> ;
+    rml:predicateObjectMap <#NameMapping> .
 
 <#NameMapping>
-    rr:predicate dbo:title ;
-    rr:objectMap [
+    rml:predicate dbo:title ;
+    rml:objectMap [
         rml:functionExecution <#Execution> ;
         rml:return grel:stringOut
     ] ;

@@ -15,15 +15,14 @@ but no data transformations.
 
 ```turtle "example": "RML Mapping without data transformations"
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
-@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://w3id.org/rml/> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;       # Specify the data source
-    rr:subjectMap <#SubjectMap> ;              # Specify the subject
-    rr:predicateObjectMap [                    # Specify the predicate-object-map
-        rr:predicate dbo:title ;               # Specify the predicate
-        rr:objectMap [                         # Specify the object-map
+    rml:subjectMap <#SubjectMap> ;             # Specify the subject
+    rml:predicateObjectMap [                   # Specify the predicate-object-map
+        rml:predicate dbo:title ;              # Specify the predicate
+        rml:objectMap [                        # Specify the object-map
             rml:reference "name"               # Specify the reference within the data source
         ]
     ] .
