@@ -26,7 +26,7 @@
         rml:objectMap [
             rml:functionExecution <#Execution> ;
             rml:returnMap [
-                rr:constant fns:domainOutput
+                rml:constant fns:domainOutput
             ]
         ]
     ] .
