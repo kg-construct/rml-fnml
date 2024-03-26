@@ -33,6 +33,6 @@
         [
             rml:parameter grel:valueParam ;
             rml:inputValueMap [
-                rml:constant "name" ;
+                rml:reference "name" ;
             ]
         ] .
