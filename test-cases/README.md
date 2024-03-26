@@ -4,7 +4,9 @@ Each test case is within a subfolder of this folder.
 
 If no output.nq file is present, an error is expected.
 
-All function descriptions are locally available under [functions.ttl](./functions.ttl)
+All function descriptions are locally available under [functions.ttl](./functions.ttl).
+
+Some test cases are under discussion, proposed alternatives are noted via a suffix `b`. 
 
 ## Open issues for which there are no test cases
 
@@ -34,6 +36,7 @@ All function descriptions are locally available under [functions.ttl](./function
 | new_id |                              title                              |                                                            purpose                                                            | data format | error expected? |    input file 1   |
 |:------:|:---------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|:-----------:|:---------------:|:-----------------:|
 | 0000   | Function on object, 0 parameters                                | Tests (1) if a function without parameters can be used (FnO) (2) if a function on an object map can be used (Term)            | CSV         |      FALSE      | student.csv       |
+| 0000b  | Function on object, 0 parameters (replaces 0000)                | Tests (1) if a function without parameters can be used (FnO) (2) if a function on an object map can be used (Term)            | CSV         |      FALSE      | student.csv       |
 | 0000   | Function on object, default termType                            | Tests if the output of the function is assigned the correct termType by default                                               |             |                 |                   |
 | 0001   | Function on object, 1 reference parameter                       | Tests: (1) if a function with one parameter can be used, (FnO) (2) a reference parameter can be used (Term)                   | CSV         |      FALSE      | student.csv       |
 | 0001   | Function using non-constant shortcut property parameter         | Tests that a non-constant FNML Parameter map also works                                                                       | CSV         |      FALSE      | student_param.csv |

@@ -1,5 +1,6 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix fno:     <https://w3id.org/function/ontology#> .
+@prefix fns:     <http://example.com/functions/> .
 @prefix grel:    <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
@@ -50,3 +51,17 @@ grel:param_replace
     fno:predicate grel:p_string_replace ;
     fno:type      xsd:string ;
     fno:required  "true"^^xsd:boolean .
+   
+fns:helloworld
+   a                   fno:Function ;
+   fno:name            "hello world" ;
+   dcterms:description "The hello world function has no parameters and always returns the string 'Hello World!'" ;
+   fno:expects         ( ) ;
+   fno:returns         ( fns:stringOutput ) .
+
+fns:stringOutput
+    a             fno:Output ;
+    fno:name      "output string" ;
+    rdfs:label    "output string" ;
+    fno:predicate fns:hasStringOutput ;
+    fno:type      xsd:string .
