@@ -79,3 +79,24 @@ fns:stringParameter
     rdfs:label    "input string" ;
     fno:predicate fns:hasStringParameter ;
     fno:type      xsd:string .
+
+fns:parseURL
+   a                   fno:Function ;
+   fno:name            "parse URL" ;
+   dcterms:description "The parse URL function returns the protocol, domain, and path as strings of a URL of the form '{protocolOutput}://{domainOutput}/{stringOutput}'" ;
+   fno:expects         ( fns:stringParameter ) ;
+   fno:returns         ( fns:protocolOutput fns:domainOutput fns:stringOutput ) .
+
+fns:protocolOutput
+    a             fno:Output ;
+    fno:name      "protocol output string" ;
+    rdfs:label    "protocol output string" ;
+    fno:predicate fns:hasProtocolOutput ;
+    fno:type      xsd:string .
+
+fns:domainOutput
+    a             fno:Output ;
+    fno:name      "domain output string" ;
+    rdfs:label    "domain output string" ;
+    fno:predicate fns:hasDomainOutput ;
+    fno:type      xsd:string .
