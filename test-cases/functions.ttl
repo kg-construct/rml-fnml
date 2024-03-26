@@ -65,3 +65,17 @@ fns:stringOutput
     rdfs:label    "output string" ;
     fno:predicate fns:hasStringOutput ;
     fno:type      xsd:string .
+   
+fns:schema
+   a                   fno:Function ;
+   fno:name            "schema term generator" ;
+   dcterms:description "The schema term generator function returns a string of the form 'https://schema.org/{stringParameter}'" ;
+   fno:expects         ( fns:stringParameter ) ;
+   fno:returns         ( fns:stringOutput ) .
+
+fns:stringParameter
+    a             fno:Parameter ;
+    fno:name      "input string" ;
+    rdfs:label    "input string" ;
+    fno:predicate fns:hasStringParameter ;
+    fno:type      xsd:string .
