@@ -93,18 +93,27 @@
 
 <body>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="/spec/resources/turtle.js"></script>
   <script>
     window.onload = (event) => {
       mermaid.initialize({ startOnLoad: true });
       setTimeout(() => {
-        mermaid.contentLoaded()
+        mermaid.contentLoaded();
+        document.querySelectorAll('code.turtle').forEach(c => delete c.dataset.highlighted);
+        hljs.highlightAll();
       }, 1000)
       setTimeout(() => {
-        mermaid.contentLoaded()
+        mermaid.contentLoaded();
+        document.querySelectorAll('code.turtle').forEach(c => delete c.dataset.highlighted);
+        hljs.highlightAll();
       }, 10000)
       setTimeout(() => {
-        mermaid.contentLoaded()
+        mermaid.contentLoaded();
+        document.querySelectorAll('code.turtle').forEach(c => delete c.dataset.highlighted);
+        hljs.highlightAll();
       }, 20000)
+      hljs.registerLanguage('turtle', window.hljsDefineTurtle);
     }
   </script>
 

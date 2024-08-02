@@ -69,7 +69,7 @@ For now, it is unclear how to handle a nested function where that nested Triples
 
 Conditions are a shortcut to make RML documents more intuitive, but rely on existing FNML functionality.
 
-```ttl "example": "use condition"
+```turtle "example": "use condition"
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://w3id.org/rml/> .
