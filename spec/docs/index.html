@@ -5,115 +5,110 @@
   <title>RML-FNML</title>
   <meta charset='utf-8'>
   <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
-  <script class="remove">
-    var respecConfig = {
-      // check https://respec.org/docs/ for the meaning of these keys
-      authors: [
-        {
-          name: "Ben De Meester",
-        },
-        {
-          name: "Samaneh Jozashoori",
-        },
-        {
-          name: "Pano Maria"
-        },
-        {
-          name: "David Chaves-Fraga"
-        },
-        {
-          name: "Anastasia Dimou"
-        },
-      ],
-      edDraftURI: "https://kg-construct.github.io/rml-fnml",
-      editors: [
-        {
-          name: "Ben De Meester",
-          company: "Ghent University &ndash; imec &ndash; IDLab",
-          url: "https://ben.de-meester.org/#me",
-          orcid: "0000-0003-0248-0987",
-          companyURL: "https://knows.idlab.ugent.be/"
-        }
-      ],
-      formerEditors: [
-        {
-          name: "Anastasia Dimou",
-          url: "https://natadimou.com/#me",
-          orcid: "0000-0003-2138-7972",
-        }
-      ],
-      github: "https://github.com/kg-construct/rml-fnml",
-      latestVersion: null,
-      license: "w3c-software-doc",
-      localBiblio: {
-        RML: {
-          title: "RDF Mapping Language (RML)",
-          href: "https://rml.io/specs/rml/",
-          status: "Unofficial Draft",
-          publisher: "IDLab - imec - Ghent University",
-          date: "08 October 2020",
-        },
-        FnO: {
-          title: "Function Ontology (FnO)",
-          href: "https://w3id.org/function/spec/",
-          status: "Unofficial Draft",
-          publisher: "IDLab - imec - Ghent University",
-          date: "10 November 2021",
-        },
-        CollectionsContainers: {
-          title: "Collections and Containers in RML",
-          href: "https://w3id.org/kg-construct/collections-containers",
-          status: "Unofficial Draft",
-          publisher: "Knowledge Graph Construction W3C Community Group ",
-          date: "16 August 2022",
-        },
-      },
-      otherLinks: [
-        {
-          key: "Website",
-          data: [{
-            value: "https://rml.io",
-            href: "https://rml.io"
-          },
-          {
-            value: "https://fno.io",
-            href: "https://fno.io"
-          }]
-        },
-      ],
-      // shortName: "RML-FNML",
-      specStatus: "CG-DRAFT",
-      // W3C config
-      copyrightStart: "2021",
-      doJsonLd: true,
-      group: "kg-construct",
-    };
+  <style type="text/css">
+    /* Adapted from R2RML */
+    aside.ex-input,
+    aside.ex-mapping,
+    aside.ex-output {
+      word-wrap: normal;
+      margin-top: 1.5em;
+      padding: 1em;
+      font-size: 80%;
+    }
+
+    aside.ex-input:before,
+    aside.ex-mapping:before,
+    aside.ex-output:before {
+      background: white;
+      display: block;
+      font-family: sans-serif;
+      font-size: 90%;
+      margin: -1.5em 0 0.5em 0;
+      padding: 0.4em 0.4em;
+      width: 18em;
+    }
+
+    /* Input data example */
+    aside.ex-input {
+      background: #cee;
+    }
+
+    aside.ex-input,
+    aside.ex-input:before {
+      border: 1px solid #acc;
+      overflow: auto;
+    }
+
+    aside.ex-input:before {
+      content: "Example input data";
+    }
+
+    /* RML mapping example */
+    aside.ex-mapping {
+      background: #eeb;
+    }
+
+    aside.ex-mapping,
+    aside.ex-mapping:before {
+      border: 1px solid #cc9;
+      overflow: auto;
+    }
+
+    aside.ex-mapping:before {
+      content: "Example RML mapping";
+    }
+
+    /* Output RDF example */
+    aside.ex-output {
+      background: #cfc;
+    }
+
+    aside.ex-output,
+    aside.ex-output:before {
+      border: 1px solid #aca;
+      overflow: auto;
+    }
+
+    aside.ex-output:before {
+      content: "Example output data";
+    }
+
+    table,
+    th,
+    td {
+      background: white;
+      border-collapse: collapse;
+      border: 1px solid;
+    }
+
+    th,
+    td {
+      padding: 5px;
+      text-align: left;
+    }
+
+    th {
+      font-weight: bold;
+    }
+  </style>
+  <script src=config.js class="remove">
   </script>
 </head>
 
 <body>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="/spec/resources/turtle.js"></script>
   <script>
     window.onload = (event) => {
       mermaid.initialize({ startOnLoad: true });
       setTimeout(() => {
         mermaid.contentLoaded();
-        document.querySelectorAll('code.turtle').forEach(c => delete c.dataset.highlighted);
-        hljs.highlightAll();
       }, 1000)
       setTimeout(() => {
         mermaid.contentLoaded();
-        document.querySelectorAll('code.turtle').forEach(c => delete c.dataset.highlighted);
-        hljs.highlightAll();
       }, 10000)
       setTimeout(() => {
         mermaid.contentLoaded();
-        document.querySelectorAll('code.turtle').forEach(c => delete c.dataset.highlighted);
-        hljs.highlightAll();
       }, 20000)
-      hljs.registerLanguage('turtle', window.hljsDefineTurtle);
     }
   </script>
 

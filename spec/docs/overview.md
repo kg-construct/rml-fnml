@@ -28,7 +28,10 @@ where we want to perform an uppercase operation to a set of fields.
 
 The FnO description of the function [toUppercase](https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#touppercasestring-s) is as follows:
 
-```turtle "example": "toUppercase FnO description"
+<aside class="example" id="example-touppercase" title="toUppercase FnO description">
+<aside class="ex-mapping">
+
+```turtle
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix fno:     <https://w3id.org/function/ontology#> .
 @prefix grel:    <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
@@ -61,11 +64,17 @@ grel:stringOut
 
 ```
 
+</aside>
+</aside>
+
 The execution of such a function converts a string to its uppercase sibling,
 so `test` becomes `TEST` and `This is an input STRING.` becomes `THIS IS AN INPUT STRING.`.
 The latter would be described as follows using an FnO Execution description:
 
-```turtle "example": "toUppercase FnO execution description"
+<aside class="example" id="example-touppercase-execution" title="toUppercase FnO execution description">
+<aside class="ex-mapping">
+
+```turtle
 @prefix fno:     <https://w3id.org/function/ontology#> .
 @prefix grel:    <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix :        <http://example.com/> .
@@ -75,6 +84,9 @@ The latter would be described as follows using an FnO Execution description:
     grel:valueParameter "This is an input STRING." ;
     grel:stringOutput "THIS IS AN INPUT STRING." .
 ```
+
+</aside>
+</aside>
 
 ## FNML Example - shortcuts
 
@@ -104,7 +116,10 @@ graph LR
 <figcaption>Visual overview of connections FNML</figcaption>
 </figure>
 
-```turtle "example": "using toUppercase in an RML mapping"
+<aside class="example" id="example-touppercase-rml" title="using toUppercase in an RML mapping">
+<aside class="ex-mapping">
+
+```turtle
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -132,6 +147,9 @@ graph LR
     ] .
 ```
 
+</aside>
+</aside>
+
 The `name`-value is not referenced directly,
 instead, its value is used as `grel:valueParam`-parameter
 for the `grel:toUppercase`-function.
@@ -143,7 +161,10 @@ We make use of an intermediate [=Function-valued Expression Map=] so that we can
 
 The same example, but written without shortcuts, is as follows:
 
-```turtle "example": "using toUppercase in an RML mapping without shortcuts"
+<aside class="example" id="example-touppercase-rml-full" title="using toUppercase in an RML mapping without shortcuts">
+<aside class="ex-mapping">
+
+```turtle
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -181,3 +202,6 @@ The same example, but written without shortcuts, is as follows:
             ]
         ] .
 ```
+
+</aside>
+</aside>

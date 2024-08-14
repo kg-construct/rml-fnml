@@ -1,5 +1,5 @@
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix fns: <http://example.com/fns#> .
 @prefix rml: <http://w3id.org/rml/> .
 
 <#Person_Mapping>
@@ -18,18 +18,21 @@
         # new predicate that links to a function-valued expression map,
         # that function MUST return a boolean
         rml:condition [
-            # isNotNull(parameter: X) / definition: X != NULL ? TRUE : FALSE ;
-            rml:function fns:isNotNull ;
-            rml:input [
-                # The parameter that is checked for NULL
-                rml:parameter fns:parameter ;
-                rml:inputValueMap [
-                    rml:reference "name"
+            rml:functionExecution [
+                # isNotNull(parameter: X) / definition: X != NULL ? TRUE : FALSE ;
+                rml:function fns:isNotNull ;
+                rml:input [
+                    # The parameter that is checked for NULL
+                    rml:parameter fns:parameter ;
+                    rml:inputValueMap [
+                        rml:reference "name"
+                    ]
                 ]
-            ]
+            ] ;
+            rml:return fns:boolOut # if fno:boolOut is the first specified return, this triple can be ommitted.
         ] ;
         # The actual expression used if the condition returns TRUE
-        rml:constant "true"
+        rml:constant "[a filled in title]"
     ] .
 
 # This is actually a shortcut to the following
@@ -56,7 +59,7 @@
                 # = original expression
                 rml:parameter fns:expressionParameter ;
                 rml:inputValueMap [
-                    rml:constant "true"
+                    rml:constant "[a filled in title]"
                 ]
             ]
         ] ;
