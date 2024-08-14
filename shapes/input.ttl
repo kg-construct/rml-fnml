@@ -1,8 +1,9 @@
 ###############################################################################
-# RML Input shape                                                            #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+# RML Input shape                                                             #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023 - 2024)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -10,8 +11,8 @@
 
 :RMLInputShape
     a sh:NodeShape ;
-    sh:name "rml:Input" ;
-    sh:description """
+    rdfs:label "rml:Input" ;
+    rdfs:comment """
     Represents an Input for a function.
     """ ;
     sh:targetObjectsOf rml:input ;
@@ -20,8 +21,8 @@
     sh:property [
         sh:path [sh:alternativePath (rml:parameter 
                                      rml:parameterMap)] ;
-        sh:name "rml:parameter/rml:parameterMap" ;
-        sh:description """
+        rdfs:label "rml:parameter/rml:parameterMap" ;
+        rdfs:comment """
         Exactly one rml:parameter or rml:parameterMap is required.
         """ ;
         sh:message """
@@ -34,8 +35,8 @@
     # rml:parameterMap non-shortcut
     sh:property [
         sh:path rml:parameterMap ;
-        sh:name "rml:parameterMap" ;
-        sh:description """
+        rdfs:label "rml:parameterMap" ;
+        rdfs:comment """
         Parameters to supply to FnO function.
         """ ;
         sh:message """
@@ -49,8 +50,8 @@
     # rml:parameter shortcut
     sh:property [
         sh:path rml:parameter ;
-        sh:name "rml:parameter" ;
-        sh:description """
+        rdfs:label "rml:parameter" ;
+        rdfs:comment """
         Parameters to supply to FnO function.
         """ ;
         sh:message """
@@ -64,8 +65,8 @@
     sh:property [
         sh:path [sh:alternativePath (rml:inputValue 
                                      rml:inputValueMap)] ;
-        sh:name "rml:inputValue/rml:inputValueMap" ;
-        sh:description """
+        rdfs:label "rml:inputValue/rml:inputValueMap" ;
+        rdfs:comment """
         Exactly one rml:inputValue or rml:inputValueMap is required.
         """ ;
         sh:message """
@@ -78,8 +79,8 @@
     # rml:inputValueMap
     sh:property [
         sh:path rml:inputValueMap ;
-        sh:name "rml:inputValueMap" ;
-        sh:description """
+        rdfs:label "rml:inputValueMap" ;
+        rdfs:comment """
         Values of the parameters.
         """ ;
         sh:message """
@@ -92,8 +93,8 @@
     # rml:inputValue shortcut
     sh:property [
         sh:path rml:inputValue ;
-        sh:name "rml:inputValue" ;
-        sh:description """
+        rdfs:label "rml:inputValue" ;
+        rdfs:comment """
         Parameters to supply to FnO function.
         """ ;
         sh:message """

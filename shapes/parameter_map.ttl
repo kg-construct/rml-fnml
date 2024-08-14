@@ -1,8 +1,9 @@
 ###############################################################################
-# RML Parameter Map shape                                                    #
-# Copyright Dylan Van Assche, IDLab - UGent - imec (2023)                     #
+# RML Parameter Map shape                                                     #
+# Copyright Dylan Van Assche, IDLab - UGent - imec (2023 - 2024)              #
 ###############################################################################
 @prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix : <http://w3id.org/rml/shapes/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rml: <http://w3id.org/rml/> .
@@ -10,8 +11,8 @@
 
 :RMLParameterMapShape
     a sh:NodeShape ;
-    sh:name "ParameterMap" ;
-    sh:description """
+    rdfs:label "ParameterMap" ;
+    rdfs:comment """
     Represents a Parameter Map of a function.
     """ ;
     sh:targetObjectsOf rml:parameterMap ;
