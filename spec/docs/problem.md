@@ -13,7 +13,10 @@ but we want the resulting knowledge to have uppercase values.
 The following [=RML Mapping=] contains the descriptions to generate a knowledge graph from a data source,
 but no data transformations.
 
-```turtle "example": "RML Mapping without data transformations"
+<aside class="example" id="example-rml" title="RML Mapping without data transformations">
+<aside class="ex-mapping">
+
+```turtle
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix rml: <http://w3id.org/rml/> .
 
@@ -27,3 +30,6 @@ but no data transformations.
         ]
     ] .
 ```
+
+</aside>
+</aside>

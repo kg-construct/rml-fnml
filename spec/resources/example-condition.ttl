@@ -1,0 +1,69 @@
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix fns: <http://example.com/fns#> .
+@prefix rml: <http://w3id.org/rml/> .
+
+<#Person_Mapping>
+    rml:logicalSource <#LogicalSource> ;
+    rml:subjectMap <#SubjectMap> ;
+    rml:predicateObjectMap <#NameMapping> .
+
+# Suggestion: add rml:condition predicate to expression map,
+# and conforming mapping engines MUST support following functions:
+# - isNull, isNotNull, equals, noEquals, IF
+# (isNotNull and IF are defined below, rest is an excercise for the reader)
+<#NameMapping>
+    rml:predicate dbo:title ;
+    # A condition can be defined in any expression map
+    rml:objectMap [
+        # new predicate that links to a function-valued expression map,
+        # that function MUST return a boolean
+        rml:condition [
+            rml:functionExecution [
+                # isNotNull(parameter: X) / definition: X != NULL ? TRUE : FALSE ;
+                rml:function fns:isNotNull ;
+                rml:input [
+                    # The parameter that is checked for NULL
+                    rml:parameter fns:parameter ;
+                    rml:inputValueMap [
+                        rml:reference "name"
+                    ]
+                ]
+            ] ;
+            rml:return fns:boolOut # if fno:boolOut is the first specified return, this triple can be ommitted.
+        ] ;
+        # The actual expression used if the condition returns TRUE
+        rml:constant "[a filled in title]"
+    ] .
+
+# This is actually a shortcut to the following
+<#NameMappingExtended>
+    rml:predicate dbo:title ;
+    rml:objectMap [
+        rml:functionExecution [
+            # IF(bool: X, expression: Y)
+            # Function definition: X === TRUE ? Y : NULL
+            rml:function fns:IF ;
+            rml:input [
+                # = original condition function
+                rml:parameter fns:boolParameter ;
+                rml:inputValueMap [
+                    rml:function fns:isNotNull ;
+                    rml:input [
+                        rml:parameter fns:parameter ;
+                        rml:inputValueMap [
+                            rml:reference "name"
+                        ]
+                    ]
+                ]
+            ] , [
+                # = original expression
+                rml:parameter fns:expressionParameter ;
+                rml:inputValueMap [
+                    rml:constant "[a filled in title]"
+                ]
+            ]
+        ] ;
+    ] .
+# Any custom function can be used,
+# or nested functions (eg AND/OR),
+# depending on what the engines support
