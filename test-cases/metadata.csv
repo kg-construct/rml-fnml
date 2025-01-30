@@ -1,0 +1,19 @@
+ID,title,description,specification,mapping,input_format1,input_format2,input_format3,output_format1,output_format2,output_format3,input1,input2,input3,output1,output2,output3,error
+RMLFNOTC0000-CSV,"Function on object, 0 parameters","Tests
+(1) if a function without parameters can be used (FnO)
+(2) if a function on an object map can be used (Term)",http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0000b-CSV,"Function on object, default termType",Tests if the output of the function is assigned the correct termType by default,http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0001-CSV,"Function on object, 1 reference parameter","Tests:
+(1) if a function with one parameter can be used, (FnO)
+(2) a reference parameter can be used (Term)",http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0002-CSV,Function using non-constant shortcut property parameter,Tests that a non-constant FNML Parameter map also works,http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,,,,student.csv,,,,,,true
+RMLFNOTC0003-CSV,"Function on object, 1 false reference parameter",Tests if a false reference parameters is caught,http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0004-CSV,"Function on object, 1 reference parameter, 1 constant parameter",Tests if a function with multiple parameters can be used,http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0004b-CSV,"Function on predicate, 1 parameter",Tests if a function can be used on a predicate,http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0005-CSV,"Function on subject, 1 parameter",Tests if a function can be used on a subject,http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0005b-CSV,"Function on subject, default termType",Tests if the default termType assigned to the output of the function to be correct,http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0006-CSV,"Function on object, the output termType is IRI",Tests if the output of the function is assigned the correct termType,http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0006b-CSV,"Function on object, 1 template parameter",Tests if a function with a template parameter can be used,http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0008-CSV,Nested function - Test A,"Tests if a composite function of form f(g(x1),x2) works (i.e., the inner function is only one argument of the outer function)",http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0009-CSV,"Function on object, 1 constant parameter",Tests if a constant parameter can be used,http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+RMLFNOTC0010-CSV,"Function on object, wrong type parameter",Tests a function with a wrong type parameter cannot be used,http://w3id.org/rml/fnml/,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
