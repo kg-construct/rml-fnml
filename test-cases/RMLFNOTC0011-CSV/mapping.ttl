@@ -29,17 +29,16 @@
     ] .
 
 <#Execution>
-    rml:function grel:string_substring ; # https://github.com/kg-construct/BURP/blob/c89eb9a989d9f2761ec11e63f8d2a522775c4cb9/src/main/java/burp/model/fnmlutil/Functions.java#L530
+    rml:function grel:string_substring ;
     rml:input
         [
             rml:parameter grel:valueParam ;
             rml:inputValueMap [
-                rml:reference "Name" ;
-            ]
-        ] .
+                rml:reference "Name"
+            ];
+        ]  ,
         [
-            rml:parameter grel:param_int_i_from ;
-            rml:inputValueMap [
-                  rr:constant 1
-            ]
-        ] .
+            a rml:Input ;
+            rml:parameter grel:p_int_i_from ;
+            rml:inputValue "1000"
+        ]  .
