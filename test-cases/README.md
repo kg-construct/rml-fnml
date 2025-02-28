@@ -6,7 +6,12 @@ If no output.nq file is present, an error is expected.
 
 All function descriptions are locally available under [functions.ttl](./functions.ttl).
 
-Some test cases are under discussion, proposed alternatives are noted via a suffix `b`. 
+Some test cases are under discussion, proposed alternatives are noted via a suffix `b`.
+
+## Functions that are used in these test cases
+
+`@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .`
+`@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .`
 
 ## Open issues for which there are no test cases
 
