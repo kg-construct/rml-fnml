@@ -1,8 +1,8 @@
-## RMLFNOTC0009-CSV
+## RMLFNMLTC0051-CSV
 
-**Title**: Function on object, 1 constant parameter
+**Title**: Nested function - Test A
 
-**Description**: Tests if a constant parameter can be used
+**Description**: Tests if a composite function of form f(g(x1),x2) works (i.e., the inner function is only one argument of the outer function)
 
 **Error expected?** No
 
@@ -20,9 +20,8 @@ Id,Name,Comment,Class
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
-@prefix morph-kgc: <https://github.com/morph-kgc/morph-kgc/function/built-in.ttl#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .
 
 @base <http://example.com/base/> .
 
@@ -43,6 +42,7 @@ Id,Name,Comment,Class
     rml:predicate foaf:name ;
     rml:objectMap [
         rml:functionExecution <#Execution> ;
+        rml:return grel:stringOut
     ]; .
 
 <#Execution> a rml:FunctionExecution ;

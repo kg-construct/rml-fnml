@@ -1,8 +1,8 @@
-## RMLFNOTC0010-CSV
+## RMLFNMLTC0041-CSV
 
-**Title**: Function on object, wrong type parameter
+**Title**: Function using non-constant shortcut property return
 
-**Description**: Tests a function with a wrong type parameter cannot be used
+**Description**: Tests that a non-constant FNML Return map also works
 
 **Error expected?** No
 
@@ -20,10 +20,7 @@ Id,Name,Comment,Class,url
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
-@prefix fns: <http://example.com/functions/> .
-@prefix morph-kgc: <https://github.com/morph-kgc/morph-kgc/function/built-in.ttl#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix idlab-fn: <http://example.com/idlab/function/> .
 
 @base <http://example.com/base/> .
 
@@ -43,18 +40,18 @@ Id,Name,Comment,Class,url
         rml:objectMap [
             rml:functionExecution <#Execution> ;
             rml:returnMap [
-                rml:constant fns:domainOutput
+                rml:constant grel:stringOut
             ]
         ]
     ] .
 
 <#Execution>
-    rml:function fns:parseURL ;
+    rml:function grel:toUpperCase ;
     rml:input
         [
-            rml:parameter fns:stringParameter ;
+            rml:parameter grel:valueParam ;
             rml:inputValueMap [
-                rml:reference "url" ;
+                rml:reference "Name" ;
             ]
         ] .
 

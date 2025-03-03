@@ -1,8 +1,8 @@
-## RMLFNMLTC0021-CSV
+## RMLFNMLTC0008-CSV
 
-**Title**: Function on object, 1 reference parameter, 1 constant parameter
+**Title**: Function on object returns null
 
-**Description**: Tests if a function with multiple parameters can be used
+**Description**: Tests that no triple should be generated when the result is null.
 
 **Error expected?** No
 
@@ -21,6 +21,7 @@ Id,Name,Comment,Class
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .
 
 @base <http://example.com/base/> .
 
@@ -44,24 +45,24 @@ Id,Name,Comment,Class
     ] .
 
 <#Execution>
-    rml:function grel:escape ;
+    rml:function grel:string_substring ;
     rml:input
         [
             rml:parameter grel:valueParam ;
             rml:inputValueMap [
-                rml:reference "Comment"
-            ]
-        ] ,
+                rml:reference "Name"
+            ];
+        ]  ,
         [
-            rml:parameter grel:modeParam  ;
-            rml:inputValue "html"
-        ] .
+            a rml:Input ;
+            rml:parameter grel:p_int_i_from ;
+            rml:inputValue "1000"
+        ]  .
 
 ```
 
 **Output**
 ```
-<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "A&amp;B" .
 
 ```
 

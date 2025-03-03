@@ -1,8 +1,8 @@
-## RMLFNMLTC0021-CSV
+## RMLFNMLTC0102-CSV
 
-**Title**: Function on object, 1 reference parameter, 1 constant parameter
+**Title**: Function on object, wrong function URI
 
-**Description**: Tests if a function with multiple parameters can be used
+**Description**: Tests that nothing is generated if a function is used where no implementation is made available to the mapping engine
 
 **Error expected?** No
 
@@ -44,24 +44,19 @@ Id,Name,Comment,Class
     ] .
 
 <#Execution>
-    rml:function grel:escape ;
+    rml:function grel:unknown_func ;
     rml:input
         [
             rml:parameter grel:valueParam ;
             rml:inputValueMap [
-                rml:reference "Comment"
+                rml:reference "Name" ;
             ]
-        ] ,
-        [
-            rml:parameter grel:modeParam  ;
-            rml:inputValue "html"
         ] .
 
 ```
 
 **Output**
 ```
-<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "A&amp;B" .
 
 ```
 

@@ -1,6 +1,6 @@
-## RMLFNOTC0006-CSV
+## RMLFNMLTC0003-CSV
 
-**Title**: Function on object, the output termType is IRI
+**Title**: Function on object, 1 reference parameter, the output termType is IRI
 
 **Description**: Tests if the output of the function is assigned the correct termType
 
@@ -20,9 +20,8 @@ Id,Name,Comment,Class,url
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
-@prefix morph-kgc: <https://github.com/morph-kgc/morph-kgc/function/built-in.ttl#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .
 
 @base <http://example.com/base/> .
 
@@ -41,6 +40,7 @@ Id,Name,Comment,Class,url
         rml:predicate foaf:name;
         rml:objectMap [
             rml:functionExecution <#Execution> ;
+            rml:return idlab-fn:_stringOut ;
             rml:termType rml:IRI
         ];
     ] .

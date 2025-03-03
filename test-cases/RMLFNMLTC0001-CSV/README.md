@@ -1,10 +1,11 @@
-## RMLFNOTC0000-CSV
+## RMLFNMLTC0001-CSV
 
 **Title**: Function on object, 0 parameters
 
 **Description**: Tests
 (1) if a function without parameters can be used (FnO)
 (2) if a function on an object map can be used (Term)
+(3) if the output of the function is assigned the correct termType by default
 
 **Error expected?** No
 
@@ -22,9 +23,7 @@ Id,Name,Comment,Class
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
-@prefix morph-kgc: <https://github.com/morph-kgc/morph-kgc/function/built-in.ttl#> .
-@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .
 
 @base <http://example.com/base/> .
 
@@ -43,11 +42,12 @@ Id,Name,Comment,Class
         rml:predicate foaf:name;
         rml:objectMap [
             rml:functionExecution <#Execution> ;
+            rml:return idlab-fn:_stringOut
         ]
     ] .
 
 <#Execution>
-    rml:function morph-kgc:uuid .
+    rml:function idlab-fn:random .
 
 ```
 
