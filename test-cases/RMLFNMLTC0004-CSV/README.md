@@ -1,15 +1,15 @@
-## RMLFNMLTC0021-CSV
+## RMLFNMLTC0004-CSV
 
-**Title**: Function on object, 1 reference parameter, 1 constant parameter
+**Title**: Function on object, the output termType is Literal
 
-**Description**: Tests if a function with multiple parameters can be used
+**Description**: Tests if the output of the function is assigned the correct termType
 
 **Error expected?** No
 
 **Input**
 ```
-Id,Name,Comment,Class
-1,Venus,A&B,A
+Id,Name,Comment,Class,url
+1,Venus,A&B,A,http://example.com/venus
 
 ```
 
@@ -21,6 +21,7 @@ Id,Name,Comment,Class
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .
 
 @base <http://example.com/base/> .
 
@@ -44,24 +45,20 @@ Id,Name,Comment,Class
     ] .
 
 <#Execution>
-    rml:function grel:escape ;
+    rml:function grel:length ;
     rml:input
         [
             rml:parameter grel:valueParam ;
             rml:inputValueMap [
-                rml:reference "Comment"
-            ]
-        ] ,
-        [
-            rml:parameter grel:modeParam  ;
-            rml:inputValue "html"
-        ] .
+                rml:reference "Name"
+            ];
+        ]  .
 
 ```
 
 **Output**
 ```
-<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "A&amp;B" .
+<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "5"^^<http://www.w3.org/2001/XMLSchema#integer> .
 
 ```
 

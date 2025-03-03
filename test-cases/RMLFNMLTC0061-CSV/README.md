@@ -1,15 +1,15 @@
-## RMLFNMLTC0021-CSV
+## RMLFNMLTC0061-CSV
 
-**Title**: Function on object, 1 reference parameter, 1 constant parameter
+**Title**: Function on graph, 1 parameter
 
-**Description**: Tests if a function with multiple parameters can be used
+**Description**: Tests if a function can be used on a graph
 
 **Error expected?** No
 
 **Input**
 ```
-Id,Name,Comment,Class
-1,Venus,A&B,A
+Id,Name,Comment,Class,url
+1,Venus,A&B,A,http://example.com/venus
 
 ```
 
@@ -21,6 +21,7 @@ Id,Name,Comment,Class
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .
 
 @base <http://example.com/base/> .
 
@@ -33,35 +34,36 @@ Id,Name,Comment,Class
         rml:referenceFormulation rml:CSV
     ];
     rml:subjectMap [
-        rml:template "http://example.com/{Name}"
+        rml:template "http://example.com/{Name}" ;
+        rml:graphMap [
+            rml:functionExecution <#Execution> ;
+            rml:return idlab-fn:_stringOut
+            
+        ]
     ];
+
     rml:predicateObjectMap [
         rml:predicate foaf:name;
         rml:objectMap [
-            rml:functionExecution <#Execution> ;
-            rml:return grel:stringOut
+            rml:reference "Name"
         ]
     ] .
 
 <#Execution>
-    rml:function grel:escape ;
+    rml:function idlab-fn:toUpperCaseURL ;
     rml:input
         [
-            rml:parameter grel:valueParam ;
+            rml:parameter idlab-fn:str ;
             rml:inputValueMap [
-                rml:reference "Comment"
+                rml:reference "url" ;
             ]
-        ] ,
-        [
-            rml:parameter grel:modeParam  ;
-            rml:inputValue "html"
         ] .
 
 ```
 
 **Output**
 ```
-<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "A&amp;B" .
+<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "Venus" <HTTP://EXAMPLE.COM/VENUS> .
 
 ```
 

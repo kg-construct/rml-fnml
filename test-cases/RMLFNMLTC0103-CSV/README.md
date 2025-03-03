@@ -1,15 +1,15 @@
-## RMLFNMLTC0021-CSV
+## RMLFNMLTC0103-CSV
 
-**Title**: Function on object, 1 reference parameter, 1 constant parameter
+**Title**: Function on object, wrong parameter
 
-**Description**: Tests if a function with multiple parameters can be used
+**Description**: Tests that nothing is generated if a function is defined using a parameter not defined in the FnO description
 
 **Error expected?** No
 
 **Input**
 ```
-Id,Name,Comment,Class
-1,Venus,A&B,A
+Id,Name,Comment,Class,url
+1,Venus,A&B,A,http://example.com/venus
 
 ```
 
@@ -44,24 +44,19 @@ Id,Name,Comment,Class
     ] .
 
 <#Execution>
-    rml:function grel:escape ;
+    rml:function grel:toUpperCase ;
     rml:input
         [
-            rml:parameter grel:valueParam ;
+            rml:parameter grel:unknownParam ;
             rml:inputValueMap [
-                rml:reference "Comment"
+                rml:reference "Name" ;
             ]
-        ] ,
-        [
-            rml:parameter grel:modeParam  ;
-            rml:inputValue "html"
         ] .
 
 ```
 
 **Output**
 ```
-<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "A&amp;B" .
 
 ```
 

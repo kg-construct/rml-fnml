@@ -1,8 +1,8 @@
-## RMLFNOTC0008-CSV
+## RMLFNMLTC0005-CSV
 
-**Title**: Nested function - Test A
+**Title**: Function on object, 1 template parameter
 
-**Description**: Tests if a composite function of form f(g(x1),x2) works (i.e., the inner function is only one argument of the outer function)
+**Description**: Tests if a function with a template parameter can be used
 
 **Error expected?** No
 
@@ -20,9 +20,7 @@ Id,Name,Comment,Class
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
-@prefix morph-kgc: <https://github.com/morph-kgc/morph-kgc/function/built-in.ttl#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix idlab-fn: <http://example.com/idlab/function/> .
 
 @base <http://example.com/base/> .
 
@@ -39,7 +37,10 @@ Id,Name,Comment,Class
     ];
     rml:predicateObjectMap [
         rml:predicate foaf:name;
-        rml:objectMap [ rml:functionExecution <#Execution> ] ;
+        rml:objectMap [
+            rml:functionExecution <#Execution> ;
+            rml:return grel:stringOut
+        ]
     ] .
 
 <#Execution>
@@ -48,7 +49,7 @@ Id,Name,Comment,Class
         [
             rml:parameter grel:valueParam ;
             rml:inputValueMap [
-                rml:template "Name: {Name}"
+                rml:template "Name: {Name}" ;
             ];
         ] .
 

@@ -1,8 +1,8 @@
-## RMLFNOTC0004-CSV
+## RMLFNMLTC0011-CSV
 
-**Title**: Function on object, 1 reference parameter, 1 constant parameter
+**Title**: Function on predicate, 1 parameter
 
-**Description**: Tests if a function with multiple parameters can be used
+**Description**: Tests if a function can be used on a predicate
 
 **Error expected?** No
 
@@ -20,9 +20,8 @@ Id,Name,Comment,Class
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
-@prefix morph-kgc: <https://github.com/morph-kgc/morph-kgc/function/built-in.ttl#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .
 
 @base <http://example.com/base/> .
 
@@ -40,6 +39,7 @@ Id,Name,Comment,Class
     rml:predicateObjectMap [
         rml:predicateMap [
             rml:functionExecution <#Execution> ;
+            rml:return idlab-fn:_stringOut
         ];
         rml:object foaf:name;
     ] .

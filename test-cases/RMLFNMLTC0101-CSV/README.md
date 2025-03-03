@@ -1,8 +1,8 @@
-## RMLFNOTC0002-CSV
+## RMLFNMLTC0101-CSV
 
-**Title**: Function using non-constant shortcut property parameter
+**Title**: Function on object, 1 false reference parameter
 
-**Description**: Tests that a non-constant FNML Parameter map also works
+**Description**: Tests if a false reference parameters is caught
 
 **Error expected?** Yes
 
@@ -20,9 +20,8 @@ Id,Name,Comment,Class
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
-@prefix morph-kgc: <https://github.com/morph-kgc/morph-kgc/function/built-in.ttl#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .
 
 @base <http://example.com/base/> .
 
@@ -41,6 +40,7 @@ Id,Name,Comment,Class
         rml:predicate foaf:name;
         rml:objectMap [
             rml:functionExecution <#Execution> ;
+            rml:return grel:stringOut
         ]
     ] .
 

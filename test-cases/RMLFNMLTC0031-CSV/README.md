@@ -1,8 +1,10 @@
-## RMLFNOTC0005-CSV
+## RMLFNMLTC0031-CSV
 
 **Title**: Function on subject, 1 parameter
 
-**Description**: Tests if a function can be used on a subject
+**Description**: Tests if 
+(1) a function can be used on a subject
+(2) Tests if the default termType assigned to the output of the function to be correct
 
 **Error expected?** No
 
@@ -20,9 +22,8 @@ Id,Name,url
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
-@prefix morph-kgc: <https://github.com/morph-kgc/morph-kgc/function/built-in.ttl#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .
 
 @base <http://example.com/base/> .
 
@@ -36,6 +37,7 @@ Id,Name,url
     ];
     rml:subjectMap [
         rml:functionExecution <#Execution> ;
+        rml:return idlab-fn:_stringOut
     ];
     rml:predicateObjectMap [
         rml:predicate foaf:name;
