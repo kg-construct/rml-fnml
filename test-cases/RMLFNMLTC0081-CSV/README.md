@@ -1,15 +1,15 @@
-## RMLFNMLTC0041-CSV
+## RMLFNMLTC0081-CSV
 
-**Title**: Function using non-constant shortcut property return
+**Title**: Function on languageMap, 1 parameter
 
-**Description**: Tests that a non-constant FNML Return map also works
+**Description**: Tests that function on LanguageMap is handled
 
 **Error expected?** No
 
 **Input**
 ```
-Id,Name,Comment,Class,url
-1,Venus,A&B,A,http://example.com/venus
+Id,Name,Comment,Class,Lang
+1,Venus,A&B,A,en
 
 ```
 
@@ -21,6 +21,7 @@ Id,Name,Comment,Class,url
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .
 
 @base <http://example.com/base/> .
 
@@ -38,28 +39,34 @@ Id,Name,Comment,Class,url
     rml:predicateObjectMap [
         rml:predicate foaf:name;
         rml:objectMap [
-            rml:functionExecution <#Execution> ;
-            rml:returnMap [
-                rml:constant grel:stringOut
-            ]
+           rml:reference "Name" ;
+           rml:languageMap [
+             rml:functionExecution <#Execution> ;
+             rml:return grel:stringOut
+           ] ;
         ]
     ] .
 
 <#Execution>
-    rml:function grel:toUpperCase ;
+    rml:function grel:string_substring ;
     rml:input
         [
             rml:parameter grel:valueParam ;
             rml:inputValueMap [
-                rml:reference "Name" ;
-            ]
-        ] .
+                rml:reference "Lang"
+            ];
+        ]  ,
+        [
+            a rml:Input ;
+            rml:parameter grel:p_int_i_from ;
+            rml:inputValue "0"
+        ]  .
 
 ```
 
 **Output**
 ```
-<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "VENUS" .
+<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "Venus"@en .
 
 ```
 

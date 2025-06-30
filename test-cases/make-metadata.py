@@ -13,7 +13,7 @@ def get_title_description(testcase: str):
                 return row[1], row[2]
 
 def main(spec: str):
-    with open ('metadata.csv', 'w') as csvfile:
+    with open ('metadata.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(['ID', 'title', 'description', 'specification',
                          'mapping', 'input_format1', 'input_format2',

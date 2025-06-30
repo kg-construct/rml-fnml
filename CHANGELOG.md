@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Changed
 
 - updated shacl shapes to use RDFS (https://github.com/kg-construct/rml-fnml/pull/45)
+- corrected test case RMLFNMLTC0041-CSV
 
 ## v0.1.0 - 2023-05-10
 
