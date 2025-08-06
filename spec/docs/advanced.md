@@ -1,5 +1,12 @@
 ## Advanced usage
 
+### Multivalue processing
+
+Aligned with the other RML specifications,
+multivalue expression evaluation results are processed in sequence.
+So, if a multivalue expression evaluation contains the multivalue `"a", "b", and "c"`,
+the function is evaluated on each individual value.
+
 ### Nested functions
 
 As the values of a function are represented using [=Expression Map=]s,
@@ -40,7 +47,7 @@ For now, it is unclear how to handle a nested function where that nested Triples
         [
             a rml:Input ;
             rml:parameter grel:valueParam ;
-            rml:InputValueMap [
+            rml:inputValueMap [
                 rml:functionExecution <#Execution2> ; # Link to another function-valued expression map to nest functions
                 rml:return grel:stringOut
             ]
@@ -52,7 +59,7 @@ For now, it is unclear how to handle a nested function where that nested Triples
         [
             a rml:Input ;
             rml:parameter grel:valueParam ;
-            rml:InputValueMap [
+            rml:inputValueMap [
                 rml:reference "name"
             ]
         ] ,
@@ -79,8 +86,8 @@ To be able to use this shortcut, conforming mapping engines MUST support followi
 
 - isNull
 - isNotNull
-- equals
-- noEquals
+- equals: see the [SPARQL specification for definition](https://www.w3.org/TR/sparql11-query/#OperatorMapping)
+- notEquals: see the [SPARQL specification for definition](https://www.w3.org/TR/sparql11-query/#OperatorMapping)
 - IF
 
 <p class="note" title="Condition function definitions">
@@ -178,3 +185,76 @@ This is actually a shortcut to the following
 
 </aside>
 </aside>
+
+#### Multivalue Conditions - example
+
+Let's take following example data
+
+```json
+[
+    {
+        "conditionValue": [1, 0, 5],
+        "values": ["a", "b", "c"]
+    }
+]
+```
+
+If we execute following RML mapping
+
+<aside class="example" id="example-condition" title="usage of conditions in multivalues">
+<aside class="ex-mapping">
+
+```turtle
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix fns: <http://example.com/fns#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
+
+<#Person_Mapping>
+    rml:logicalSource <#LogicalSource> ;
+    rml:subjectMap <#SubjectMap> ;
+    rml:predicateObjectMap <#NameMapping> .
+
+# Suggestion: add rml:condition predicate to expression map,
+# and conforming mapping engines MUST support following functions:
+# - isNull, isNotNull, equals, noEquals, IF
+# (isNotNull and IF are defined below, rest is an excercise for the reader)
+<#NameMapping>
+    rml:predicate ex:id ;
+    # A condition can be defined in any expression map
+    rml:objectMap [
+        # new predicate that links to a function-valued expression map,
+        # that function MUST return a boolean
+        rml:condition [
+            rml:functionExecution [
+                # notEquals(parameter: X, compared: Y) / definition: X != Y ? TRUE : FALSE ;
+                rml:function fns:notEquals ;
+                rml:input [
+                    # The parameter that is checked
+                    rml:parameter fns:parameter ;
+                    rml:inputValueMap [
+                        rml:reference "conditionValue"
+                    ]
+                ] , [
+                    # The parameter that is compared to
+                    rml:parameter fns:compared ;
+                    rml:input "0"
+                ]
+            ] ;
+            rml:return fns:boolOut # if fno:boolOut is the first specified return, this triple can be ommitted.
+        ] ;
+        # The actual expression used if the condition returns TRUE,
+        # In this case a UUID generator function is used.
+        rml:objectMap <#ANestedFunctionThatReturnsAUUIDv4> ;
+    ] .
+```
+
+</aside>
+</aside>
+
+This will result in two triples, because in `conditionValue` you have two valid condition executions
+
+```turtle
+<subject> ex:id "df2c61cc-6fad-435d-aa95-10761840478b" .
+<subject> ex:id "44d01ee9-448f-4804-acc8-3272939494b0" .
+```
