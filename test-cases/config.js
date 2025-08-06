@@ -30,6 +30,12 @@ var respecConfig = {
       company: "IDLab &ndash; Ghent University &ndash; imec",
       orcid: "0000-0002-7195-9935",
       companyURL: "https://knows.idlab.ugent.be/"
+    }, {
+      name: "Ben De Meester",
+      company: "Ghent University &ndash; imec &ndash; IDLab",
+      url: "https://ben.de-meester.org/#me",
+      orcid: "0000-0003-0248-0987",
+      companyURL: "https://knows.idlab.ugent.be/"
     }
   ],
   edDraftURI: "https://w3id.org/rml/fnml/test-cases/",
@@ -39,6 +45,13 @@ var respecConfig = {
       url: "https://dylanvanassche.be",
       company: "IDLab &ndash; Ghent University &ndash; imec",
       orcid: "0000-0002-7195-9935",
+      companyURL: "https://knows.idlab.ugent.be/"
+    },
+    {
+      name: "Ben De Meester",
+      company: "Ghent University &ndash; imec &ndash; IDLab",
+      url: "https://ben.de-meester.org/#me",
+      orcid: "0000-0003-0248-0987",
       companyURL: "https://knows.idlab.ugent.be/"
     }
   ],
@@ -68,5 +81,6 @@ var respecConfig = {
   // W3C config
   copyrightStart: "2024",
   doJsonLd: true,
+  prevVersion: "https://kg-construct.github.io/rml-fnml/test-cases/docs/20250303/",
   group: "kg-construct",
 };
