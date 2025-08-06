@@ -15,8 +15,8 @@ from rdflib import Graph
 
 from mapping_validator import MappingValidator
 
-TEST_CASES_DIR = os.path.join(os.path.abspath('../test-cases'),
-                              '*/mapping.ttl')
+TEST_CASES_DIR = os.path.join(os.path.abspath('../test-cases'), '*/mapping.ttl')
+RESOURCES_DIR = os.path.join(os.path.abspath('../spec'), 'resources/*.ttl')
 FNML_SHAPE_FILE = os.path.abspath('fnml.ttl')
 SHACL_SHAPE_FILE = os.path.abspath('shacl.ttl')
 
@@ -37,8 +37,7 @@ class MappingValidatorTests(unittest.TestCase):
             p = os.path.abspath('does_not_exist.ttl')
             self._validate_rules(p)
 
-    @parameterized.expand([(p,) for p in sorted(glob(TEST_CASES_DIR))],
-                          skip_on_empty=True)
+    @parameterized.expand([(p,) for p in sorted(glob(TEST_CASES_DIR))], skip_on_empty=True)
     def test_validation_rules(self, path: str) -> None:
         """
         Test if our SHACL shapes are able to validate our validation mapping
@@ -46,6 +45,15 @@ class MappingValidatorTests(unittest.TestCase):
         """
         print(f'Testing validation with: {path}')
         self._validate_rules(path)
+    
+    # @parameterized.expand([(p,) for p in sorted(glob(RESOURCES_DIR))], skip_on_empty=True)
+    # def test_resource_rules(self, path: str) -> None:
+    #     """
+    #     Test if our SHACL shapes are able to validate our validation mapping
+    #     rules resources.
+    #     """
+    #     print(f'Testing validation with: {path}')
+    #     self._validate_rules(path)
 
     def test_validation_shapes(self) -> None:
         """
@@ -60,8 +68,7 @@ class MappingValidatorTests(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Execute tests for SHACL '
-                                     'shapes on RML mapping rules.')
+    parser = argparse.ArgumentParser(description='Execute tests for SHACL shapes on RML mapping rules.')
     parser.add_argument('--verbose', '-v', action='count', default=1,
                         help='Set verbosity level of messages. Example: -vvv')
     args = parser.parse_args()

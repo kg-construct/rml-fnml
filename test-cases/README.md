@@ -6,54 +6,32 @@ If no output.nq file is present, an error is expected.
 
 All function descriptions are locally available under [functions.ttl](./functions.ttl).
 
-Some test cases are under discussion, proposed alternatives are noted via a suffix `b`.
+A nicely rendered HTML page of all test cases is available at https://w3id.org/rml/fnml/test-cases.
 
 ## Functions that are used in these test cases
 
 `@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .`
 `@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .`
 
+## Updating the metadata
+
+The test cases publication (html pages) can be generated as followed:
+
+1. Add the testcase description in `descriptions.csv` or fetch it from the [Google spreadsheet](https://docs.google.com/spreadsheets/d/1Ui216z2cF8bNAbdZvws-JoAhcjj4M2k_NlfzmCh1jh8/edit?gid=1793408313#gid=1793408313).
+2. Execute the `make-metadata.py` script: `./make-metadata.py http://w3id.org/rml/fnml/`
+   (This is based on the content of the folders with the test cases, and on the file descriptions.csv for the descriptions of the cases)
+3. Download burp: `curl -LO https://github.com/kg-construct/BURP/releases/download/v0.1.1/burp.jar`
+4. Generate the manifest with [Burp](https://github.com/kg-construct/BURP): `java -jar burp.jar -m manifest.rml.ttl -o manifest.ttl -b http://w3id.org/rml/fnml/test/`
+5. Run list.sh and insert output in dev.html
+6. To publish the new HTML verson of the test cases, export `dev.html` as `index.html` in ./docs and in a subfolder with the date of the publication (maybe adapt the publication date)
+
 ## Open issues for which there are no test cases
 
-|                              title                              |                                                                  purpose                                                                 |
-|:---------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------:|
-| Function on object, 1 constant parameter                        | Tests if a constant parameter can be used                                                                                                |
-| Function on object, wrong type parameter                        | Tests a function with a wrong type parameter cannot be used                                                                              |
-| Function on object returns null                                 | Tests that no triple should be generated when the result is null.                                                                        |
-| Function on object returns empty string                         | Tests that a triple is generated when the results is an empty string.                                                                    |
-| Function on object, the output termType is Literal              | Tests if the output of the function is assigned the correct termType                                                                     |
-| Function on subject returns invalid IRI                         | Tests that no triples are generated for a subject that gets an invalid IRI as the result from a function.                                |
-| Function on predicate returns invalid IRI                       | Tests that no triples are generated for a predicate that gets an invalid IRI as the result from a function.                              |
-| Nested function - Test B                                        | Tests if a composite function of form f(g(x1),h(x2)) works (i.e., two different inner functions are the arguments of the outer function) |
-| Nested function - Test C                                        | Tests if a composite function of form f(g(h(x1),x2),x3) works (i.e., the inner function is also a composite function)                    |
-| Function on graph, 1 parameter                                  | Tests if a function can be used on a graph                                                                                               |
-| Function on languageMap                                         | Tests that function on LanguageMap is handled                                                                                            |
-| Function on graph returns invalid IRI                           | Tests that no triples are generated for a graph that gets an invalid IRI as the result from a function.                                  |
-| Function using non-constant shortcut property function          | Tests that a non-constant FNML Function map also works                                                                                   |
-| Function using non-constant shortcut property return            | Tests that a non-constant FNML Return map also works                                                                                     |
-| Function as equal join condition                                | Tests that functions can be used similar to R2RML (equal) join conditions                                                                |
-| Function as other type of join condition                        | Tests that functions can be used for other types of join conditions (eg. string_contains or listContainsElement)                         |
-| Function, parameter as array                                    | Tests that list-style parameters are handled                                                                                             |
-| Function, array_get                                             | Tests that list-style of returned data values are handled correctly by FnO                                                               |
-
-## Table
-
-| new_id |                              title                              |                                                            purpose                                                            | data format | error expected? |    input file 1   |
-|:------:|:---------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:|:-----------:|:---------------:|:-----------------:|
-| 0000   | Function on object, 0 parameters                                | Tests (1) if a function without parameters can be used (FnO) (2) if a function on an object map can be used (Term)            | CSV         |      FALSE      | student.csv       |
-| 0000b  | Function on object, 0 parameters (replaces 0000)                | Tests (1) if a function without parameters can be used (FnO) (2) if a function on an object map can be used (Term)            | CSV         |      FALSE      | student.csv       |
-| 0000   | Function on object, default termType                            | Tests if the output of the function is assigned the correct termType by default                                               |             |                 |                   |
-| 0001   | Function on object, 1 reference parameter                       | Tests: (1) if a function with one parameter can be used, (FnO) (2) a reference parameter can be used (Term)                   | CSV         |      FALSE      | student.csv       |
-| 0001   | Function using non-constant shortcut property parameter         | Tests that a non-constant FNML Parameter map also works                                                                       | CSV         |      FALSE      | student_param.csv |
-| 0002   | Function on object, 1 false reference parameter                 | Tests if a false reference parameters is caught                                                                               | CSV         |       TRUE      | student.csv       |
-| 0003   | Function on object, 1 reference parameter, 1 constant parameter | Tests if a function with multiple parameters can be used                                                                      | CSV         |      FALSE      | student.csv       |
-| 0004   | Function on predicate, 1 parameter                              | Tests if a function can be used on a predicate                                                                                | CSV         |      FALSE      | student.csv       |
-| 0004b  | Function on predicate, 1 parameter (replaces 0004)              | Tests if a function can be used on a predicate                                                                                | CSV         |      FALSE      | student.csv       |
-| 0005   | Function on subject, 1 parameter                                | Tests if a function can be used on a subject                                                                                  | CSV         |      FALSE      | student.csv       |
-| 0005   | Function on subject, default termType                           | Tests if the default termType assigned to the output of the function to be correct                                            |             |                 |                   |
-| 0005b  | Function on subject, default termType (replaces 0005)           | Tests if the default termType assigned to the output of the function to be correct                                            |             |                 |                   |
-| 0006   | Function on object, the output termType is IRI                  | Tests if the output of the function is assigned the correct termType                                                          |             |                 |                   |
-| 0006b  | Function on object, the output termType is IRI (replaces 0006)  | Tests if the output of the function is assigned the correct termType                                                          |             |                 |                   |
-| 0008   | Function on object, 1 template parameter                        | Tests if a function with a template parameter can be used                                                                     | CSV         |      FALSE      | student.csv       |
-| 0009   | Nested function - Test A                                        | Tests if a composite function of form f(g(x1),x2) works (i.e., the inner function is only one argument of the outer function) | CSV         |      FALSE      | student.csv       |
-| 0010   | Function on object, specified return output                     | Tests if a specific return output can be used                                                                     | CSV         |       TRUE      | student.csv       |
+| title | purpose |
+| - | - |
+| Function on object, default termType | Tests if the default termType assigned to the output of the function in an object position to be correct |
+| Function on subject, default termType | Tests if the default termType assigned to the output of the function in a subject position to be correct |
+| Function using non-constant shortcut property function | Tests that a non-constant FNML Function map also works |
+| Function using non-constant shortcut property return | Tests that a non-constant FNML Return map also works |
+| Nested function - Test B | Tests if a composite function of form f(g(x1),h(x2)) works (i.e., two different inner functions are the arguments of the outer function) |
+| Nested function - Test C | Tests if a composite function of form f(g(h(x1),x2),x3) works (i.e., the inner function is also a composite function) |

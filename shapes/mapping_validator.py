@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+#
+
 from logging import debug, info, critical
 from pyshacl import validate
 from rdflib import Graph

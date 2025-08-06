@@ -16,9 +16,12 @@ RMLFNMLTC0021-CSV,"Function on object, 1 reference parameter, 1 constant paramet
 RMLFNMLTC0031-CSV,"Function on subject, 1 parameter","Tests if 
 (1) a function can be used on a subject
 (2) Tests if the default termType assigned to the output of the function to be correct",,CSV,CSV,FALSE,student.csv,,,
+RMLFNMLTC0032-CSV,Condition on subject,Tests that a condition shortcut works,,,,,,,,
 RMLFNMLTC0041-CSV,Function using non-constant shortcut property return,Tests that a non-constant FNML Return map also works,,CSV,CSV,FALSE,student.csv,,,"does this can be tested with SHACL? If yes, I think this wouldn't be a test-case"
 RMLFNMLTC0051-CSV,Nested function - Test A,"Tests if a composite function of form f(g(x1),x2) works (i.e., the inner function is only one argument of the outer function)",,CSV,CSV,FALSE,student.csv,,,
 RMLFNMLTC0061-CSV,"Function on graph, 1 parameter",Tests if a function can be used on a graph,,CSV,CSV,FALSE,student.csv,,,RML example: https://kg-construct.github.io/rml-core/spec/docs/#example-graph-map
+RMLFNMLTC0071-CSV,"Function on datatypeMap, 1 parameter",Tests that function on DatatypeMap is handled,,CSV,CSV,FALSE,student.csv,,,RML example: https://kg-construct.github.io/rml-core/spec/docs/#example-datatype-map
+RMLFNMLTC0081-CSV,"Function on languageMap, 1 parameter",Tests that function on LanguageMap is handled,,CSV,CSV,FALSE,student.csv,,,RML example: https://kg-construct.github.io/rml-core/spec/docs/#example-language-map
 RMLFNMLTC0101-CSV,"Function on object, 1 false reference parameter",Tests if a false reference parameters is caught,,CSV,CSV,TRUE,student.csv,,,
 RMLFNMLTC0102-CSV,"Function on object, wrong function URI",Tests that nothing is generated if a function is used where no implementation is made available to the mapping engine,,CSV,CSV,TRUE,student.csv,,,
 RMLFNMLTC0103-CSV,"Function on object, wrong parameter",Tests that nothing is generated if a function is defined using a parameter not defined in the FnO description,,CSV,CSV,TRUE,student.csv,,,

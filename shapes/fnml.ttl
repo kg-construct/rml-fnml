@@ -17,7 +17,7 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rml: <http://w3id.org/rml/> .
-@prefix : <http://w3id.org/rml/shapes/> .
+@prefix schema: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
@@ -30,11 +30,12 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://w3id.org/rml/shapes/RMLFunctionExecutionShape> a sh:NodeShape ;
+    rdfs:label "rml:FunctionExecution" ;
     rdfs:comment """
     Represents a Function Execution.
     """ ;
-    rdfs:label "rml:FunctionExecution" ;
-    sh:property [ rdfs:comment """
+    sh:property [ rdfs:label "rml:function/rml:functionMap" ;
+            rdfs:comment """
         Exactly one rml:function or rml:functionMap is required.
         """ ;
             sh:maxCount 1 ;
@@ -42,52 +43,52 @@
         Exactly one rml:function or rml:functionMap is required.
         """ ;
             sh:minCount 1 ;
-            rdfs:label "rml:function/rml:functionMap" ;
             sh:path [ sh:alternativePath ( rml:function rml:functionMap ) ] ],
-        [ rdfs:comment """
+        [ rdfs:label "rml:functionMap" ;
+            rdfs:comment """
         FnO function to execute.
         """ ;
             sh:message """
         rml:functionMap must be an IRI or Blank node.
         """ ;
-            rdfs:label "rml:functionMap" ;
             sh:node <http://w3id.org/rml/shapes/RMLFunctionMap> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path rml:functionMap ],
-        [ rdfs:comment """
+        [ rdfs:label "rml:function" ;
+            rdfs:comment """
         FnO function to execute.
         """ ;
             sh:message """
         rml:function must be an IRI.
         """ ;
-            rdfs:label "rml:function" ;
             sh:nodeKind sh:IRI ;
             sh:path rml:function ],
-        [ rdfs:comment """
+        [ rdfs:label "rml:input" ;
+            rdfs:comment """
         Input parameters for the function.
         """ ;
             sh:message """
         rml:input must be an IRI or Blank node.
         """ ;
-            rdfs:label "rml:input" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path rml:input ] ;
     sh:targetObjectsOf rml:functionExecution .
 
 <http://w3id.org/rml/shapes/RMLFunctionMapShape> a sh:NodeShape ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ ] ) ;
+    rdfs:label "FunctionMap" ;
     rdfs:comment """
     Represents a Function Map.
     """ ;
-    rdfs:label "FunctionMap" ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ ] ) ;
     sh:targetObjectsOf rml:functionMap .
 
 <http://w3id.org/rml/shapes/RMLInputShape> a sh:NodeShape ;
+    rdfs:label "rml:Input" ;
     rdfs:comment """
     Represents an Input for a function.
     """ ;
-    rdfs:label "rml:Input" ;
-    sh:property [ rdfs:comment """
+    sh:property [ rdfs:label "rml:parameter/rml:parameterMap" ;
+            rdfs:comment """
         Exactly one rml:parameter or rml:parameterMap is required.
         """ ;
             sh:maxCount 1 ;
@@ -95,51 +96,51 @@
         Exactly one rml:parameter or rml:parameterMap is required.
         """ ;
             sh:minCount 1 ;
-            rdfs:label "rml:parameter/rml:parameterMap" ;
             sh:path [ sh:alternativePath ( rml:parameter rml:parameterMap ) ] ],
-        [ rdfs:comment """
+        [ rdfs:label "rml:inputValueMap" ;
+            rdfs:comment """
         Values of the parameters.
         """ ;
             sh:maxCount 1 ;
             sh:message """
         rml:inputValueMap must be an IRI or Blank node, provided once.
         """ ;
-            rdfs:label "rml:inputValueMap" ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path rml:inputValueMap ],
-        [ sh:datatype xsd:string ;
+        [ rdfs:label "rml:inputValue" ;
             rdfs:comment """
         Parameters to supply to FnO function.
         """ ;
+            sh:datatype xsd:string ;
             sh:maxCount 1 ;
             sh:message """
         rml:inputValue must be a string Literal.
         """ ;
-            rdfs:label "rml:inputValue" ;
             sh:nodeKind sh:Literal ;
             sh:path rml:inputValue ],
-        [ rdfs:comment """
+        [ rdfs:label "rml:parameterMap" ;
+            rdfs:comment """
         Parameters to supply to FnO function.
         """ ;
             sh:maxCount 1 ;
             sh:message """
         rml:parameterMap must be an IRI or Blank node.
         """ ;
-            rdfs:label "rml:parameterMap" ;
             sh:node <http://w3id.org/rml/shapes/RMLParameterMap> ;
             sh:nodeKind sh:BlankNodeOrIRI ;
             sh:path rml:parameterMap ],
-        [ rdfs:comment """
+        [ rdfs:label "rml:parameter" ;
+            rdfs:comment """
         Parameters to supply to FnO function.
         """ ;
             sh:maxCount 1 ;
             sh:message """
         rml:parameter must be an IRI.
         """ ;
-            rdfs:label "rml:parameter" ;
             sh:nodeKind sh:IRI ;
             sh:path rml:parameter ],
-        [ rdfs:comment """
+        [ rdfs:label "rml:inputValue/rml:inputValueMap" ;
+            rdfs:comment """
         Exactly one rml:inputValue or rml:inputValueMap is required.
         """ ;
             sh:maxCount 1 ;
@@ -147,24 +148,23 @@
         Exactly one rml:inputValue or rml:inputValueMap is required.
         """ ;
             sh:minCount 1 ;
-            rdfs:label "rml:inputValue/rml:inputValueMap" ;
             sh:path [ sh:alternativePath ( rml:inputValue rml:inputValueMap ) ] ] ;
     sh:targetObjectsOf rml:input .
 
 <http://w3id.org/rml/shapes/RMLParameterMapShape> a sh:NodeShape ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ ] ) ;
+    rdfs:label "ParameterMap" ;
     rdfs:comment """
     Represents a Parameter Map of a function.
     """ ;
-    rdfs:label "ParameterMap" ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ ] ) ;
     sh:targetObjectsOf rml:parameterMap .
 
 <http://w3id.org/rml/shapes/RMLReturnMapShape> a sh:NodeShape ;
-    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ ] ) ;
+    rdfs:label "ReturnMap" ;
     rdfs:comment """
     Represents a Return Map.
     """ ;
-    rdfs:label "ReturnMap" ;
+    sh:and ( <http://w3id.org/rml/shapes/RMLTermMapShape> <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> [ ] ) ;
     sh:targetObjectsOf rml:returnMap .
 
 <http://w3id.org/rml/shapes/RMLLogicalTargetPropertiesShape> a sh:NodeShape .
