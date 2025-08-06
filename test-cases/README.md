@@ -23,7 +23,8 @@ The test cases publication (html pages) can be generated as followed:
 3. Download burp: `curl -LO https://github.com/kg-construct/BURP/releases/download/v0.1.1/burp.jar`
 4. Generate the manifest with [Burp](https://github.com/kg-construct/BURP): `java -jar burp.jar -m manifest.rml.ttl -o manifest.ttl -b http://w3id.org/rml/fnml/test/`
 5. Run list.sh and insert output in dev.html
-6. To publish the new HTML verson of the test cases, export `dev.html` as `index.html` in ./docs and in a subfolder with the date of the publication (maybe adapt the publication date)
+6. Set the `prevVersion` in config.js
+7. To publish the new HTML verson of the test cases, export `dev.html` as `index.html` in ./docs and in a subfolder with the date of the publication (maybe adapt the publication date)
 
 ## Open issues for which there are no test cases
 
