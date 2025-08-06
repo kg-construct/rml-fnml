@@ -1,6 +1,7 @@
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix fns: <http://example.com/fns#> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;
@@ -12,25 +13,30 @@
 # - isNull, isNotNull, equals, noEquals, IF
 # (isNotNull and IF are defined below, rest is an excercise for the reader)
 <#NameMapping>
-    rml:predicate dbo:title ;
+    rml:predicate ex:id ;
     # A condition can be defined in any expression map
     rml:objectMap [
         # new predicate that links to a function-valued expression map,
         # that function MUST return a boolean
         rml:condition [
             rml:functionExecution [
-                # isNotNull(parameter: X) / definition: X != NULL ? TRUE : FALSE ;
-                rml:function fns:isNotNull ;
+                # notEquals(parameter: X, compared: Y) / definition: X != Y ? TRUE : FALSE ;
+                rml:function fns:notEquals ;
                 rml:input [
-                    # The parameter that is checked for NULL
+                    # The parameter that is checked
                     rml:parameter fns:parameter ;
                     rml:inputValueMap [
-                        rml:reference "name"
+                        rml:reference "conditionValue"
                     ]
+                ] , [
+                    # The parameter that is compared to
+                    rml:parameter fns:compared ;
+                    rml:input "0"
                 ]
             ] ;
             rml:return fns:boolOut # if fno:boolOut is the first specified return, this triple can be ommitted.
         ] ;
-        # The actual expression used if the condition returns TRUE
-        rml:constant "[a filled in title]"
+        # The actual expression used if the condition returns TRUE,
+        # In this case a UUID generator function is used.
+        rml:objectMap <#ANestedFunctionThatReturnsAUUIDv4> ;
     ] .

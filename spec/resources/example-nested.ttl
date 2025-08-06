@@ -39,11 +39,11 @@
         ] ,
         [
             a rml:Input ;
-            rml:input grel:param_find ;
+            rml:parameter grel:param_find ;
             rml:inputValue " "
         ] ,
         [
             a rml:Input ;
-            rml:input grel:param_replace  ;
+            rml:parameter grel:param_replace  ;
             rml:inputValue "-"
         ] .
