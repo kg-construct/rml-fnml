@@ -36,6 +36,13 @@ var respecConfig = {
       url: "https://ben.de-meester.org/#me",
       orcid: "0000-0003-0248-0987",
       companyURL: "https://knows.idlab.ugent.be/"
+    }, {
+      name: "Tobias Schweizer"
+    }, {
+      name: "Els de Vleeschauwer",
+      company: "Ghent University &ndash; imec &ndash; IDLab",
+      orcid: "0000-0002-8630-3947",
+      companyURL: "https://knows.idlab.ugent.be/"
     }
   ],
   edDraftURI: "https://w3id.org/rml/fnml/test-cases/",
