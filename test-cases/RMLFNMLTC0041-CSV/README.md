@@ -59,7 +59,7 @@ Id,Name,Comment,Class,url
 
 **Output**
 ```
-<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "example.com" .
+<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "VENUS" .
 
 ```
 

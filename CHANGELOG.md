@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Changed
 
 - updated test cases metadata
+- corrected test case RMLFNMLTC0041-CSV
 
 ## v0.3.1
 

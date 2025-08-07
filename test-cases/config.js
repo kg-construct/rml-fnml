@@ -81,6 +81,6 @@ var respecConfig = {
   // W3C config
   copyrightStart: "2024",
   doJsonLd: true,
-  prevVersion: "https://kg-construct.github.io/rml-fnml/test-cases/docs/20250303/",
+  prevVersion: "https://kg-construct.github.io/rml-fnml/test-cases/docs/20250630/",
   group: "kg-construct",
 };
