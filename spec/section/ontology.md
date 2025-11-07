@@ -7,7 +7,7 @@ the preferred prefix is `rml:`.
 See below for how FNML introduced terms align with RML Core.
 
 <figure id="figure-diagram">
-  <img src="../diagrams/diagram.png" alt="FNML diagram" />
+  <img src="resources/diagram.png" alt="FNML diagram" />
   <figcaption>Visual overview of how FNML introduced terms align with RML Core</figcaption>
 </figure>
 

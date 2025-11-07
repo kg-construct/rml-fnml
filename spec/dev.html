@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>RML-FNML</title>
+  <meta charset='utf-8'>
+  <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+  <style type="text/css">
+    /* Adapted from R2RML */
+    aside.ex-input,
+    aside.ex-mapping,
+    aside.ex-output {
+      word-wrap: normal;
+      margin-top: 1.5em;
+      padding: 1em;
+      font-size: 80%;
+    }
+
+    aside.ex-input:before,
+    aside.ex-mapping:before,
+    aside.ex-output:before {
+      background: white;
+      display: block;
+      font-family: sans-serif;
+      font-size: 90%;
+      margin: -1.5em 0 0.5em 0;
+      padding: 0.4em 0.4em;
+      width: 18em;
+    }
+
+    /* Input data example */
+    aside.ex-input {
+      background: #cee;
+    }
+
+    aside.ex-input,
+    aside.ex-input:before {
+      border: 1px solid #acc;
+      overflow: auto;
+    }
+
+    aside.ex-input:before {
+      content: "Example input data";
+    }
+
+    /* RML mapping example */
+    aside.ex-mapping {
+      background: #eeb;
+    }
+
+    aside.ex-mapping,
+    aside.ex-mapping:before {
+      border: 1px solid #cc9;
+      overflow: auto;
+    }
+
+    aside.ex-mapping:before {
+      content: "Example RML mapping";
+    }
+
+    /* Output RDF example */
+    aside.ex-output {
+      background: #cfc;
+    }
+
+    aside.ex-output,
+    aside.ex-output:before {
+      border: 1px solid #aca;
+      overflow: auto;
+    }
+
+    aside.ex-output:before {
+      content: "Example output data";
+    }
+
+    table,
+    th,
+    td {
+      background: white;
+      border-collapse: collapse;
+      border: 1px solid;
+    }
+
+    th,
+    td {
+      padding: 5px;
+      text-align: left;
+    }
+
+    th {
+      font-weight: bold;
+    }
+  </style>
+  <script src=resources/config.js class="remove">
+  </script>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    window.onload = (event) => {
+      mermaid.initialize({ startOnLoad: true });
+      setTimeout(() => {
+        mermaid.contentLoaded()
+      }, 1000)
+      setTimeout(() => {
+        mermaid.contentLoaded()
+      }, 10000)
+      setTimeout(() => {
+        mermaid.contentLoaded()
+      }, 20000)
+    }
+  </script>
+
+  <section id='abstract' data-include="section/abstract.md" data-include-format="markdown"></section>
+
+  <section id='sotd'></section>
+
+  <section id="conformance"></section>
+
+  <section data-include="section/problem.md" data-include-format="markdown"></section>
+
+  <section data-include="section/definitions.md" data-include-format="markdown"></section>
+
+  <section data-include="section/overview.md" data-include-format="markdown"></section>
+
+  <section data-include="section/ontology.md" data-include-format="markdown"></section>
+
+  <section data-include="section/advanced.md" data-include-format="markdown"></section>
+
+  <!-- <section data-include="./implementation.md" data-include-format="markdown"></section> -->
+
+</body>
+
+</html>
