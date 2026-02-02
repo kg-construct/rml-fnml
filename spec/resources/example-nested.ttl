@@ -1,6 +1,6 @@
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;
@@ -8,7 +8,7 @@
     rml:predicateObjectMap <#NameMapping> .
 
 <#NameMapping>
-    rml:predicate dbo:title ;
+    rml:predicate ex:title ;
     rml:objectMap [
         rml:functionExecution <#Execution> ;
         rml:return grel:stringOut

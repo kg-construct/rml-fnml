@@ -17,16 +17,16 @@ but no data transformations.
 <aside class="ex-mapping">
 
 ```turtle
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
 
 <#Person_Mapping>
-    rml:logicalSource <#LogicalSource> ;       # Specify the data source
-    rml:subjectMap <#SubjectMap> ;             # Specify the subject
-    rml:predicateObjectMap [                   # Specify the predicate-object-map
-        rml:predicate dbo:title ;              # Specify the predicate
-        rml:objectMap [                        # Specify the object-map
-            rml:reference "name"               # Specify the reference within the data source
+    rml:logicalSource <#LogicalSource> ; # Specify the data source
+    rml:subjectMap <#SubjectMap> ;       # Specify the subject
+    rml:predicateObjectMap [             # Specify the predicate-object-map
+        rml:predicate ex:title ;         # Specify the predicate
+        rml:objectMap [                  # Specify the object-map
+            rml:reference "name"         # Specify the reference within the data source
         ]
     ] .
 ```

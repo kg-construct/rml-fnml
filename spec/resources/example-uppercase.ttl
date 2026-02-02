@@ -1,6 +1,6 @@
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;       # Specify the data source
@@ -8,7 +8,7 @@
     rml:predicateObjectMap <#NameMapping> .    # Specify the predicate-object-map
 
 <#NameMapping>
-    rml:predicate dbo:title ;                  # Specify the predicate
+    rml:predicate ex:title ;                   # Specify the predicate
     rml:objectMap [                            # Specify the object-map: a function-valued expression map
         rml:functionExecution <#Execution> ;   # Link to a Function Execution
         rml:returnMap [

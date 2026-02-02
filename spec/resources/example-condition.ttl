@@ -1,6 +1,6 @@
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix fns: <http://example.com/fns#> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;
@@ -12,7 +12,7 @@
 # - isNull, isNotNull, equals, noEquals, IF
 # (isNotNull and IF are defined below, rest is an excercise for the reader)
 <#NameMapping>
-    rml:predicate dbo:title ;
+    rml:predicate ex:title ;
     # A condition can be defined in any expression map
     rml:objectMap [
         # new predicate that links to a function-valued expression map,

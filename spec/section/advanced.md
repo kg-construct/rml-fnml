@@ -24,9 +24,9 @@ For now, it is unclear how to handle a nested function where that nested Triples
 <aside class="ex-mapping">
 
 ```turtle
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;
@@ -34,7 +34,7 @@ For now, it is unclear how to handle a nested function where that nested Triples
     rml:predicateObjectMap <#NameMapping> .
 
 <#NameMapping>
-    rml:predicate dbo:title ;
+    rml:predicate ex:title ;
     rml:objectMap [
         rml:functionExecution <#Execution> ;
         rml:return grel:stringOut
@@ -99,9 +99,9 @@ To be able to use this shortcut, conforming mapping engines MUST support followi
 <aside class="ex-mapping">
 
 ```turtle
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix fns: <http://example.com/fns#> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;
@@ -109,7 +109,7 @@ To be able to use this shortcut, conforming mapping engines MUST support followi
     rml:predicateObjectMap <#NameMapping> .
 
 <#NameMapping>
-    rml:predicate dbo:title ;
+    rml:predicate ex:title ;
     # A condition can be defined in any expression map
     rml:objectMap [
         # new predicate that links to a function-valued expression map,
@@ -139,9 +139,9 @@ This is actually a shortcut to the following
 <aside class="ex-mapping">
 
 ```turtle
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix fns: <http://example.com/fns#> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;
@@ -149,7 +149,7 @@ This is actually a shortcut to the following
     rml:predicateObjectMap <#NameMappingExtended> .
 
 <#NameMappingExtended>
-    rml:predicate dbo:title ;
+    rml:predicate ex:title ;
     rml:objectMap [
         rml:functionExecution [
             # IF(bool: X, expression: Y)
@@ -205,7 +205,6 @@ If we execute following RML mapping
 <aside class="ex-mapping">
 
 ```turtle
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix fns: <http://example.com/fns#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix ex: <http://example.com/> .
