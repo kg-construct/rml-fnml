@@ -26,7 +26,7 @@ which means that you cannot specify the difference between
 We use [Example 1](#example-rml),
 where we want to perform an uppercase operation to a set of fields.
 
-The FnO description of the function [toUppercase](https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions#touppercasestring-s) is as follows:
+The FnO description of the function [toUppercase](https://openrefine.org/docs/manual/grelfunctions#touppercases) is as follows:
 
 <aside class="example" id="example-touppercase" title="toUppercase FnO description">
 <aside class="ex-mapping">
