@@ -4,8 +4,8 @@
 
 Aligned with the other RML specifications,
 multivalue expression evaluation results are processed in sequence.
-So, if a multivalue expression evaluation contains the multivalue `"a", "b", and "c"`,
-the function is evaluated on each individual value.
+So, if a multivalue expression evaluation contains the multivalue `"a"`, `"b"`, and `"c"`,
+the function is applied to each individual value in that order.
 
 ### Nested functions
 
