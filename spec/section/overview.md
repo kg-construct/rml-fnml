@@ -120,9 +120,9 @@ graph LR
 <aside class="ex-mapping">
 
 ```turtle
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;
@@ -130,19 +130,19 @@ graph LR
     rml:predicateObjectMap <#NameMapping> .
 
 <#NameMapping>
-    rml:predicate dbo:title ;
-    rml:objectMap [                            # A function-valued expression map
-        rml:functionExecution <#Execution> ;   # Link to a Function Execution
-        rml:return grel:stringOut              # Specify which return of the referenced function to use, if omitted, the first specified return is used
+    rml:predicate ex:title ;
+    rml:objectMap [                          # A function-valued expression map
+        rml:functionExecution <#Execution> ; # Link to a Function Execution
+        rml:return grel:stringOut            # Specify which return of the referenced function to use, if omitted, the first specified return is used
     ] .
 
-<#Execution> a rml:FunctionExecution ;         # A new class
-    rml:function grel:toUppercase ;            # Specify which FnO function
-    rml:input [                                # Specify the inputs
-        a rml:Input ;                          # A new class
-        rml:parameter grel:valueParam ;        # Specify this specific parameter
-        rml:inputValueMap [                    # Link to the term map that creates the input value
-            rml:reference "name"               # Specify the reference within the data source
+<#Execution> a rml:FunctionExecution ;       # A new class
+    rml:function grel:toUppercase ;          # Specify which FnO function
+    rml:input [                              # Specify the inputs
+        a rml:Input ;                        # A new class
+        rml:parameter grel:valueParam ;      # Specify this specific parameter
+        rml:inputValueMap [                  # Link to the term map that creates the input value
+            rml:reference "name"             # Specify the reference within the data source
         ]
     ] .
 ```
@@ -165,38 +165,38 @@ The same example, but written without shortcuts, is as follows:
 <aside class="ex-mapping">
 
 ```turtle
-@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
 @prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
 
 <#Person_Mapping>
     rml:logicalSource <#LogicalSource> ;       # Specify the data source
-    rml:subjectMap <#SubjectMap> ;              # Specify the subject
-    rml:predicateObjectMap <#NameMapping> .     # Specify the predicate-object-map
+    rml:subjectMap <#SubjectMap> ;             # Specify the subject
+    rml:predicateObjectMap <#NameMapping> .    # Specify the predicate-object-map
 
 <#NameMapping>
-    rml:predicate dbo:title ;                   # Specify the predicate
-    rml:objectMap [                             # Specify the object-map: a function-valued expression map
+    rml:predicate ex:title ;                   # Specify the predicate
+    rml:objectMap [                            # Specify the object-map: a function-valued expression map
         rml:functionExecution <#Execution> ;   # Link to a Function Execution
         rml:returnMap [
             a rml:ReturnMap ;
-            rml:constant grel:stringOut         # Specify which return of the referenced function to use
+            rml:constant grel:stringOut        # Specify which return of the referenced function to use
         ]
     ] .
 
 <#Execution> a rml:FunctionExecution ;         # A new class
     rml:functionMap [
         a rml:FunctionMap ;
-        rml:constant grel:toUppercase           # Specify which FnO function
+        rml:constant grel:toUppercase          # Specify which FnO function
     ] ;
     rml:input                                  # Specify the inputs
         [
             a rml:Input ;                      # A new class
             rml:parameterMap [
                 a rml:ParameterMap ;
-                rml:constant grel:valueParam ;  # Specify this specific parameter
+                rml:constant grel:valueParam ; # Specify this specific parameter
             ] ;
-            rml:inputValueMap [                    # Link to the term map that creates the input value
+            rml:inputValueMap [                # Link to the term map that creates the input value
                 a rml:TermMap ;
                 rml:reference "name"           # Specify the reference within the data source
             ]

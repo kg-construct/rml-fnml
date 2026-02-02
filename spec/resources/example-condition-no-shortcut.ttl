@@ -1,0 +1,42 @@
+@prefix fns: <http://example.com/fns#> .
+@prefix rml: <http://w3id.org/rml/> .
+@prefix ex: <http://example.com/> .
+
+<#Person_Mapping>
+    rml:logicalSource <#LogicalSource> ;
+    rml:subjectMap <#SubjectMap> ;
+    rml:predicateObjectMap <#NameMappingExtended> .
+
+<#NameMappingExtended>
+    rml:predicate ex:title ;
+    rml:objectMap [
+        rml:functionExecution [
+            # IF(bool: X, expression: Y)
+            # Function definition: X === TRUE ? Y : NULL
+            rml:function fns:IF ;
+            rml:input [
+                # = original condition function
+                rml:parameter fns:boolParameter ;
+                rml:inputValueMap [
+                    rml:functionExecution [
+                        rml:function fns:isNotNull ;
+                        rml:input [
+                            rml:parameter fns:parameter ;
+                            rml:inputValueMap [
+                                rml:reference "name"
+                            ]
+                        ]
+                    ]
+                ]
+            ] , [
+                # = original expression
+                rml:parameter fns:expressionParameter ;
+                rml:inputValueMap [
+                    rml:constant "[a filled in title]"
+                ]
+            ]
+        ] ;
+    ] .
+# Any custom function can be used,
+# or nested functions (eg AND/OR),
+# depending on what the engines support
