@@ -23,23 +23,43 @@ async function loadTurtle() {
 var respecConfig = {
     // check https://respec.org/docs/ for the meaning of these keys
     preProcess: [loadTurtle],
-    prevVersion: "https://kg-construct.github.io/rml-fnml/spec/docs/20251107/",
+    prevVersion: "https://kg-construct.github.io/rml-fnml/spec/docs/20260202/",
     authors: [
         {
             name: "Ben De Meester",
+            company: "Ghent University &ndash; imec &ndash; IDLab",
+            url: "https://ben.de-meester.org/#me",
+            orcid: "0000-0003-0248-0987",
+            companyURL: "https://knows.idlab.ugent.be/"
         },
         {
             name: "Samaneh Jozashoori",
+            company: "metaphacts",
+            url: "https://scholar.google.com/citations?user=7gXRi3YAAAAJ",
+            orcid: "0000-0003-1702-8707",
+            companyURL: "https://metaphacts.com/"
         },
         {
-            name: "Pano Maria"
+              name: "Pano Maria",
+              company: "ModelDesk",
+              url: "https://modeldesk.io",
+              orcid: "0009-0000-2598-1894",
+              companyURL: "https://modeldesk.io"
         },
         {
-            name: "David Chaves-Fraga"
-        },
-        {
-            name: "Anastasia Dimou"
-        },
+              name: "David Chaves-Fraga",
+              url: "https://davidchavesfraga.com",
+              company: "CiTIUS &ndash; University of Santiago de Compostela",
+              orcid: "0000-0003-3236-2789",
+              companyURL: "https://citius.gal"
+            },
+         {
+              name: "Anastasia Dimou",
+              mailto: "anastasia.dimou@kuleuven.be",
+              company: "KU Leuven",
+              orcid: "0000-0003-2138-7972",
+              companyURL: "https://dtai.cs.kuleuven.be/"
+       },
     ],
     edDraftURI: "https://w3id.org/rml/fnml/spec/",
     editors: [
@@ -52,11 +72,13 @@ var respecConfig = {
         }
     ],
     formerEditors: [
-        {
-            name: "Anastasia Dimou",
-            url: "https://natadimou.com/#me",
-            orcid: "0000-0003-2138-7972",
-        }
+       {
+              name: "Anastasia Dimou",
+              mailto: "anastasia.dimou@kuleuven.be",
+              company: "KU Leuven",
+              orcid: "0000-0003-2138-7972",
+              companyURL: "https://dtai.cs.kuleuven.be/"
+       }
     ],
     github: "https://github.com/kg-construct/rml-fnml",
     latestVersion: null,
@@ -84,19 +106,7 @@ var respecConfig = {
             date: "16 August 2022",
         },
     },
-    otherLinks: [
-        {
-            key: "Website",
-            data: [{
-                value: "https://rml.io",
-                href: "https://rml.io"
-            },
-            {
-                value: "https://fno.io",
-                href: "https://fno.io"
-            }]
-        },
-    ],
+
     // shortName: "RML-FNML",
     specStatus: "CG-DRAFT",
     // W3C config

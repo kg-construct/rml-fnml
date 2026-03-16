@@ -40,20 +40,14 @@ var respecConfig = {
       name: "Tobias Schweizer"
     }, {
       name: "Els de Vleeschauwer",
-      company: "Ghent University &ndash; imec &ndash; IDLab",
+      url: "https://research.ugent.be/web/person/els-de-vleeschauwer-0/en",
+      company: "IDLab &ndash; Ghent University &ndash; imec",
       orcid: "0000-0002-8630-3947",
       companyURL: "https://knows.idlab.ugent.be/"
     }
   ],
   edDraftURI: "https://w3id.org/rml/fnml/test-cases/",
   editors: [
-    {
-      name: "Dylan Van Assche",
-      url: "https://dylanvanassche.be",
-      company: "IDLab &ndash; Ghent University &ndash; imec",
-      orcid: "0000-0002-7195-9935",
-      companyURL: "https://knows.idlab.ugent.be/"
-    },
     {
       name: "Ben De Meester",
       company: "Ghent University &ndash; imec &ndash; IDLab",
@@ -63,6 +57,13 @@ var respecConfig = {
     }
   ],
   formerEditors: [
+       {
+      name: "Dylan Van Assche",
+      url: "https://dylanvanassche.be",
+      company: "IDLab &ndash; Ghent University &ndash; imec",
+      orcid: "0000-0002-7195-9935",
+      companyURL: "https://knows.idlab.ugent.be/"
+    }
   ],
   github: "https://github.com/kg-construct/rml-fnml",
   license: "w3c-software-doc",
@@ -88,6 +89,7 @@ var respecConfig = {
   // W3C config
   copyrightStart: "2024",
   doJsonLd: true,
-  prevVersion: "https://kg-construct.github.io/rml-fnml/test-cases/docs/20250630/",
+  latestVersion: null,
+  prevVersion: "https://kg-construct.github.io/rml-fnml/test-cases/docs/20250806/",
   group: "kg-construct",
 };
