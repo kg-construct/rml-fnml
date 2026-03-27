@@ -1,10 +1,11 @@
-## RMLFNMLTC0002-CSV
+## RMLFNMLTC0001-CSV
 
-**Title**: Function on object, 1 reference parameter
+**Title**: Function on object, 0 parameters
 
-**Description**: Tests:
-(1) if a function with one parameter can be used, (FnO)
-RMLFNMLTC0002-CSV,Function on object
+**Description**: Tests
+(1) if a function without parameters can be used (FnO)
+(2) if a function on an object map can be used (Term)
+(3) if the output of the function is assigned the correct termType by default
 
 **Error expected?** No
 
@@ -22,7 +23,7 @@ Id,Name,Comment,Class
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://w3id.org/rml/> .
 @prefix fno: <https://w3id.org/function/ontology#> .
-@prefix grel: <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
+@prefix idlab-fn: <https://w3id.org/imec/idlab/function#> .
 
 @base <http://example.com/base/> .
 
@@ -41,25 +42,16 @@ Id,Name,Comment,Class
         rml:predicate foaf:name;
         rml:objectMap [
             rml:functionExecution <#Execution> ;
-            rml:return grel:stringOut
+            rml:return idlab-fn:_stringOut
         ]
     ] .
 
 <#Execution>
-    rml:function grel:toUpperCase ;
-    rml:input
-        [
-            rml:parameter grel:valueParam ;
-            rml:inputValueMap [
-                rml:reference "Name" ;
-            ]
-        ] .
-
+    rml:function idlab-fn:alwaysReturnsABC .
 ```
 
 **Output**
 ```
-<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "VENUS" .
-
+<http://example.com/Venus> <http://xmlns.com/foaf/0.1/name> "ABC" .
 ```
 
