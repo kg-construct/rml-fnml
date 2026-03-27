@@ -19,7 +19,7 @@ RMLFNMLTC0005-CSV,"Function on object, 1 template parameter",Tests if a function
 RMLFNMLTC0071-CSV,"Function on datatypeMap, 1 parameter",Tests that function on DatatypeMap is handled,fnml,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
 RMLFNMLTC0002-CSV,"Function on object, 1 reference parameter","Tests:
 (1) if a function with one parameter can be used, (FnO)
-RMLFNMLTC0002-CSV,Function on object",fnml,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
+(2) a reference parameter can be used (Term)",fnml,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
 RMLFNMLTC0004-CSV,"Function on object, the output termType is Literal",Tests if the output of the function is assigned the correct termType,fnml,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
 RMLFNMLTC0008-CSV,Function on object returns null,Tests that no triple should be generated when the result is null.,fnml,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
 RMLFNMLTC0041-CSV,Function using non-constant shortcut property return,Tests that a non-constant FNML Return map also works,fnml,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false

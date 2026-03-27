@@ -5,8 +5,6 @@ RMLFNMLTC0001-CSV,"Function on object, 0 parameters","Tests
 (3) if the output of the function is assigned the correct termType by default",,CSV,CSV,FALSE,student.csv,,,
 RMLFNMLTC0002-CSV,"Function on object, 1 reference parameter","Tests:
 (1) if a function with one parameter can be used, (FnO)
-RMLFNMLTC0002-CSV,"Function on object, 1 reference parameter","Tests:
-(1) if a function with one parameter can be used, (FnO)
 (2) a reference parameter can be used (Term)",,CSV,CSV,FALSE,student.csv,,,
 RMLFNMLTC0003-CSV,"Function on object, 1 reference parameter, the output termType is IRI",Tests if the output of the function is assigned the correct termType,,CSV,CSV,FALSE,student.csv,,,
 RMLFNMLTC0004-CSV,"Function on object, the output termType is Literal",Tests if the output of the function is assigned the correct termType,,CSV,CSV,FALSE,student.csv,,,

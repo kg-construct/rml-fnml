@@ -4,7 +4,7 @@
 
 **Description**: Tests:
 (1) if a function with one parameter can be used, (FnO)
-RMLFNMLTC0002-CSV,Function on object
+(2) a reference parameter can be used (Term)
 
 **Error expected?** No
 
