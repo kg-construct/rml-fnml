@@ -1,4 +1,8 @@
 ID,title,description,part of spec,data format,ref. formulation,error expected?,input file 1,input file 2,input file 3,comment
+RMLFNMLTC0001-CSV,"Function on object, 0 parameters","Tests
+(1) if a function without parameters can be used (FnO)
+(2) if a function on an object map can be used (Term)
+(3) if the output of the function is assigned the correct termType by default",,CSV,CSV,FALSE,student.csv,,,
 RMLFNMLTC0002-CSV,"Function on object, 1 reference parameter","Tests:
 (1) if a function with one parameter can be used, (FnO)
 (2) a reference parameter can be used (Term)",,CSV,CSV,FALSE,student.csv,,,

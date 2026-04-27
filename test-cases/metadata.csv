@@ -5,6 +5,10 @@ RMLFNMLTC0102-CSV,"Function on object, wrong function URI",Tests that nothing is
 RMLFNMLTC0101-CSV,"Function on object, 1 false reference parameter",Tests if a false reference parameters is caught,fnml,mapping.ttl,text/csv,,,,,,student.csv,,,,,,true
 RMLFNMLTC0007-CSV,Function on object returns empty string,Tests that a triple is generated when the results is an empty string.,fnml,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
 RMLFNMLTC0103-CSV,"Function on object, wrong parameter",Tests that nothing is generated if a function is defined using a parameter not defined in the FnO description,fnml,mapping.ttl,text/csv,,,,,,student.csv,,,,,,true
+RMLFNMLTC0001-CSV,"Function on object, 0 parameters","Tests
+(1) if a function without parameters can be used (FnO)
+(2) if a function on an object map can be used (Term)
+(3) if the output of the function is assigned the correct termType by default",fnml,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
 RMLFNMLTC0051-CSV,Nested function - Test A,"Tests if a composite function of form f(g(x1),x2) works (i.e., the inner function is only one argument of the outer function)",fnml,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
 RMLFNMLTC0021-CSV,"Function on object, 1 reference parameter, 1 constant parameter",Tests if a function with multiple parameters can be used,fnml,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
 RMLFNMLTC0081-CSV,"Function on languageMap, 1 parameter",Tests that function on LanguageMap is handled,fnml,mapping.ttl,text/csv,,,application/n-quads,,,student.csv,,,output.nq,,,false
