@@ -8,7 +8,7 @@
     rml:predicate rdfs:label;
     rml:objectMap [
       rml:functionExecution [
-        rml:function grel:toUppercase;
+        rml:function grel:toUpperCase;
         rml:input [
           rml:parameter grel:valueParam;
           rml:inputValueMap [
