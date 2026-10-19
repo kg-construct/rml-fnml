@@ -138,6 +138,26 @@
         <http://w3id.org/rml/test/inputFormat>
                 "text/csv" .
 
+<http://w3id.org/rml/fnml/test/RMLFNMLTC0201>
+        a       <http://www.w3.org/2006/03/test-description#TestCase>;
+        <http://purl.org/dc/terms/identifier>
+                "RMLFNMLTC0201";
+        <http://w3id.org/rml/test/hasError>
+                true;
+        <http://w3id.org/rml/test/mappingDocument>
+                "mapping.ttl" .
+
+<http://w3id.org/rml/fnml/test/RMLFNMLTC0200>
+        a       <http://www.w3.org/2006/03/test-description#TestCase>;
+        <http://purl.org/dc/terms/identifier>
+                "RMLFNMLTC0200";
+        <http://w3id.org/rml/test/hasError>
+                false;
+        <http://w3id.org/rml/test/mappingDocument>
+                "mapping.ttl";
+        <http://w3id.org/rml/test/output>
+                <http://w3id.org/rml/fnml/test/RMLFNMLTC0200/output/output.nq> .
+
 <http://w3id.org/rml/fnml/test/RMLFNMLTC0104-CSV>
         a       <http://www.w3.org/2006/03/test-description#TestCase>;
         <http://purl.org/dc/terms/identifier>
@@ -389,6 +409,13 @@
                 "mapping.ttl";
         <http://w3id.org/rml/test/output>
                 <http://w3id.org/rml/fnml/test/RMLFNMLTC0001-CSV/output/output.nq> .
+
+<http://w3id.org/rml/fnml/test/RMLFNMLTC0200/output/output.nq>
+        a       <http://w3id.org/rml/test/Output>;
+        <http://w3id.org/rml/test/output>
+                "output.nq";
+        <http://w3id.org/rml/test/outputFormat>
+                "application/n-quads" .
 
 <http://w3id.org/rml/fnml/test/RMLFNMLTC0081-CSV/output/output.nq>
         a       <http://w3id.org/rml/test/Output>;
