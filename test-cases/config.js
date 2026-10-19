@@ -90,6 +90,6 @@ var respecConfig = {
   copyrightStart: "2024",
   doJsonLd: true,
   latestVersion: null,
-  prevVersion: "https://kg-construct.github.io/rml-fnml/test-cases/docs/20260316/",
+  prevVersion: "https://kg-construct.github.io/rml-fnml/test-cases/docs/20260504/",
   group: "kg-construct",
 };

@@ -1,0 +1,1921 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<meta charset="utf-8">
+<meta name="generator" content="ReSpec 37.4.1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+dfn{cursor:pointer}
+.dfn-panel{position:absolute;z-index:35;min-width:300px;max-width:500px;padding:.5em .75em;margin-top:.6em;font-family:"Helvetica Neue",sans-serif;font-size:small;background:#fff;background:var(--indextable-hover-bg,#fff);color:#000;color:var(--text,#000);box-shadow:0 1em 3em -.4em rgba(0,0,0,.3),0 0 1px 1px rgba(0,0,0,.05);box-shadow:0 1em 3em -.4em var(--tocsidebar-shadow,rgba(0,0,0,.3)),0 0 1px 1px var(--tocsidebar-shadow,rgba(0,0,0,.05));border-radius:2px}
+.dfn-panel:not(.docked)>.caret{position:absolute;top:-9px}
+.dfn-panel:not(.docked)>.caret::after,.dfn-panel:not(.docked)>.caret::before{content:"";position:absolute;border:10px solid transparent;border-top:0;border-bottom:10px solid #fff;border-bottom-color:var(--indextable-hover-bg,#fff);top:0}
+.dfn-panel:not(.docked)>.caret::before{border-bottom:9px solid #a2a9b1;border-bottom-color:var(--indextable-hover-bg,#a2a9b1)}
+.dfn-panel *{margin:0}
+.dfn-panel b{display:block;color:#000;color:var(--text,#000);margin-top:.25em}
+.dfn-panel ul a[href]{color:#333;color:var(--text,#333)}
+.dfn-panel>div{display:flex}
+.dfn-panel a.self-link{font-weight:700;margin-right:auto}
+.dfn-panel .marker{padding:.1em;margin-left:.5em;border-radius:.2em;text-align:center;white-space:nowrap;font-size:90%;color:#040b1c}
+.dfn-panel .marker.dfn-exported{background:#d1edfd;box-shadow:0 0 0 .125em #1ca5f940}
+.dfn-panel .marker.idl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel .marker.cddl-block{background:#8ccbf2;box-shadow:0 0 0 .125em #0670b161}
+.dfn-panel a:not(:hover){text-decoration:none!important;border-bottom:none!important}
+.dfn-panel a[href]:hover{border-bottom-width:1px}
+.dfn-panel ul{padding:0}
+.dfn-panel li{margin-left:1em}
+.dfn-panel.docked{position:fixed;left:.5em;top:unset;bottom:2em;margin:0 auto;max-width:calc(100vw - .75em * 2 - .5em - .2em * 2);max-height:30vh;overflow:auto}
+</style>
+    
+<title>RML-FNML: Test Cases</title>
+    
+    
+    
+<style type="text/css">
+
+        /* Adapted from R2RML */
+        aside.ex-input,
+        aside.ex-mapping,
+        aside.ex-output {
+            word-wrap:normal;
+            margin-top: 1.5em;
+            padding: 1em;
+            font-size: 80%;
+        }
+        aside.ex-input:before,
+        aside.ex-mapping:before,
+        aside.ex-output:before {
+            background: white;
+            display: block;
+            font-family: sans-serif;
+            font-size: 90%;
+            margin: -1.5em 0 0.5em 0;
+            padding: 0.4em 0.4em;
+            width: 18em;
+        }
+        /* Input data example */
+        aside.ex-input {
+            background: #cee;
+        }
+        aside.ex-input,
+        aside.ex-input:before {
+            border: 1px solid #acc;
+            overflow: auto;
+        }
+        aside.ex-input:before {
+            content: "Example input data";
+        }
+        /* RML mapping example */
+        aside.ex-mapping {
+            background: #eeb;
+        }
+        aside.ex-mapping,
+        aside.ex-mapping:before {
+            border: 1px solid #cc9;
+            overflow: auto;
+        }
+        aside.ex-mapping:before {
+            content: "Example RML mapping";
+        }
+        /* Output RDF example */
+        aside.ex-output {
+            background: #cfc;
+        }
+        aside.ex-output,
+        aside.ex-output:before {
+            border: 1px solid #aca;
+            overflow: auto;
+        }
+        aside.ex-output:before {
+            content: "Example output data";
+        }
+        table, th, td {
+          background: white;
+          border-collapse: collapse;
+          border: 1px solid;
+        }
+        th, td {
+          padding: 5px;
+          text-align: left;
+        }
+        th {
+          font-weight: bold;
+        }
+    
+</style>
+    
+
+<style id="respec-mainstyle">
+@keyframes pop{
+0%{transform:scale(1,1)}
+25%{transform:scale(1.25,1.25);opacity:.75}
+100%{transform:scale(1,1)}
+}
+a.internalDFN{color:inherit;border-bottom:1px solid #99c;text-decoration:none}
+a.externalDFN{color:inherit;border-bottom:1px dotted #ccc;text-decoration:none}
+a.bibref{text-decoration:none}
+.respec-offending-element:target{animation:pop .25s ease-in-out 0s 1}
+.respec-offending-element,a[href].respec-offending-element{text-decoration:red wavy underline}
+@supports not (text-decoration:red wavy underline){
+.respec-offending-element:not(pre){display:inline-block}
+.respec-offending-element{background:url(data:image/gif;base64,R0lGODdhBAADAPEAANv///8AAP///wAAACwAAAAABAADAEACBZQjmIAFADs=) bottom repeat-x}
+}
+#references :target{background:#eaf3ff;animation:pop .4s ease-in-out 0s 1}
+@media (prefers-color-scheme:dark){
+#references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+}
+body:has(input[name=color-scheme][value=dark]:checked) #references :target{background:color-mix(in srgb, #eaf3ff 15%, transparent)}
+cite .bibref{font-style:italic}
+a[href].orcid{padding-left:4px;padding-right:4px}
+a[href].orcid>svg{margin-bottom:-2px}
+ol.tof,ul.tof{list-style:none outside none}
+.caption{margin-top:.5em;font-style:italic}
+#issue-summary>ul{column-count:2}
+#issue-summary li{list-style:none}
+details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
+details.respec-tests-details>*{padding-right:2em}
+details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
+details.respec-tests-details[open]>summary{border-bottom:thin solid #cad3e2;padding-left:1em;margin-bottom:1em;line-height:2em}
+details.respec-tests-details>ul{width:100%;margin-top:-.3em}
+details.respec-tests-details>li{padding-left:1em}
+.self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
+aside.example .marker>a.self-link{color:inherit}
+.header-wrapper{display:flex;align-items:baseline}
+:is(h2,h3,h4,h5,h6):not(:where(#toc>h2,#abstract>h2,#sotd>h2,.head>h2)):has(+a.self-link){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(:where(#toch2))+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.8;text-decoration:none}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§"}
+:is(h2,h3)+a.self-link{top:-.2em}
+:is(h2,h3)+a.self-link::before{color:var(--heading-text)}
+@media (max-width:767px){
+dd{margin-left:0}
+}
+@media print{
+.removeOnSave{display:none}
+}
+body:has(input[name=color-scheme][value=light]:checked),head:not(:has(meta[name=color-scheme][content~=dark]))+body{color-scheme:light}
+body:has(input[name=color-scheme][value=dark]:checked){color-scheme:dark}
+</style>
+<meta name="color-scheme" content="light">
+<meta name="description" content="This document defines the RML-FNML test cases to the determine the RML-FNML specification conformance of tools.">
+<style>
+.hljs,body:has(input[name=color-scheme][value=light]:checked) .hljs,head:not(:has(meta[name=color-scheme][content~=dark]))+body .hljs{--base:#fafafa;--mono-1:#383a42;--mono-2:#686b77;--mono-3:#717277;--hue-1:#0b76c5;--hue-2:#336ae3;--hue-3:#a626a4;--hue-4:#42803c;--hue-5:#ca4706;--hue-5-2:#c91243;--hue-6:#986801;--hue-6-2:#9a6a01}
+@media (prefers-color-scheme:dark){
+.hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
+}
+}
+body:has(input[name=color-scheme][value=dark]:checked) .hljs{
+  --base: #282c34;
+  --mono-1: #abb2bf;
+  --mono-2: #818896;
+  --mono-3: #5c6370;
+  --hue-1: #56b6c2;
+  --hue-2: #61aeee;
+  --hue-3: #c678dd;
+  --hue-4: #98c379;
+  --hue-5: #e06c75;
+  --hue-5-2: #be5046;
+  --hue-6: #d19a66;
+  --hue-6-2: #e6c07b;
+}
+.hljs{display:block;overflow-x:auto;padding:.5em;color:#383a42;color:var(--mono-1,#383a42);background:#fafafa;background:var(--base,#fafafa)}
+.hljs-comment,.hljs-quote{color:#717277;color:var(--mono-3,#717277);font-style:italic}
+.hljs-doctag,.hljs-formula,.hljs-keyword{color:#a626a4;color:var(--hue-3,#a626a4)}
+.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#ca4706;color:var(--hue-5,#ca4706);font-weight:700}
+.hljs-literal{color:#0b76c5;color:var(--hue-1,#0b76c5)}
+.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#42803c;color:var(--hue-4,#42803c)}
+.hljs-built_in,.hljs-class .hljs-title{color:#9a6a01;color:var(--hue-6-2,#9a6a01)}
+.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#986801;color:var(--hue-6,#986801)}
+.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#336ae3;color:var(--hue-2,#336ae3)}
+.hljs-emphasis{font-style:italic}
+.hljs-strong{font-weight:700}
+.hljs-link{text-decoration:underline}
+</style>
+<style>
+var:hover{text-decoration:underline;cursor:pointer}
+var.respec-hl{color:var(--color,#000);background-color:var(--bg-color);box-shadow:0 0 0 2px var(--bg-color)}
+@media (prefers-color-scheme:dark){
+var.respec-hl{filter:saturate(.9) brightness(.9)}
+}
+var.respec-hl-c1{--bg-color:#f4d200}
+var.respec-hl-c2{--bg-color:#ff87a2}
+var.respec-hl-c3{--bg-color:#96e885}
+var.respec-hl-c4{--bg-color:#3eeed2}
+var.respec-hl-c5{--bg-color:#eacfb6}
+var.respec-hl-c6{--bg-color:#82ddff}
+var.respec-hl-c7{--bg-color:#ffbcf2}
+@media print{
+var.respec-hl{background:0 0;color:#000;box-shadow:unset}
+}
+</style>
+<style>
+var[data-type]{position:relative}
+var[data-type]::after,var[data-type]::before{position:absolute;left:50%;top:-6px;opacity:0;transition:opacity .4s;pointer-events:none}
+var[data-type]::before{content:"";transform:translateX(-50%);border-width:4px 6px 0 6px;border-style:solid;border-color:transparent;border-top-color:#222}
+var[data-type]::after{content:attr(data-type);transform:translateX(-50%) translateY(-100%);background:#222;text-align:center;font-family:"Dank Mono","Fira Code",monospace;font-style:normal;padding:6px;border-radius:3px;color:#daca88;text-indent:0;font-weight:400}
+var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
+</style>
+<script id="initialUserConfig" type="application/json">{
+  "preProcess": [
+    null
+  ],
+  "authors": [
+    {
+      "name": "Dylan Van Assche",
+      "url": "https://dylanvanassche.be",
+      "company": "IDLab &ndash; Ghent University &ndash; imec",
+      "orcid": "https://orcid.org/0000-0002-7195-9935",
+      "companyURL": "https://knows.idlab.ugent.be/"
+    },
+    {
+      "name": "Ben De Meester",
+      "company": "Ghent University &ndash; imec &ndash; IDLab",
+      "url": "https://ben.de-meester.org/#me",
+      "orcid": "https://orcid.org/0000-0003-0248-0987",
+      "companyURL": "https://knows.idlab.ugent.be/"
+    },
+    {
+      "name": "Tobias Schweizer"
+    },
+    {
+      "name": "Els de Vleeschauwer",
+      "url": "https://research.ugent.be/web/person/els-de-vleeschauwer-0/en",
+      "company": "IDLab &ndash; Ghent University &ndash; imec",
+      "orcid": "https://orcid.org/0000-0002-8630-3947",
+      "companyURL": "https://knows.idlab.ugent.be/"
+    }
+  ],
+  "edDraftURI": "https://w3id.org/rml/fnml/test-cases/",
+  "editors": [
+    {
+      "name": "Ben De Meester",
+      "company": "Ghent University &ndash; imec &ndash; IDLab",
+      "url": "https://ben.de-meester.org/#me",
+      "orcid": "https://orcid.org/0000-0003-0248-0987",
+      "companyURL": "https://knows.idlab.ugent.be/"
+    }
+  ],
+  "formerEditors": [
+    {
+      "name": "Dylan Van Assche",
+      "url": "https://dylanvanassche.be",
+      "company": "IDLab &ndash; Ghent University &ndash; imec",
+      "orcid": "https://orcid.org/0000-0002-7195-9935",
+      "companyURL": "https://knows.idlab.ugent.be/"
+    }
+  ],
+  "github": "https://github.com/kg-construct/rml-fnml",
+  "license": "w3c-software-doc",
+  "localBiblio": {
+    "RML-Core": {
+      "title": "RML-Core",
+      "href": "https://w3id.org/rml/core/spec",
+      "status": "Draft Community Group Report",
+      "publisher": "W3C",
+      "date": "07 August 2024"
+    },
+    "RML-IO": {
+      "title": "RML-IO",
+      "href": "https://w3id.org/rml/io/spec",
+      "status": "Draft Community Group Report",
+      "publisher": "W3C",
+      "date": "12 March 2024"
+    }
+  },
+  "otherLinks": [],
+  "shortName": "RML-FNML-Testcases",
+  "specStatus": "CG-DRAFT",
+  "copyrightStart": "2024",
+  "doJsonLd": true,
+  "latestVersion": null,
+  "prevVersion": "https://kg-construct.github.io/rml-fnml/test-cases/docs/20260504/",
+  "group": "kg-construct",
+  "publishISODate": "2026-10-19T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 19 October 2026"
+}</script>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft">
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/dark.css" disabled=""></head>
+
+<body class="h-entry informative darkmode"><div class="head">
+    
+    <h1 id="title" class="title">RML-FNML: Test Cases</h1> 
+    <p id="w3c-state">
+      <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
+      <time class="dt-published" datetime="2026-10-19">19 October 2026</time>
+    </p>
+    <dl>
+      
+      <dt>Latest published version:</dt><dd>
+                none
+              </dd>
+      <dt>Latest editor's draft:</dt><dd><a href="https://w3id.org/rml/fnml/test-cases/">https://w3id.org/rml/fnml/test-cases/</a></dd>
+      
+      
+      <dt>Previous version:</dt><dd><a href="https://kg-construct.github.io/rml-fnml/test-cases/docs/20260504/">https://kg-construct.github.io/rml-fnml/test-cases/docs/20260504/</a></dd>
+      
+      <dt>
+                Editor:
+              </dt><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://ben.de-meester.org/#me">Ben De Meester</a><a class="p-name orcid" href="https://orcid.org/0000-0003-0248-0987"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <style>
+
+      .st1 {
+        fill: #fff;
+      }
+    
+</style>
+    <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
+    <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
+  </svg></a> (<a class="p-org org h-org" href="https://knows.idlab.ugent.be/">Ghent University – imec – IDLab</a>)
+  </dd>
+      <dt>
+                Former editor:
+              </dt><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://dylanvanassche.be">Dylan Van Assche</a><a class="p-name orcid" href="https://orcid.org/0000-0002-7195-9935"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <style>
+
+      .st1 {
+        fill: #fff;
+      }
+    
+</style>
+    <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
+    <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
+  </svg></a> (<a class="p-org org h-org" href="https://knows.idlab.ugent.be/">IDLab – Ghent University – imec</a>)
+  </dd>
+      <dt>
+                Authors:
+              </dt><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://dylanvanassche.be">Dylan Van Assche</a><a class="p-name orcid" href="https://orcid.org/0000-0002-7195-9935"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <style>
+
+      .st1 {
+        fill: #fff;
+      }
+    
+</style>
+    <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
+    <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
+  </svg></a> (<a class="p-org org h-org" href="https://knows.idlab.ugent.be/">IDLab – Ghent University – imec</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://ben.de-meester.org/#me">Ben De Meester</a><a class="p-name orcid" href="https://orcid.org/0000-0003-0248-0987"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <style>
+
+      .st1 {
+        fill: #fff;
+      }
+    
+</style>
+    <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
+    <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
+  </svg></a> (<a class="p-org org h-org" href="https://knows.idlab.ugent.be/">Ghent University – imec – IDLab</a>)
+  </dd><dd class="editor p-author h-card vcard">
+    <span class="p-name fn">Tobias Schweizer</span>
+  </dd><dd class="editor p-author h-card vcard">
+    <a class="u-url url p-name fn" href="https://research.ugent.be/web/person/els-de-vleeschauwer-0/en">Els de Vleeschauwer</a><a class="p-name orcid" href="https://orcid.org/0000-0002-8630-3947"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+    <style>
+
+      .st1 {
+        fill: #fff;
+      }
+    
+</style>
+    <path d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z" fill="#a6ce39"></path>
+    <path class="st1" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"></path>
+  </svg></a> (<a class="p-org org h-org" href="https://knows.idlab.ugent.be/">IDLab – Ghent University – imec</a>)
+  </dd>
+      <dt>Feedback:</dt><dd>
+        <a href="https://github.com/kg-construct/rml-fnml/">GitHub kg-construct/rml-fnml</a>
+        (<a href="https://github.com/kg-construct/rml-fnml/pulls/">pull requests</a>,
+        <a href="https://github.com/kg-construct/rml-fnml/issues/new/choose">new issue</a>,
+        <a href="https://github.com/kg-construct/rml-fnml/issues/">open issues</a>)
+      </dd>
+      
+    </dl>
+    
+    <p class="copyright">
+            <a href="https://www.w3.org/policies/#copyright">Copyright</a>
+            ©
+            2024-2026
+            
+            the Contributors to the RML-FNML: Test Cases
+            Specification, published by the
+            <a href="https://www.w3.org/groups/cg/kg-construct">Knowledge Graph Construction Community Group</a> under the
+            <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable
+                    <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a>
+                    is available.
+                  
+          </p>
+    <hr title="Separator for header">
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
+
+<section id="abstract" class="introductory"><h2>Abstract</h2><p>This document defines the RML-FNML test cases to the determine the RML-FNML specification conformance of tools.</p>
+</section>
+
+<section id="sotd" class="introductory"><h2>Status of This Document</h2><p>
+      This specification was published by the
+      <a href="https://www.w3.org/groups/cg/kg-construct">Knowledge Graph Construction Community Group</a>. It is not a W3C Standard nor is it
+      on the W3C Standards Track.
+      
+              Please note that under the
+              <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>
+              there is a limited opt-out and other conditions apply.
+            
+      Learn more about
+      <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.
+    </p><p>
+    <a href="https://github.com/kg-construct/rml-fnml/issues/">GitHub Issues</a> are preferred for
+            discussion of this specification.
+          
+    
+  </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#data-model"><bdi class="secno">2. </bdi>Data model</a></li><li class="tocline"><a class="tocxref" href="#test-cases"><bdi class="secno">3. </bdi>Test cases</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0001-CSV"><bdi class="secno">4. </bdi>RMLFNMLTC0001-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0002-CSV"><bdi class="secno">5. </bdi>RMLFNMLTC0002-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0003-CSV"><bdi class="secno">6. </bdi>RMLFNMLTC0003-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0004-CSV"><bdi class="secno">7. </bdi>RMLFNMLTC0004-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0005-CSV"><bdi class="secno">8. </bdi>RMLFNMLTC0005-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0007-CSV"><bdi class="secno">9. </bdi>RMLFNMLTC0007-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0008-CSV"><bdi class="secno">10. </bdi>RMLFNMLTC0008-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0011-CSV"><bdi class="secno">11. </bdi>RMLFNMLTC0011-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0021-CSV"><bdi class="secno">12. </bdi>RMLFNMLTC0021-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0031-CSV"><bdi class="secno">13. </bdi>RMLFNMLTC0031-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0032-CSV"><bdi class="secno">14. </bdi>RMLFNMLTC0032-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0041-CSV"><bdi class="secno">15. </bdi>RMLFNMLTC0041-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0051-CSV"><bdi class="secno">16. </bdi>RMLFNMLTC0051-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0061-CSV"><bdi class="secno">17. </bdi>RMLFNMLTC0061-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0071-CSV"><bdi class="secno">18. </bdi>RMLFNMLTC0071-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0081-CSV"><bdi class="secno">19. </bdi>RMLFNMLTC0081-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0101-CSV"><bdi class="secno">20. </bdi>RMLFNMLTC0101-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0102-CSV"><bdi class="secno">21. </bdi>RMLFNMLTC0102-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0103-CSV"><bdi class="secno">22. </bdi>RMLFNMLTC0103-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0104-CSV"><bdi class="secno">23. </bdi>RMLFNMLTC0104-CSV</a></li></ol></nav>
+
+<section id="introduction"><div class="header-wrapper"><h2 id="x1-introduction"><bdi class="secno">1. </bdi>Introduction</h2><a class="self-link" href="#introduction" aria-label="Permalink for Section 1."></a></div>
+<p>This document defines the RML-FNML test cases, consisting of a collection of test case documents (input and expected output).
+The purpose of the test cases is to determine the conformance of tools that execute RML rules to the RML-FNML specification.</p>
+</section>
+
+<section id="data-model"><div class="header-wrapper"><h2 id="x2-data-model"><bdi class="secno">2. </bdi>Data model</h2><a class="self-link" href="#data-model" aria-label="Permalink for Section 2."></a></div>
+<p>The test cases are semantically described for re-usability and shareability following the <a href="https://www.w3.org/2006/03/test-description">W3C Test case description</a>.
+Each <code>test:Testcase</code> as the following properties:</p>
+<ul>
+<li><code>dcterms:identifier</code>: unique ID of the test case.</li>
+<li><code>rmltest:hasError</code>: if an error of the RML Processor is expected or not.</li>
+<li><code>rmltest:input</code>: One or more input data of the test case.</li>
+<li><code>rmltest:output</code>: One or more output data of the test case.</li>
+<li><code>rmltest:inputFormat</code>: the input data format.</li>
+<li><code>rmltest:outputFormat</code>: the output data format.</li>
+<li><code>rmltest:mappingDocument</code>: the RML mapping rules in Turtle.</li>
+</ul>
+</section>
+
+<section id="test-cases"><div class="header-wrapper"><h2 id="x3-test-cases"><bdi class="secno">3. </bdi>Test cases</h2><a class="self-link" href="#test-cases" aria-label="Permalink for Section 3."></a></div>
+<p>This section describes the RML-FNML test cases. These descriptions are also available as RDF.
+The files are available on <a href="https://github.com/kg-construct/rml-fnml/tree/main/test-cases">GitHub</a> in the folder <code>test-cases</code>.
+Each test case is contained in a single folder, containing three types of files:</p>
+<ul>
+<li>Zero or more files containing the data sources, in the case of JSON, XML, CSV, or containing the SQL statements to create the necessary tables, in the case of MySQL, PostgreSQL, and SQL Server.</li>
+<li>One file with the RML rules, called <code>mapping.ttl</code>, in the Turtle format.</li>
+<li>Zero or more files with the expected RDF. No file is provided if an error is expected that must halt the generation of the RDF because of an error.</li>
+</ul>
+</section>
+
+
+<section id="RMLFNMLTC0001-CSV"><div class="header-wrapper"><h2 id="x4-rmlfnmltc0001-csv"><bdi class="secno">4. </bdi>RMLFNMLTC0001-CSV</h2><a class="self-link" href="#RMLFNMLTC0001-CSV" aria-label="Permalink for Section 4."></a></div>
+<p><strong>Title</strong>: Function on object, 0 parameters</p>
+<p><strong>Description</strong>: Tests
+(1) if a function without parameters can be used (FnO)
+(2) if a function on an object map can be used (Term)
+(3) if the output of the function is assigned the correct termType by default</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">idlab-fn</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/imec/idlab/function#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return idlab-fn:_stringOut
+        ]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function idlab-fn:alwaysReturnsABC .
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"ABC"</span> .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0002-CSV"><div class="header-wrapper"><h2 id="x5-rmlfnmltc0002-csv"><bdi class="secno">5. </bdi>RMLFNMLTC0002-CSV</h2><a class="self-link" href="#RMLFNMLTC0002-CSV" aria-label="Permalink for Section 5."></a></div>
+<p><strong>Title</strong>: Function on object, 1 reference parameter</p>
+<p><strong>Description</strong>: Tests:
+(1) if a function with one parameter can be used, (FnO)
+(2) a reference parameter can be used (Term)</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return grel:stringOut
+        ]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function grel:toUpperCase ;
+    rml:input
+        [
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"Name"</span> ;
+            ]
+        ] .
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"VENUS"</span> .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0003-CSV"><div class="header-wrapper"><h2 id="x6-rmlfnmltc0003-csv"><bdi class="secno">6. </bdi>RMLFNMLTC0003-CSV</h2><a class="self-link" href="#RMLFNMLTC0003-CSV" aria-label="Permalink for Section 6."></a></div>
+<p><strong>Title</strong>: Function on object, 1 reference parameter, the output termType is IRI</p>
+<p><strong>Description</strong>: Tests if the output of the function is assigned the correct termType</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class,url
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>,http://example.com/venus
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+@prefix <span class="hljs-attribute">idlab-fn</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/imec/idlab/function#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return idlab-fn:_stringOut ;
+            rml:termType rml:IRI
+        ];
+    ] .
+
+&lt;<span class="hljs-selector-id">#Execution</span>&gt;
+    rml:function idlab-fn:toUpperCaseURL ;
+    rml:input
+        [
+            rml:parameter idlab-fn:_str ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"url"</span>
+            ];
+        ] .
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs javascript">&lt;<span class="hljs-attr">http</span>:<span class="hljs-comment">//example.com/Venus&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; &lt;HTTP://EXAMPLE.COM/VENUS&gt; .</span>
+</code></pre>
+</section>
+<section id="RMLFNMLTC0004-CSV"><div class="header-wrapper"><h2 id="x7-rmlfnmltc0004-csv"><bdi class="secno">7. </bdi>RMLFNMLTC0004-CSV</h2><a class="self-link" href="#RMLFNMLTC0004-CSV" aria-label="Permalink for Section 7."></a></div>
+<p><strong>Title</strong>: Function on object, the output termType is Literal</p>
+<p><strong>Description</strong>: Tests if the output of the function is assigned the correct termType</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class,url
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>,http://example.com/venus
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+@prefix <span class="hljs-attribute">idlab-fn</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/imec/idlab/function#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return grel:output_number
+        ]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function grel:string_length ;
+    rml:input
+        [
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"Name"</span>
+            ];
+        ]  .
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"5"</span>^^&lt;http://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#integer&gt; .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0005-CSV"><div class="header-wrapper"><h2 id="x8-rmlfnmltc0005-csv"><bdi class="secno">8. </bdi>RMLFNMLTC0005-CSV</h2><a class="self-link" href="#RMLFNMLTC0005-CSV" aria-label="Permalink for Section 8."></a></div>
+<p><strong>Title</strong>: Function on object, 1 template parameter</p>
+<p><strong>Description</strong>: Tests if a function with a template parameter can be used</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return grel:stringOut
+        ]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function grel:toUpperCase ;
+    rml:input
+        [
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:template <span class="hljs-string">"Name: {Name}"</span> ;
+            ];
+        ] .
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"NAME: VENUS"</span> .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0007-CSV"><div class="header-wrapper"><h2 id="x9-rmlfnmltc0007-csv"><bdi class="secno">9. </bdi>RMLFNMLTC0007-CSV</h2><a class="self-link" href="#RMLFNMLTC0007-CSV" aria-label="Permalink for Section 9."></a></div>
+<p><strong>Title</strong>: Function on object returns empty string</p>
+<p><strong>Description</strong>: Tests that a triple is generated when the results is an empty string.</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs yaml"><span class="hljs-attr">@prefix foaf:</span> <span class="hljs-string">&lt;http://xmlns.com/foaf/0.1/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix ex:</span> <span class="hljs-string">&lt;http://example.com/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix xsd:</span> <span class="hljs-string">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix rml:</span> <span class="hljs-string">&lt;http://w3id.org/rml/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix fno:</span> <span class="hljs-string">&lt;https://w3id.org/function/ontology#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix grel:</span> <span class="hljs-string">&lt;http://users.ugent.be/~bjdmeest/function/grel.ttl#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix idlab-fn:</span> <span class="hljs-string">&lt;https://w3id.org/imec/idlab/function#&gt;</span> <span class="hljs-string">.</span>
+
+<span class="hljs-string">@base</span> <span class="hljs-string">&lt;http://example.com/base/&gt;</span> <span class="hljs-string">.</span>
+
+<span class="hljs-string">&lt;TriplesMap1&gt;</span>
+    <span class="hljs-string">rml:logicalSource</span> [
+        <span class="hljs-string">rml:source</span> [ <span class="hljs-string">a</span> <span class="hljs-string">rml:RelativePathSource;</span>
+          <span class="hljs-string">rml:root</span> <span class="hljs-string">rml:MappingDirectory;</span>
+          <span class="hljs-string">rml:path</span> <span class="hljs-string">"student.csv"</span>
+        ]<span class="hljs-string">;</span>
+        <span class="hljs-string">rml:referenceFormulation</span> <span class="hljs-string">rml:CSV</span>
+    ]<span class="hljs-string">;</span>
+    <span class="hljs-string">rml:subjectMap</span> [
+        <span class="hljs-string">rml:template</span> <span class="hljs-string">"http://example.com/{Name}"</span>
+    ]<span class="hljs-string">;</span>
+    <span class="hljs-string">rml:predicateObjectMap</span> [
+        <span class="hljs-string">rml:predicate</span> <span class="hljs-string">foaf:name;</span>
+        <span class="hljs-string">rml:objectMap</span> [
+            <span class="hljs-string">rml:functionExecution</span> <span class="hljs-string">&lt;#Execution&gt;</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:return</span> <span class="hljs-string">grel:stringOut</span>
+        ]
+    ] <span class="hljs-string">.</span>
+
+<span class="hljs-string">&lt;#Execution&gt;</span>
+    <span class="hljs-string">rml:function</span> <span class="hljs-string">grel:string_substring</span> <span class="hljs-string">;</span>
+    <span class="hljs-string">rml:input</span>
+        [
+            <span class="hljs-string">rml:parameter</span> <span class="hljs-string">grel:valueParam</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:inputValueMap</span> [
+                <span class="hljs-string">rml:reference</span> <span class="hljs-string">"Name"</span>
+            ]<span class="hljs-string">;</span>
+        ]  <span class="hljs-string">,</span>
+        [
+            <span class="hljs-string">a</span> <span class="hljs-string">rml:Input</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:parameter</span> <span class="hljs-string">grel:p_int_i_from</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:inputValue</span> <span class="hljs-string">"5"</span>
+        ]  <span class="hljs-string">.</span>
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">""</span> .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0008-CSV"><div class="header-wrapper"><h2 id="x10-rmlfnmltc0008-csv"><bdi class="secno">10. </bdi>RMLFNMLTC0008-CSV</h2><a class="self-link" href="#RMLFNMLTC0008-CSV" aria-label="Permalink for Section 10."></a></div>
+<p><strong>Title</strong>: Function on object returns null</p>
+<p><strong>Description</strong>: Tests that no triple should be generated when the result is null.</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs yaml"><span class="hljs-attr">@prefix foaf:</span> <span class="hljs-string">&lt;http://xmlns.com/foaf/0.1/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix ex:</span> <span class="hljs-string">&lt;http://example.com/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix xsd:</span> <span class="hljs-string">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix rml:</span> <span class="hljs-string">&lt;http://w3id.org/rml/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix fno:</span> <span class="hljs-string">&lt;https://w3id.org/function/ontology#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix grel:</span> <span class="hljs-string">&lt;http://users.ugent.be/~bjdmeest/function/grel.ttl#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix idlab-fn:</span> <span class="hljs-string">&lt;https://w3id.org/imec/idlab/function#&gt;</span> <span class="hljs-string">.</span>
+
+<span class="hljs-string">@base</span> <span class="hljs-string">&lt;http://example.com/base/&gt;</span> <span class="hljs-string">.</span>
+
+<span class="hljs-string">&lt;TriplesMap1&gt;</span>
+    <span class="hljs-string">rml:logicalSource</span> [
+        <span class="hljs-string">rml:source</span> [ <span class="hljs-string">a</span> <span class="hljs-string">rml:RelativePathSource;</span>
+          <span class="hljs-string">rml:root</span> <span class="hljs-string">rml:MappingDirectory;</span>
+          <span class="hljs-string">rml:path</span> <span class="hljs-string">"student.csv"</span>
+        ]<span class="hljs-string">;</span>
+        <span class="hljs-string">rml:referenceFormulation</span> <span class="hljs-string">rml:CSV</span>
+    ]<span class="hljs-string">;</span>
+    <span class="hljs-string">rml:subjectMap</span> [
+        <span class="hljs-string">rml:template</span> <span class="hljs-string">"http://example.com/{Name}"</span>
+    ]<span class="hljs-string">;</span>
+    <span class="hljs-string">rml:predicateObjectMap</span> [
+        <span class="hljs-string">rml:predicate</span> <span class="hljs-string">foaf:name;</span>
+        <span class="hljs-string">rml:objectMap</span> [
+            <span class="hljs-string">rml:functionExecution</span> <span class="hljs-string">&lt;#Execution&gt;</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:return</span> <span class="hljs-string">grel:stringOut</span>
+        ]
+    ] <span class="hljs-string">.</span>
+
+<span class="hljs-string">&lt;#Execution&gt;</span>
+    <span class="hljs-string">rml:function</span> <span class="hljs-string">grel:string_substring</span> <span class="hljs-string">;</span>
+    <span class="hljs-string">rml:input</span>
+        [
+            <span class="hljs-string">rml:parameter</span> <span class="hljs-string">grel:valueParam</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:inputValueMap</span> [
+                <span class="hljs-string">rml:reference</span> <span class="hljs-string">"Name"</span>
+            ]<span class="hljs-string">;</span>
+        ]  <span class="hljs-string">,</span>
+        [
+            <span class="hljs-string">a</span> <span class="hljs-string">rml:Input</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:parameter</span> <span class="hljs-string">grel:p_int_i_from</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:inputValue</span> <span class="hljs-string">"1000"</span>
+        ]  <span class="hljs-string">.</span>
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code></code></pre>
+</section>
+<section id="RMLFNMLTC0011-CSV"><div class="header-wrapper"><h2 id="x11-rmlfnmltc0011-csv"><bdi class="secno">11. </bdi>RMLFNMLTC0011-CSV</h2><a class="self-link" href="#RMLFNMLTC0011-CSV" aria-label="Permalink for Section 11."></a></div>
+<p><strong>Title</strong>: Function on predicate, 1 parameter</p>
+<p><strong>Description</strong>: Tests if a function can be used on a predicate</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class,url
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>,http://example.com
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+@prefix <span class="hljs-attribute">idlab-fn</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/imec/idlab/function#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicateMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return idlab-fn:_stringOut
+        ];
+        rml:object foaf:name;
+    ] .
+
+&lt;<span class="hljs-selector-id">#Execution</span>&gt;
+    rml:function idlab-fn:toUpperCaseURL ;
+    rml:input
+        [
+            rml:parameter idlab-fn:_str ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"url"</span>
+            ];
+        ] .
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs javascript">&lt;<span class="hljs-attr">http</span>:<span class="hljs-comment">//example.com/Venus&gt; &lt;HTTP://EXAMPLE.COM&gt; &lt;http://xmlns.com/foaf/0.1/name&gt; .</span>
+</code></pre>
+</section>
+<section id="RMLFNMLTC0021-CSV"><div class="header-wrapper"><h2 id="x12-rmlfnmltc0021-csv"><bdi class="secno">12. </bdi>RMLFNMLTC0021-CSV</h2><a class="self-link" href="#RMLFNMLTC0021-CSV" aria-label="Permalink for Section 12."></a></div>
+<p><strong>Title</strong>: Function on object, 1 reference parameter, 1 constant parameter</p>
+<p><strong>Description</strong>: Tests if a function with multiple parameters can be used</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return grel:stringOut
+        ]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function grel:escape ;
+    rml:input
+        [
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"Comment"</span>
+            ]
+        ] ,
+        [
+            rml:parameter grel:modeParam  ;
+            rml:inputValue <span class="hljs-string">"html"</span>
+        ] .
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"A&amp;B"</span> .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0031-CSV"><div class="header-wrapper"><h2 id="x13-rmlfnmltc0031-csv"><bdi class="secno">13. </bdi>RMLFNMLTC0031-CSV</h2><a class="self-link" href="#RMLFNMLTC0031-CSV" aria-label="Permalink for Section 13."></a></div>
+<p><strong>Title</strong>: Function on subject, 1 parameter</p>
+<p><strong>Description</strong>: Tests if 
+(1) a function can be used on a subject
+(2) Tests if the default termType assigned to the output of the function to be correct</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs javascript"><span class="hljs-title class_">Id</span>,<span class="hljs-title class_">Name</span>,url
+<span class="hljs-number">1</span>,<span class="hljs-title class_">Venus</span>,<span class="hljs-attr">http</span>:<span class="hljs-comment">//example.com</span>
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+@prefix <span class="hljs-attribute">idlab-fn</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/imec/idlab/function#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:functionExecution &lt;#Execution&gt; ;
+        rml:return idlab-fn:_stringOut
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [ rml:reference <span class="hljs-string">"Name"</span>]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function idlab-fn:toUpperCaseURL ;
+    rml:input
+        [
+            rml:parameter idlab-fn:_str ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"url"</span>
+            ];
+        ] .
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;HTTP://EXAMPLE.COM&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"Venus"</span> .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0032-CSV"><div class="header-wrapper"><h2 id="x14-rmlfnmltc0032-csv"><bdi class="secno">14. </bdi>RMLFNMLTC0032-CSV</h2><a class="self-link" href="#RMLFNMLTC0032-CSV" aria-label="Permalink for Section 14."></a></div>
+<p><strong>Title</strong>: Condition on subject</p>
+<p><strong>Description</strong>: Tests that a condition shortcut works</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Class
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>
+<span class="hljs-number">1</span>,Serena,<span class="hljs-selector-tag">B</span>
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+@prefix <span class="hljs-attribute">idlab-fn</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/imec/idlab/function#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ] ;
+    rml:subjectMap [
+        rml:condition [
+            rml:functionExecution [
+                rml:function idlab-fn:equal ;
+                rml:input [
+                    rml:parameter grel:valueParam ;
+                    rml:inputValueMap [
+                        rml:reference <span class="hljs-string">"Class"</span>
+                    ]
+                ] , [
+                    rml:parameter grel:valueParam2 ;
+                    rml:inputValue <span class="hljs-string">"A"</span> ;
+                ] ;
+            ] ;
+            rml:return idlab-fn:_boolOut ;
+        ] ;
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span> ;
+    ] ;
+    rml:predicateObjectMap [
+        rml:predicate foaf:name ;
+        rml:objectMap [
+            rml:reference <span class="hljs-string">"Name"</span> ;
+        ] ;
+    ] ;
+.
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"Venus"</span> .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0041-CSV"><div class="header-wrapper"><h2 id="x15-rmlfnmltc0041-csv"><bdi class="secno">15. </bdi>RMLFNMLTC0041-CSV</h2><a class="self-link" href="#RMLFNMLTC0041-CSV" aria-label="Permalink for Section 15."></a></div>
+<p><strong>Title</strong>: Function using non-constant shortcut property return</p>
+<p><strong>Description</strong>: Tests that a non-constant FNML Return map also works</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class,url
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>,http://example.com/venus
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:returnMap [
+                rml:constant grel:stringOut
+            ]
+        ]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function grel:toUpperCase ;
+    rml:input
+        [
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"Name"</span> ;
+            ]
+        ] .
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"VENUS"</span> .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0051-CSV"><div class="header-wrapper"><h2 id="x16-rmlfnmltc0051-csv"><bdi class="secno">16. </bdi>RMLFNMLTC0051-CSV</h2><a class="self-link" href="#RMLFNMLTC0051-CSV" aria-label="Permalink for Section 16."></a></div>
+<p><strong>Title</strong>: Nested function - Test A</p>
+<p><strong>Description</strong>: Tests if a composite function of form f(g(x1),x2) works (i.e., the inner function is only one argument of the outer function)</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class
+<span class="hljs-number">1</span>,M Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+@prefix <span class="hljs-attribute">idlab-fn</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/imec/idlab/function#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;#Person_Mapping&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap &lt;#NameMapping&gt; .
+
+&lt;#NameMapping&gt;
+    rml:predicate foaf:name ;
+    rml:objectMap [
+        rml:functionExecution &lt;#Execution&gt; ;
+        rml:return grel:stringOut
+    ]; .
+
+&lt;<span class="hljs-selector-id">#Execution</span>&gt; <span class="hljs-selector-tag">a</span> rml:FunctionExecution ;
+    rml:function grel:toUpperCase ;
+    rml:input
+        [
+            a rml:Input ;
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:functionExecution &lt;#Execution2&gt; ;
+                rml:return grel:stringOut
+            ]
+        ] .
+
+&lt;#Execution2&gt; a rml:Execution ;
+    rml:function grel:string_replace ;
+    rml:input
+        [
+            a rml:Input ;
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"Name"</span>
+            ]
+        ] ,
+        [
+            a rml:Input ;
+            rml:parameter grel:param_find ;
+            rml:inputValue <span class="hljs-string">" "</span>
+        ] ,
+        [
+            a rml:Input ;
+            rml:parameter grel:param_replace  ;
+            rml:inputValue <span class="hljs-string">"-"</span>
+        ] .
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/M%<span class="hljs-number">20</span>Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"M-VENUS"</span> .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0061-CSV"><div class="header-wrapper"><h2 id="x17-rmlfnmltc0061-csv"><bdi class="secno">17. </bdi>RMLFNMLTC0061-CSV</h2><a class="self-link" href="#RMLFNMLTC0061-CSV" aria-label="Permalink for Section 17."></a></div>
+<p><strong>Title</strong>: Function on graph, 1 parameter</p>
+<p><strong>Description</strong>: Tests if a function can be used on a graph</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class,url
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>,http://example.com/venus
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+@prefix <span class="hljs-attribute">idlab-fn</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/imec/idlab/function#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span> ;
+        rml:graphMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return idlab-fn:_stringOut
+            
+        ]
+    ];
+
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:reference <span class="hljs-string">"Name"</span>
+        ]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function idlab-fn:toUpperCaseURL ;
+    rml:input
+        [
+            rml:parameter idlab-fn:_str ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"url"</span> ;
+            ]
+        ] .
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"Venus"</span> &lt;HTTP://EXAMPLE.COM/VENUS&gt; .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0071-CSV"><div class="header-wrapper"><h2 id="x18-rmlfnmltc0071-csv"><bdi class="secno">18. </bdi>RMLFNMLTC0071-CSV</h2><a class="self-link" href="#RMLFNMLTC0071-CSV" aria-label="Permalink for Section 18."></a></div>
+<p><strong>Title</strong>: Function on datatypeMap, 1 parameter</p>
+<p><strong>Description</strong>: Tests that function on DatatypeMap is handled</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class,Type
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>,http://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#string
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs yaml"><span class="hljs-attr">@prefix foaf:</span> <span class="hljs-string">&lt;http://xmlns.com/foaf/0.1/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix ex:</span> <span class="hljs-string">&lt;http://example.com/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix xsd:</span> <span class="hljs-string">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix rml:</span> <span class="hljs-string">&lt;http://w3id.org/rml/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix fno:</span> <span class="hljs-string">&lt;https://w3id.org/function/ontology#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix grel:</span> <span class="hljs-string">&lt;http://users.ugent.be/~bjdmeest/function/grel.ttl#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix idlab-fn:</span> <span class="hljs-string">&lt;https://w3id.org/imec/idlab/function#&gt;</span> <span class="hljs-string">.</span>
+
+<span class="hljs-string">@base</span> <span class="hljs-string">&lt;http://example.com/base/&gt;</span> <span class="hljs-string">.</span>
+
+<span class="hljs-string">&lt;TriplesMap1&gt;</span>
+    <span class="hljs-string">rml:logicalSource</span> [
+        <span class="hljs-string">rml:source</span> [ <span class="hljs-string">a</span> <span class="hljs-string">rml:RelativePathSource;</span>
+          <span class="hljs-string">rml:root</span> <span class="hljs-string">rml:MappingDirectory;</span>
+          <span class="hljs-string">rml:path</span> <span class="hljs-string">"student.csv"</span>
+        ]<span class="hljs-string">;</span>
+        <span class="hljs-string">rml:referenceFormulation</span> <span class="hljs-string">rml:CSV</span>
+    ]<span class="hljs-string">;</span>
+    <span class="hljs-string">rml:subjectMap</span> [
+        <span class="hljs-string">rml:template</span> <span class="hljs-string">"http://example.com/{Name}"</span>
+    ]<span class="hljs-string">;</span>
+    <span class="hljs-string">rml:predicateObjectMap</span> [
+        <span class="hljs-string">rml:predicate</span> <span class="hljs-string">foaf:name;</span>
+        <span class="hljs-string">rml:objectMap</span> [
+           <span class="hljs-string">rml:reference</span> <span class="hljs-string">"Name"</span> <span class="hljs-string">;</span>
+           <span class="hljs-string">rml:datatypeMap</span> [
+             <span class="hljs-string">rml:functionExecution</span> <span class="hljs-string">&lt;#Execution&gt;</span> <span class="hljs-string">;</span>
+             <span class="hljs-string">rml:return</span> <span class="hljs-string">grel:stringOut</span>
+           ]
+        ]
+    ] <span class="hljs-string">.</span>
+
+<span class="hljs-string">&lt;#Execution&gt;</span>
+    <span class="hljs-string">rml:function</span> <span class="hljs-string">grel:string_substring</span> <span class="hljs-string">;</span>
+    <span class="hljs-string">rml:input</span>
+        [
+            <span class="hljs-string">rml:parameter</span> <span class="hljs-string">grel:valueParam</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:inputValueMap</span> [
+                <span class="hljs-string">rml:reference</span> <span class="hljs-string">"Type"</span>
+            ]<span class="hljs-string">;</span>
+        ]  <span class="hljs-string">,</span>
+        [
+            <span class="hljs-string">a</span> <span class="hljs-string">rml:Input</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:parameter</span> <span class="hljs-string">grel:p_int_i_from</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:inputValue</span> <span class="hljs-string">"0"</span>
+        ]  <span class="hljs-string">.</span>
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"Venus"</span>^^&lt;http://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#string&gt; .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0081-CSV"><div class="header-wrapper"><h2 id="x19-rmlfnmltc0081-csv"><bdi class="secno">19. </bdi>RMLFNMLTC0081-CSV</h2><a class="self-link" href="#RMLFNMLTC0081-CSV" aria-label="Permalink for Section 19."></a></div>
+<p><strong>Title</strong>: Function on languageMap, 1 parameter</p>
+<p><strong>Description</strong>: Tests that function on LanguageMap is handled</p>
+<p><strong>Error expected?</strong> No</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class,Lang
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>,en
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs yaml"><span class="hljs-attr">@prefix foaf:</span> <span class="hljs-string">&lt;http://xmlns.com/foaf/0.1/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix ex:</span> <span class="hljs-string">&lt;http://example.com/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix xsd:</span> <span class="hljs-string">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix rml:</span> <span class="hljs-string">&lt;http://w3id.org/rml/&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix fno:</span> <span class="hljs-string">&lt;https://w3id.org/function/ontology#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix grel:</span> <span class="hljs-string">&lt;http://users.ugent.be/~bjdmeest/function/grel.ttl#&gt;</span> <span class="hljs-string">.</span>
+<span class="hljs-attr">@prefix idlab-fn:</span> <span class="hljs-string">&lt;https://w3id.org/imec/idlab/function#&gt;</span> <span class="hljs-string">.</span>
+
+<span class="hljs-string">@base</span> <span class="hljs-string">&lt;http://example.com/base/&gt;</span> <span class="hljs-string">.</span>
+
+<span class="hljs-string">&lt;TriplesMap1&gt;</span>
+    <span class="hljs-string">rml:logicalSource</span> [
+        <span class="hljs-string">rml:source</span> [ <span class="hljs-string">a</span> <span class="hljs-string">rml:RelativePathSource;</span>
+          <span class="hljs-string">rml:root</span> <span class="hljs-string">rml:MappingDirectory;</span>
+          <span class="hljs-string">rml:path</span> <span class="hljs-string">"student.csv"</span>
+        ]<span class="hljs-string">;</span>
+        <span class="hljs-string">rml:referenceFormulation</span> <span class="hljs-string">rml:CSV</span>
+    ]<span class="hljs-string">;</span>
+    <span class="hljs-string">rml:subjectMap</span> [
+        <span class="hljs-string">rml:template</span> <span class="hljs-string">"http://example.com/{Name}"</span>
+    ]<span class="hljs-string">;</span>
+    <span class="hljs-string">rml:predicateObjectMap</span> [
+        <span class="hljs-string">rml:predicate</span> <span class="hljs-string">foaf:name;</span>
+        <span class="hljs-string">rml:objectMap</span> [
+           <span class="hljs-string">rml:reference</span> <span class="hljs-string">"Name"</span> <span class="hljs-string">;</span>
+           <span class="hljs-string">rml:languageMap</span> [
+             <span class="hljs-string">rml:functionExecution</span> <span class="hljs-string">&lt;#Execution&gt;</span> <span class="hljs-string">;</span>
+             <span class="hljs-string">rml:return</span> <span class="hljs-string">grel:stringOut</span>
+           ] <span class="hljs-string">;</span>
+        ]
+    ] <span class="hljs-string">.</span>
+
+<span class="hljs-string">&lt;#Execution&gt;</span>
+    <span class="hljs-string">rml:function</span> <span class="hljs-string">grel:string_substring</span> <span class="hljs-string">;</span>
+    <span class="hljs-string">rml:input</span>
+        [
+            <span class="hljs-string">rml:parameter</span> <span class="hljs-string">grel:valueParam</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:inputValueMap</span> [
+                <span class="hljs-string">rml:reference</span> <span class="hljs-string">"Lang"</span>
+            ]<span class="hljs-string">;</span>
+        ]  <span class="hljs-string">,</span>
+        [
+            <span class="hljs-string">a</span> <span class="hljs-string">rml:Input</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:parameter</span> <span class="hljs-string">grel:p_int_i_from</span> <span class="hljs-string">;</span>
+            <span class="hljs-string">rml:inputValue</span> <span class="hljs-string">"0"</span>
+        ]  <span class="hljs-string">.</span>
+</code></pre>
+<p><strong>Output</strong></p>
+<pre><code aria-busy="false" class="hljs css">&lt;http://example.com/Venus&gt; &lt;http://xmlns.com/foaf/<span class="hljs-number">0.1</span>/name&gt; <span class="hljs-string">"Venus"</span>@en .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0101-CSV"><div class="header-wrapper"><h2 id="x20-rmlfnmltc0101-csv"><bdi class="secno">20. </bdi>RMLFNMLTC0101-CSV</h2><a class="self-link" href="#RMLFNMLTC0101-CSV" aria-label="Permalink for Section 20."></a></div>
+<p><strong>Title</strong>: Function on object, 1 false reference parameter</p>
+<p><strong>Description</strong>: Tests if a false reference parameters is caught</p>
+<p><strong>Error expected?</strong> Yes</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+@prefix <span class="hljs-attribute">idlab-fn</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/imec/idlab/function#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return grel:stringOut
+        ]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function grel:toUpperCase ;
+    rml:input
+        [
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"name"</span> ;
+            ]
+        ] .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0102-CSV"><div class="header-wrapper"><h2 id="x21-rmlfnmltc0102-csv"><bdi class="secno">21. </bdi>RMLFNMLTC0102-CSV</h2><a class="self-link" href="#RMLFNMLTC0102-CSV" aria-label="Permalink for Section 21."></a></div>
+<p><strong>Title</strong>: Function on object, wrong function URI</p>
+<p><strong>Description</strong>: Tests that nothing is generated if a function is used where no implementation is made available to the mapping engine</p>
+<p><strong>Error expected?</strong> Yes</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return grel:stringOut
+        ]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function grel:unknown_func ;
+    rml:input
+        [
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"Name"</span> ;
+            ]
+        ] .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0103-CSV"><div class="header-wrapper"><h2 id="x22-rmlfnmltc0103-csv"><bdi class="secno">22. </bdi>RMLFNMLTC0103-CSV</h2><a class="self-link" href="#RMLFNMLTC0103-CSV" aria-label="Permalink for Section 22."></a></div>
+<p><strong>Title</strong>: Function on object, wrong parameter</p>
+<p><strong>Description</strong>: Tests that nothing is generated if a function is defined using a parameter not defined in the FnO description</p>
+<p><strong>Error expected?</strong> Yes</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class,url
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>,http://example.com/venus
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return grel:stringOut
+        ]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function grel:toUpperCase ;
+    rml:input
+        [
+            rml:parameter grel:unknownParam ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"Name"</span> ;
+            ]
+        ] .
+</code></pre>
+</section>
+<section id="RMLFNMLTC0104-CSV"><div class="header-wrapper"><h2 id="x23-rmlfnmltc0104-csv"><bdi class="secno">23. </bdi>RMLFNMLTC0104-CSV</h2><a class="self-link" href="#RMLFNMLTC0104-CSV" aria-label="Permalink for Section 23."></a></div>
+<p><strong>Title</strong>: Function on object, wrong return parameter</p>
+<p><strong>Description</strong>: Tests that nothing is generated if a function is defined using a return not defined in the FnO description</p>
+<p><strong>Error expected?</strong> Yes</p>
+<p><strong>Input</strong></p>
+<pre><code aria-busy="false" class="hljs css">Id,Name,Comment,Class,url
+<span class="hljs-number">1</span>,Venus,<span class="hljs-selector-tag">A</span>&amp;<span class="hljs-selector-tag">B</span>,<span class="hljs-selector-tag">A</span>,http://example.com/venus
+</code></pre>
+<p><strong>Mapping</strong></p>
+<pre><code aria-busy="false" class="hljs css"><span class="hljs-keyword">@prefix</span> <span class="hljs-attribute">foaf</span>: &lt;<span class="hljs-attribute">http</span>://xmlns.com/foaf/<span class="hljs-number">0.1</span>/&gt; .
+@prefix <span class="hljs-attribute">ex</span>: &lt;<span class="hljs-attribute">http</span>://example.com/&gt; .
+@prefix <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>://www.w3.org/<span class="hljs-number">2001</span>/XMLSchema#&gt; .
+@prefix <span class="hljs-attribute">rml</span>: &lt;<span class="hljs-attribute">http</span>://w3id.org/rml/&gt; .
+@prefix <span class="hljs-attribute">fno</span>: &lt;<span class="hljs-attribute">https</span>://w3id.org/function/ontology#&gt; .
+@prefix <span class="hljs-attribute">grel</span>: &lt;<span class="hljs-attribute">http</span>://users.ugent.be/~bjdmeest/function/grel.ttl#&gt; .
+
+@base &lt;<span class="hljs-attribute">http</span>://example.com/base/&gt; .
+
+&lt;TriplesMap1&gt;
+    <span class="hljs-attribute">rml</span>:logicalSource [
+        <span class="hljs-attribute">rml</span>:source [ a <span class="hljs-attribute">rml</span>:RelativePathSource;
+          rml<span class="hljs-selector-pseudo">:root</span> rml:MappingDirectory;
+          rml:path <span class="hljs-string">"student.csv"</span>
+        ];
+        rml:referenceFormulation rml:CSV
+    ];
+    rml:subjectMap [
+        rml:template <span class="hljs-string">"http://example.com/{Name}"</span>
+    ];
+    rml:predicateObjectMap [
+        rml:predicate foaf:name;
+        rml:objectMap [
+            rml:functionExecution &lt;#Execution&gt; ;
+            rml:return grel:unknownOut
+        ]
+    ] .
+
+&lt;#Execution&gt;
+    rml:function grel:toUpperCase ;
+    rml:input
+        [
+            rml:parameter grel:valueParam ;
+            rml:inputValueMap [
+                rml:reference <span class="hljs-string">"Name"</span> ;
+            ]
+        ] .
+</code></pre>
+</section>
+
+
+
+
+<p role="navigation" id="back-to-top">
+    <a href="#title"><abbr title="Back to Top">↑</abbr></a>
+  </p><script id="respec-highlight-vars">(() => {
+// @ts-check
+
+if (document.respec) {
+  document.respec.ready.then(setupVarHighlighter);
+} else {
+  setupVarHighlighter();
+}
+
+function setupVarHighlighter() {
+  document
+    .querySelectorAll("var")
+    .forEach(varElem => varElem.addEventListener("click", highlightListener));
+}
+
+/**
+ * @param {MouseEvent} ev
+ */
+function highlightListener(ev) {
+  ev.stopPropagation();
+  const varElem = /** @type {HTMLElement} */ (ev.target);
+  const hightligtedElems = highlightVars(varElem);
+  const resetListener = () => {
+    const hlColor = getHighlightColor(varElem);
+    hightligtedElems.forEach(el => removeHighlight(el, hlColor));
+    [...HL_COLORS.keys()].forEach(key => HL_COLORS.set(key, true));
+  };
+  if (hightligtedElems.length) {
+    document.body.addEventListener("click", resetListener, { once: true });
+  }
+}
+
+// availability of highlight colors. colors from var.css
+const HL_COLORS = new Map([
+  ["respec-hl-c1", true],
+  ["respec-hl-c2", true],
+  ["respec-hl-c3", true],
+  ["respec-hl-c4", true],
+  ["respec-hl-c5", true],
+  ["respec-hl-c6", true],
+  ["respec-hl-c7", true],
+]);
+
+/**
+ * @param {HTMLElement} target
+ */
+function getHighlightColor(target) {
+  // return current colors if applicable
+  const { value } = target.classList;
+  const re = /respec-hl-\w+/;
+  const activeClass = re.test(value) && value.match(re);
+  if (activeClass) return activeClass[0];
+
+  // first color preference
+  if (HL_COLORS.get("respec-hl-c1") === true) return "respec-hl-c1";
+
+  // otherwise get some other available color
+  return [...HL_COLORS.keys()].find(c => HL_COLORS.get(c)) || "respec-hl-c1";
+}
+
+/**
+ * @param {HTMLElement} varElem
+ */
+function highlightVars(varElem) {
+  const textContent = norm(varElem.textContent);
+  const parent = /** @type {HTMLElement} */ (
+    varElem.closest(".algorithm, section")
+  );
+  if (!parent) return [];
+  const highlightColor = getHighlightColor(varElem);
+
+  const varsToHighlight = [...parent.querySelectorAll("var")].filter(
+    el =>
+      norm(el.textContent) === textContent &&
+      el.closest(".algorithm, section") === parent
+  );
+
+  // update availability of highlight color
+  const colorStatus = varsToHighlight[0].classList.contains("respec-hl");
+  HL_COLORS.set(highlightColor, colorStatus);
+
+  // highlight vars
+  if (colorStatus) {
+    varsToHighlight.forEach(el => removeHighlight(el, highlightColor));
+    return [];
+  } else {
+    varsToHighlight.forEach(el => addHighlight(el, highlightColor));
+  }
+  return varsToHighlight;
+}
+
+/**
+ * @param {HTMLElement} el
+ * @param {string} highlightColor
+ */
+function removeHighlight(el, highlightColor) {
+  el.classList.remove("respec-hl", highlightColor);
+  // clean up empty class attributes so they don't come in export
+  if (!el.classList.length) el.removeAttribute("class");
+}
+
+/**
+ * @param {HTMLElement} elem
+ * @param {string} highlightColor
+ */
+function addHighlight(elem, highlightColor) {
+  elem.classList.add("respec-hl", highlightColor);
+}
+
+/**
+ * Same as `norm` from src/core/utils, but our build process doesn't allow
+ * imports in runtime scripts, so duplicated here.
+ * @param {string} str
+ */
+function norm(str) {
+  return str.trim().replace(/\s+/g, " ");
+}
+})()</script><script id="respec-dfn-panel">(() => {
+// @ts-check
+if (document.respec) {
+  document.respec.ready.then(setupPanel);
+} else {
+  setupPanel();
+}
+
+function setupPanel() {
+  const listener = panelListener();
+  document.body.addEventListener("keydown", listener);
+  document.body.addEventListener("click", listener);
+}
+
+function panelListener() {
+  /** @type {HTMLElement | null} */
+  let panel = null;
+  /**
+   * @param {KeyboardEvent|MouseEvent} event
+   */
+  return event => {
+    const { target, type } = event;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    // For keys, we only care about Enter key to activate the panel
+    // otherwise it's activated via a click.
+    if (
+      type === "keydown" &&
+      /** @type {KeyboardEvent} */ (event).key !== "Enter"
+    )
+      return;
+
+    const action = deriveAction(event);
+
+    switch (action) {
+      case "show": {
+        hidePanel(panel);
+        /** @type {HTMLElement | null} */
+        const dfn = target.closest("dfn, .index-term");
+        if (!dfn?.id) break;
+        panel = document.getElementById(`dfn-panel-for-${dfn.id}`);
+        if (!panel) break;
+        const coords = deriveCoordinates(
+          /** @type {MouseEvent|KeyboardEvent} */ (event)
+        );
+        displayPanel(dfn, panel, coords);
+        break;
+      }
+      case "dock": {
+        if (panel) {
+          panel.style.left = "";
+          panel.style.top = "";
+          panel.classList.add("docked");
+        }
+        break;
+      }
+      case "hide": {
+        hidePanel(panel);
+        panel = null;
+        break;
+      }
+    }
+  };
+}
+
+/**
+ * @param {MouseEvent|KeyboardEvent} event
+ */
+function deriveCoordinates(event) {
+  const target = /** @type HTMLElement */ (event.target);
+
+  // We prevent synthetic AT clicks from putting
+  // the dialog in a weird place. The AT events sometimes
+  // lack coordinates, so they have clientX/Y = 0
+  const rect = target.getBoundingClientRect();
+  if (
+    event instanceof MouseEvent &&
+    event.clientX >= rect.left &&
+    event.clientY >= rect.top
+  ) {
+    // The event probably happened inside the bounding rect...
+    return { x: event.clientX, y: event.clientY };
+  }
+
+  // Offset to the middle of the element
+  const x = rect.x + rect.width / 2;
+  // Placed at the bottom of the element
+  const y = rect.y + rect.height;
+  return { x, y };
+}
+
+/**
+ * @param {Event} event
+ */
+function deriveAction(event) {
+  const target = /** @type {HTMLElement} */ (event.target);
+  const hitALink = !!target.closest("a");
+  if (target.closest("dfn:not([data-cite]), .index-term")) {
+    return hitALink ? "none" : "show";
+  }
+  if (target.closest(".dfn-panel")) {
+    if (hitALink) {
+      return target.classList.contains("self-link") ? "hide" : "dock";
+    }
+
+    const panel = /** @type {HTMLElement} */ (target.closest(".dfn-panel"));
+    return panel.classList.contains("docked") ? "hide" : "none";
+  }
+  if (document.querySelector(".dfn-panel:not([hidden])")) {
+    return "hide";
+  }
+  return "none";
+}
+
+/**
+ * @param {HTMLElement} dfn
+ * @param {HTMLElement} panel
+ * @param {{ x: number, y: number }} clickPosition
+ */
+function displayPanel(dfn, panel, { x, y }) {
+  panel.hidden = false;
+  // distance (px) between edge of panel and the pointing triangle (caret)
+  const MARGIN = 20;
+
+  const dfnRects = dfn.getClientRects();
+  // Find the `top` offset when the `dfn` can be spread across multiple lines
+  let closestTop = 0;
+  let minDiff = Infinity;
+  for (const rect of dfnRects) {
+    const { top, bottom } = rect;
+    const diffFromClickY = Math.abs((top + bottom) / 2 - y);
+    if (diffFromClickY < minDiff) {
+      minDiff = diffFromClickY;
+      closestTop = top;
+    }
+  }
+
+  const top = window.scrollY + closestTop + dfnRects[0].height;
+  const left = x - MARGIN;
+  panel.style.left = `${left}px`;
+  panel.style.top = `${top}px`;
+
+  // Find if the panel is flowing out of the window
+  const panelRect = panel.getBoundingClientRect();
+  const SCREEN_WIDTH = Math.min(window.innerWidth, window.screen.width);
+  if (panelRect.right > SCREEN_WIDTH) {
+    const newLeft = Math.max(MARGIN, x + MARGIN - panelRect.width);
+    const newCaretOffset = left - newLeft;
+    panel.style.left = `${newLeft}px`;
+    /** @type {HTMLElement | null} */
+    const caret = panel.querySelector(".caret");
+    if (caret) caret.style.left = `${newCaretOffset}px`;
+  }
+
+  // As it's a dialog, we trap focus.
+  // TODO: when <dialog> becomes a implemented, we should really
+  // use that.
+  trapFocus(panel, dfn);
+}
+
+/**
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function trapFocus(panel, dfn) {
+  /** @type NodeListOf<HTMLAnchorElement> elements */
+  const anchors = panel.querySelectorAll("a[href]");
+  // No need to trap focus
+  if (!anchors.length) return;
+
+  // Move focus to first anchor element
+  const first = anchors.item(0);
+  first.focus();
+
+  const trapListener = createTrapListener(anchors, panel, dfn);
+  panel.addEventListener("keydown", trapListener);
+
+  // Hiding the panel releases the trap
+  const mo = new MutationObserver(records => {
+    const [record] = records;
+    const target = /** @type HTMLElement */ (record.target);
+    if (target.hidden) {
+      panel.removeEventListener("keydown", trapListener);
+      mo.disconnect();
+    }
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ["hidden"] });
+}
+
+/**
+ *
+ * @param {NodeListOf<HTMLAnchorElement>} anchors
+ * @param {HTMLElement} panel
+ * @param {HTMLElement} dfn
+ * @returns
+ */
+function createTrapListener(anchors, panel, dfn) {
+  const lastIndex = anchors.length - 1;
+  let currentIndex = 0;
+  /**
+   * @param {KeyboardEvent} event
+   */
+  return event => {
+    switch (event.key) {
+      // Hitting "Tab" traps us in a nice loop around elements.
+      case "Tab": {
+        event.preventDefault();
+        currentIndex += event.shiftKey ? -1 : +1;
+        if (currentIndex < 0) {
+          currentIndex = lastIndex;
+        } else if (currentIndex > lastIndex) {
+          currentIndex = 0;
+        }
+        anchors.item(currentIndex).focus();
+        break;
+      }
+
+      // Hitting "Enter" on an anchor releases the trap.
+      case "Enter":
+        hidePanel(panel);
+        break;
+
+      // Hitting "Escape" returns focus to dfn.
+      case "Escape":
+        hidePanel(panel);
+        dfn.focus();
+        return;
+    }
+  };
+}
+
+/** @param {HTMLElement | null} panel */
+function hidePanel(panel) {
+  if (!panel) return;
+  panel.hidden = true;
+  panel.classList.remove("docked");
+}
+})()</script><script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script></body></html>

@@ -21,7 +21,7 @@ The test cases publication (html pages) can be generated as followed:
    - `curl -L "https://docs.google.com/spreadsheets/d/1Ui216z2cF8bNAbdZvws-JoAhcjj4M2k_NlfzmCh1jh8/export?format=csv&gid=1793408313" -o descriptions.csv`
 2. Execute the `make-metadata.py` script: `./make-metadata.py http://w3id.org/rml/fnml/`
    (This is based on the content of the folders with the test cases, and on the file descriptions.csv for the descriptions of the cases)
-3. Download burp: `curl -LO https://github.com/kg-construct/BURP/releases/download/v0.1.1/burp.jar`
+3. Download burp: `curl -LO https://github.com/kg-construct/BURP/releases/download/v0.1.3/burp.jar`
 4. Generate the manifest with [Burp](https://github.com/kg-construct/BURP): `java -jar burp.jar -m manifest.rml.ttl -o manifest.ttl -b http://w3id.org/rml/fnml/test/`
 5. Run list.sh and insert output in dev.html
 6. Set the `prevVersion` in config.js

@@ -49,7 +49,7 @@ Id,Name,Comment,Class,url
     rml:function idlab-fn:toUpperCaseURL ;
     rml:input
         [
-            rml:parameter idlab-fn:str ;
+            rml:parameter idlab-fn:_str ;
             rml:inputValueMap [
                 rml:reference "url"
             ];

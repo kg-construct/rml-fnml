@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
 <meta charset="utf-8">
-<meta name="generator" content="ReSpec 37.0.0">
+<meta name="generator" content="ReSpec 37.4.1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
 dfn{cursor:pointer}
@@ -128,7 +128,7 @@ a[href].orcid>svg{margin-bottom:-2px}
 ol.tof,ul.tof{list-style:none outside none}
 .caption{margin-top:.5em;font-style:italic}
 #issue-summary>ul{column-count:2}
-#issue-summary li{list-style:none;display:inline-block}
+#issue-summary li{list-style:none}
 details.respec-tests-details{margin-left:1em;display:inline-block;vertical-align:top}
 details.respec-tests-details>*{padding-right:2em}
 details.respec-tests-details[open]{z-index:999999;position:absolute;border:thin solid #cad3e2;border-radius:.3em;background-color:#fff;padding-bottom:.5em}
@@ -138,11 +138,11 @@ details.respec-tests-details>li{padding-left:1em}
 .self-link:hover{opacity:1;text-decoration:none;background-color:transparent}
 aside.example .marker>a.self-link{color:inherit}
 .header-wrapper{display:flex;align-items:baseline}
-:is(h2,h3,h4,h5,h6):not(#toc>h2,#abstract>h2,#sotd>h2,.head>h2):has(+a.self-link){position:relative;left:-.5em}
-:is(h2,h3,h4,h5,h6):not(#toch2)+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.5}
-:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§";text-decoration:none;color:var(--heading-text)}
+:is(h2,h3,h4,h5,h6):not(:where(#toc>h2,#abstract>h2,#sotd>h2,.head>h2)):has(+a.self-link){position:relative;left:-.5em}
+:is(h2,h3,h4,h5,h6):not(:where(#toch2))+a.self-link{color:inherit;order:-1;position:relative;left:-1.1em;font-size:1rem;opacity:.8;text-decoration:none}
+:is(h2,h3,h4,h5,h6)+a.self-link::before{content:"§"}
 :is(h2,h3)+a.self-link{top:-.2em}
-:is(h4,h5,h6)+a.self-link::before{color:#000}
+:is(h2,h3)+a.self-link::before{color:var(--heading-text)}
 @media (max-width:767px){
 dd{margin-left:0}
 }
@@ -296,33 +296,34 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   "copyrightStart": "2024",
   "doJsonLd": true,
   "latestVersion": null,
-  "prevVersion": "https://kg-construct.github.io/rml-fnml/test-cases/docs/20260316/",
+  "prevVersion": "https://kg-construct.github.io/rml-fnml/test-cases/docs/20260504/",
   "group": "kg-construct",
-  "publishISODate": "2026-05-04T00:00:00.000Z",
-  "generatedSubtitle": "Draft Community Group Report 04 May 2026"
+  "publishISODate": "2026-10-19T00:00:00.000Z",
+  "generatedSubtitle": "Draft Community Group Report 19 October 2026"
 }</script>
-<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft"></head>
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/cg-draft">
+<link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2021/dark.css" disabled=""></head>
 
-<body class="h-entry informative"><div class="head">
+<body class="h-entry informative darkmode"><div class="head">
     
     <h1 id="title" class="title">RML-FNML: Test Cases</h1> 
     <p id="w3c-state">
       <a href="https://www.w3.org/standards/types#reports">Draft Community Group Report</a>
-      <time class="dt-published" datetime="2026-05-04">04 May 2026</time>
+      <time class="dt-published" datetime="2026-10-19">19 October 2026</time>
     </p>
     <dl>
       
       <dt>Latest published version:</dt><dd>
-              none
-            </dd>
+                none
+              </dd>
       <dt>Latest editor's draft:</dt><dd><a href="https://w3id.org/rml/fnml/test-cases/">https://w3id.org/rml/fnml/test-cases/</a></dd>
       
       
-      <dt>Previous version:</dt><dd><a href="https://kg-construct.github.io/rml-fnml/test-cases/docs/20260316/">https://kg-construct.github.io/rml-fnml/test-cases/docs/20260316/</a></dd>
+      <dt>Previous version:</dt><dd><a href="https://kg-construct.github.io/rml-fnml/test-cases/docs/20260504/">https://kg-construct.github.io/rml-fnml/test-cases/docs/20260504/</a></dd>
       
       <dt>
-              Editor:
-            </dt><dd class="editor p-author h-card vcard">
+                Editor:
+              </dt><dd class="editor p-author h-card vcard">
     <a class="u-url url p-name fn" href="https://ben.de-meester.org/#me">Ben De Meester</a><a class="p-name orcid" href="https://orcid.org/0000-0003-0248-0987"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
     <style>
 
@@ -336,8 +337,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </svg></a> (<a class="p-org org h-org" href="https://knows.idlab.ugent.be/">Ghent University – imec – IDLab</a>)
   </dd>
       <dt>
-              Former editor:
-            </dt><dd class="editor p-author h-card vcard">
+                Former editor:
+              </dt><dd class="editor p-author h-card vcard">
     <a class="u-url url p-name fn" href="https://dylanvanassche.be">Dylan Van Assche</a><a class="p-name orcid" href="https://orcid.org/0000-0002-7195-9935"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
     <style>
 
@@ -351,8 +352,8 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
   </svg></a> (<a class="p-org org h-org" href="https://knows.idlab.ugent.be/">IDLab – Ghent University – imec</a>)
   </dd>
       <dt>
-              Authors:
-            </dt><dd class="editor p-author h-card vcard">
+                Authors:
+              </dt><dd class="editor p-author h-card vcard">
     <a class="u-url url p-name fn" href="https://dylanvanassche.be">Dylan Van Assche</a><a class="p-name orcid" href="https://orcid.org/0000-0002-7195-9935"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
     <style>
 
@@ -401,18 +402,18 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
     </dl>
     
     <p class="copyright">
-          <a href="https://www.w3.org/policies/#copyright">Copyright</a>
-          ©
-          2024-2026
-          
-          the Contributors to the RML-FNML: Test Cases
-          Specification, published by the
-          <a href="https://www.w3.org/groups/cg/kg-construct">Knowledge Graph Construction Community Group</a> under the
-          <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable
-                <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a>
-                is available.
-              
-        </p>
+            <a href="https://www.w3.org/policies/#copyright">Copyright</a>
+            ©
+            2024-2026
+            
+            the Contributors to the RML-FNML: Test Cases
+            Specification, published by the
+            <a href="https://www.w3.org/groups/cg/kg-construct">Knowledge Graph Construction Community Group</a> under the
+            <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>. A human-readable
+                    <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a>
+                    is available.
+                  
+          </p>
     <hr title="Separator for header">
   </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
@@ -426,16 +427,16 @@ var[data-type]:hover::after,var[data-type]:hover::before{opacity:1}
       <a href="https://www.w3.org/groups/cg/kg-construct">Knowledge Graph Construction Community Group</a>. It is not a W3C Standard nor is it
       on the W3C Standards Track.
       
-            Please note that under the
-            <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>
-            there is a limited opt-out and other conditions apply.
-          
+              Please note that under the
+              <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>
+              there is a limited opt-out and other conditions apply.
+            
       Learn more about
       <a href="https://www.w3.org/community/">W3C Community and Business Groups</a>.
     </p><p>
     <a href="https://github.com/kg-construct/rml-fnml/issues/">GitHub Issues</a> are preferred for
-          discussion of this specification.
-        
+            discussion of this specification.
+          
     
   </p></section><nav id="toc"><h2 class="introductory" id="table-of-contents">Table of Contents</h2><ol class="toc"><li class="tocline"><a class="tocxref" href="#abstract">Abstract</a></li><li class="tocline"><a class="tocxref" href="#sotd">Status of This Document</a></li><li class="tocline"><a class="tocxref" href="#introduction"><bdi class="secno">1. </bdi>Introduction</a></li><li class="tocline"><a class="tocxref" href="#data-model"><bdi class="secno">2. </bdi>Data model</a></li><li class="tocline"><a class="tocxref" href="#test-cases"><bdi class="secno">3. </bdi>Test cases</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0001-CSV"><bdi class="secno">4. </bdi>RMLFNMLTC0001-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0002-CSV"><bdi class="secno">5. </bdi>RMLFNMLTC0002-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0003-CSV"><bdi class="secno">6. </bdi>RMLFNMLTC0003-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0004-CSV"><bdi class="secno">7. </bdi>RMLFNMLTC0004-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0005-CSV"><bdi class="secno">8. </bdi>RMLFNMLTC0005-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0007-CSV"><bdi class="secno">9. </bdi>RMLFNMLTC0007-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0008-CSV"><bdi class="secno">10. </bdi>RMLFNMLTC0008-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0011-CSV"><bdi class="secno">11. </bdi>RMLFNMLTC0011-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0021-CSV"><bdi class="secno">12. </bdi>RMLFNMLTC0021-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0031-CSV"><bdi class="secno">13. </bdi>RMLFNMLTC0031-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0032-CSV"><bdi class="secno">14. </bdi>RMLFNMLTC0032-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0041-CSV"><bdi class="secno">15. </bdi>RMLFNMLTC0041-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0051-CSV"><bdi class="secno">16. </bdi>RMLFNMLTC0051-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0061-CSV"><bdi class="secno">17. </bdi>RMLFNMLTC0061-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0071-CSV"><bdi class="secno">18. </bdi>RMLFNMLTC0071-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0081-CSV"><bdi class="secno">19. </bdi>RMLFNMLTC0081-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0101-CSV"><bdi class="secno">20. </bdi>RMLFNMLTC0101-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0102-CSV"><bdi class="secno">21. </bdi>RMLFNMLTC0102-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0103-CSV"><bdi class="secno">22. </bdi>RMLFNMLTC0103-CSV</a></li><li class="tocline"><a class="tocxref" href="#RMLFNMLTC0104-CSV"><bdi class="secno">23. </bdi>RMLFNMLTC0104-CSV</a></li></ol></nav>
 
@@ -613,7 +614,7 @@ Each test case is contained in a single folder, containing three types of files:
     rml:function idlab-fn:toUpperCaseURL ;
     rml:input
         [
-            rml:parameter idlab-fn:str ;
+            rml:parameter idlab-fn:_str ;
             rml:inputValueMap [
                 rml:reference <span class="hljs-string">"url"</span>
             ];
@@ -837,8 +838,7 @@ Each test case is contained in a single folder, containing three types of files:
         ]  <span class="hljs-string">.</span>
 </code></pre>
 <p><strong>Output</strong></p>
-<pre><code>
-</code></pre>
+<pre><code></code></pre>
 </section>
 <section id="RMLFNMLTC0011-CSV"><div class="header-wrapper"><h2 id="x11-rmlfnmltc0011-csv"><bdi class="secno">11. </bdi>RMLFNMLTC0011-CSV</h2><a class="self-link" href="#RMLFNMLTC0011-CSV" aria-label="Permalink for Section 11."></a></div>
 <p><strong>Title</strong>: Function on predicate, 1 parameter</p>
@@ -882,7 +882,7 @@ Each test case is contained in a single folder, containing three types of files:
     rml:function idlab-fn:toUpperCaseURL ;
     rml:input
         [
-            rml:parameter idlab-fn:str ;
+            rml:parameter idlab-fn:_str ;
             rml:inputValueMap [
                 rml:reference <span class="hljs-string">"url"</span>
             ];
@@ -989,7 +989,7 @@ Each test case is contained in a single folder, containing three types of files:
     rml:function idlab-fn:toUpperCaseURL ;
     rml:input
         [
-            rml:parameter idlab-fn:str ;
+            rml:parameter idlab-fn:_str ;
             rml:inputValueMap [
                 rml:reference <span class="hljs-string">"url"</span>
             ];
@@ -1233,7 +1233,7 @@ Each test case is contained in a single folder, containing three types of files:
     rml:function idlab-fn:toUpperCaseURL ;
     rml:input
         [
-            rml:parameter idlab-fn:str ;
+            rml:parameter idlab-fn:_str ;
             rml:inputValueMap [
                 rml:reference <span class="hljs-string">"url"</span> ;
             ]
@@ -1558,44 +1558,6 @@ Each test case is contained in a single folder, containing three types of files:
 </section>
 
 
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-
 
 
 <p role="navigation" id="back-to-top">
@@ -1657,7 +1619,7 @@ function getHighlightColor(target) {
   if (HL_COLORS.get("respec-hl-c1") === true) return "respec-hl-c1";
 
   // otherwise get some other available color
-  return HL_COLORS.keys().find(c => HL_COLORS.get(c)) || "respec-hl-c1";
+  return [...HL_COLORS.keys()].find(c => HL_COLORS.get(c)) || "respec-hl-c1";
 }
 
 /**
