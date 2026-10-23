@@ -69,25 +69,6 @@ grel:stringOut
 
 The execution of such a function converts a string to its uppercase sibling,
 so `test` becomes `TEST` and `This is an input STRING.` becomes `THIS IS AN INPUT STRING.`.
-The latter would be described as follows using an FnO Execution description:
-
-<aside class="example" id="example-touppercase-execution" title="toUppercase FnO execution description">
-<aside class="ex-mapping">
-
-```turtle
-@prefix fno:     <https://w3id.org/function/ontology#> .
-@prefix grel:    <http://users.ugent.be/~bjdmeest/function/grel.ttl#> .
-@prefix :        <http://example.com/> .
-
-:exe a fno:Execution ;
-    fno:executes grel:toUppercase ;
-    grel:valueParameter "This is an input STRING." ;
-    grel:stringOutput "THIS IS AN INPUT STRING." .
-```
-
-</aside>
-</aside>
-
 ## FNML Example - shortcuts
 
 To connect this function with the RML mapping document, we make use of FNML, see below for an example, which makes maximal use of shortcuts.
