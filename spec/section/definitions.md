@@ -10,8 +10,8 @@
 
 - A <dfn>Function</dfn>: an implementation-independent declaration of a function,
   specified using multiple parameters and multiple returns.
-  For example, a [=Function=] can be declared as follows: `function int sum(int a, int b) throws StackOverFlowException`, namely,
-  the [=Function=] `sum` has two input parameters, `int a` and `int b`, and returns an `int` or throws a `StackOverFlowException`.
+  For example, a [=Function=] can be declared as follows: `function int sum(int a, int b)`, namely,
+  the [=Function=] `sum` has two input parameters, `int a` and `int b`, and returns an `int`.
 - A <dfn>Parameter</dfn>: an input parameter of a [=Function=].
 - A <dfn>Return</dfn>: an output return of a [=Function=].
 - An <dfn>Execution</dfn>: an invocation of a [=Function=].
