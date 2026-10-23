@@ -12,10 +12,6 @@ the function is applied to each individual value in that order.
 As the values of a function are represented using [=Expression Map=]s,
 it is possible to nest functions: you generate a term in a first function, and that term is used as an parameter value in a second function.
 
-<p class="issue" data-number="3" data-format="markdown">
-For now, it is unclear how to handle a nested function where that nested Triples Map contains a join condition.
-</p>
-
 <aside class="example" id="example-nested-function" title="usage of nested function">
 <aside class="ex-mapping">
 
