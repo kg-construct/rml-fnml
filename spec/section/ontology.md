@@ -47,11 +47,6 @@ See [=Return map=].
 
 See [=Function Execution=].
 
-<!-- <dfn class="lint-ignore">rml:FunctionExecution</dfn> is a class to denote a [=Function Execution=].
-It is referred from a [=rml:ExecutionTermMap=] via the predicate `rml:functionExecution`.
-It refers to an FnO [=function description=] via the predicate `rml:function`,
-and to zero or more input parameters via the predicate `rml:inputParameter`. -->
-
 ### rml:FunctionMap
 
 See [=Function map=].

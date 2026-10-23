@@ -1,9 +1,5 @@
 ## Definitions
 
-<!-- - <dfn>FnO</dfn>: the Function Ontology. Describes implementation-independent functions' inputs and outputs, and execution descriptions. -->
-<!-- - <dfn>RML</dfn>: RDF Mapping Language. Describes schema transformations from heterogeneous data sources to RDF. -->
-<!-- - <dfn>FNML</dfn>: describes how to integrate data transformations in schema transformations using <a>FnO</a> in <a>RML</a>. -->
-
 ### Generic
 
 [[RML]]-independent defintions:
@@ -28,7 +24,6 @@ Definitions taken from [[RML]] or [[[R2RML]]]:
 - A <dfn>Triples Map</dfn>: defined in [[RML]] at <http://w3id.org/rml/core/spec/>.
 - A <dfn>Term Map</dfn>: defined in [[RML]] at <http://w3id.org/rml/core/spec/>.
 - a <dfn>Expression Map</dfn>: defined in [[RML]] at <http://w3id.org/rml/core/spec/>.
-<!-- - An <dfn>RML processor</dfn> is a tool that interprets the <a>RML mapping</a> and executes its rules to generate RDF triples. -->
 - A <dfn>constant expression shortcut property</dfn>: defined in [[RML]] at <http://w3id.org/rml/core/spec/>.
 
 Within this specification, the [=Expression Map=] definition is extended by adding new possible properties and thus also a new type of Expression Map.
