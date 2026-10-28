@@ -1,18 +1,16 @@
 async function loadTurtle() {
-    //this is the function you call in 'preProcess', to load the highlighter
-    const worker = await new Promise(resolve => {
-        require(["core/worker"], ({ worker }) => resolve(worker));
+    const worker = await document.respec.worker;
+    const res = await fetch("https://cdn.jsdelivr.net/gh/redmer/highlightjs-turtle/src/languages/turtle.js");
+    const langScript = await res.text();
+    worker.postMessage({
+        action: "highlight-load-lang",
+        langScript,
+        propName: "hljsDefineTurtle",
+        lang: "turtle",
     });
-    const action = "highlight-load-lang";
-    const langURL =
-        "https://cdn.jsdelivr.net/gh/redmer/highlightjs-turtle/src/languages/turtle.js";
-    const propName = "hljsDefineTurtle"; // This funtion is defined in the highlighter being loaded
-    const lang = "turtle"; // this is the class you use to identify the language
-    worker.postMessage({ action, langURL, propName, lang });
     return new Promise(resolve => {
         worker.addEventListener("message", function listener({ data }) {
-            const { action: responseAction, lang: responseLang } = data;
-            if (responseAction === action && responseLang === lang) {
+            if (data.action === "highlight-load-lang" && data.lang === "turtle") {
                 worker.removeEventListener("message", listener);
                 resolve();
             }
@@ -31,6 +29,13 @@ var respecConfig = {
             url: "https://ben.de-meester.org/#me",
             orcid: "0000-0003-0248-0987",
             companyURL: "https://knows.idlab.ugent.be/"
+        },
+        {
+            name: "Jakub Duchateau",
+            company: "University of Liège",
+            url: "https://jduchateau.github.io",
+            orcid: "0009-0009-5090-8192",
+            companyURL: "https://uliege.be/"
         },
         {
             name: "Samaneh Jozashoori",
@@ -69,7 +74,7 @@ var respecConfig = {
             url: "https://ben.de-meester.org/#me",
             orcid: "0000-0003-0248-0987",
             companyURL: "https://knows.idlab.ugent.be/"
-        }
+        },
     ],
     formerEditors: [
        {
@@ -84,12 +89,12 @@ var respecConfig = {
     latestVersion: null,
     license: "w3c-software-doc",
     localBiblio: {
-        RML: {
-            title: "RDF Mapping Language (RML)",
-            href: "https://rml.io/specs/rml/",
-            status: "Unofficial Draft",
-            publisher: "IDLab - imec - Ghent University",
-            date: "08 October 2020",
+        "RML-Core": {
+            title: "RML-Core",
+            href: "https://w3id.org/rml/core/spec",
+            status: "Draft Community Group Report",
+            publisher: "W3C",
+            date: "16 March 2026",
         },
         FnO: {
             title: "Function Ontology (FnO)",
@@ -98,12 +103,12 @@ var respecConfig = {
             publisher: "IDLab - imec - Ghent University",
             date: "10 November 2021",
         },
-        CollectionsContainers: {
-            title: "Collections and Containers in RML",
-            href: "https://w3id.org/kg-construct/collections-containers",
-            status: "Unofficial Draft",
-            publisher: "Knowledge Graph Construction W3C Community Group ",
-            date: "16 August 2022",
+        "RML-CC": {
+            title: "RML-CC: Collections and Containers in RML",
+            href: "https://w3id.org/rml/cc/spec",
+            status: "Draft Community Group Report",
+            publisher: "Knowledge Graph Construction W3C Community Group",
+            date: "25 February 2025",
         },
     },
 

@@ -1,11 +1,9 @@
-RML+FnO is an approach to provide for data transformations when generating knowledge graphs
-from (semi-)structured data using the [[[RML]]].
+RML-FNML is an extension of the RDF Mapping Language (RML) to specify data transformations when generating RDF datasets from heterogeneous data sources.
 
-In RML+FnO, data transformations are defined declaratively, 
-supporting the [[[FnO]]].
+Data transformations are specified through declarative function executions: implementation-independent function invocations that link declarative function descriptions defined using the [[[FnO]]] with data extracted from logical iterations.
 
-This approach is not case-specific:
-data transformations are independent of their implementation and thus interoperable,
-while the functions are decoupled and reusable.
-This allows developers to improve the generation framework
-independent from the contributors that focus on generating the knowledge graphs.
+Additionally, RML-FNML provides mechanisms to conditionally evaluate expressions through conditions, and to share and reuse function executions across mapping rules.
+
+This document describes RML-FNML through definitions and examples.
+
+The version of this document is DRAFT.

@@ -1,35 +1,75 @@
-## The Problem
+## The Problem {#problem}
 
-Mapping languages allow us to define how knowledge graphs are generated from (semi-)structured data,
-but only if the original data values can be used as-is.
-Complex data transformations in mapping languages typically are
-either implemented as custom solutions,
-or are done by systems separate from the mapping process.
-The former data transformations remain case-specific, often coupled with the mapping,
-whereas the latter is not reusable across systems.
+*This section is non-normative.*
 
-For example, we have a data source where all names are lowercase,
-but we want the resulting knowledge to have uppercase values.
-The following [=RML Mapping=] contains the descriptions to generate a knowledge graph from a data source,
-but no data transformations.
+Mapping languages allow us to define how knowledge graphs are generated from (semi-)structured data, but standard mappings assume that the original data values can be used as-is.
+Complex data transformations in mapping languages typically are either implemented as custom procedural functions within proprietary mapping engines, or are performed by external pre-processing pipelines prior to mapping.
+
+The former approach produces tightly-coupled, non-interoperable mappings that cannot be executed across different tools, whereas the latter introduces brittle, multi-stage pipelines that complicate data governance and maintenance.
+
+### Motivating Example
+
+Consider an input data source containing person records where names are stored in lowercase, but the target ontology requires uppercase titles.
+
+<aside class="ex-input">
+
+```json
+[
+  {
+    "id": "1",
+    "name": "alice smith"
+  },
+  {
+    "id": "2",
+    "name": "bob jones"
+  }
+]
+```
+
+</aside>
+
+The following standard [[RML-Core]] mapping generates triples from this data source, but cannot perform data transformations:
 
 <aside class="example" id="example-rml" title="RML Mapping without data transformations">
 <aside class="ex-mapping">
 
 ```turtle
-@prefix rml: <http://w3id.org/rml/> .
-@prefix ex: <http://example.com/> .
-
 <#Person_Mapping>
-    rml:logicalSource <#LogicalSource> ; # Specify the data source
-    rml:subjectMap <#SubjectMap> ;       # Specify the subject
-    rml:predicateObjectMap [             # Specify the predicate-object-map
-        rml:predicate ex:title ;         # Specify the predicate
-        rml:objectMap [                  # Specify the object-map
-            rml:reference "name"         # Specify the reference within the data source
+    rml:logicalSource <#LogicalSource> ;
+    rml:subjectMap [
+        rml:template "http://example.com/person/{id}"
+    ] ;
+    rml:predicateObjectMap [
+        rml:predicate ex:title ;
+        rml:objectMap [
+            rml:reference "name"
         ]
     ] .
 ```
 
 </aside>
 </aside>
+
+Without transformation support, executing this mapping produces knowledge graph values identical to the raw source data:
+
+<aside class="ex-output">
+
+```turtle
+<http://example.com/person/1> ex:title "alice smith" .
+<http://example.com/person/2> ex:title "bob jones" .
+```
+
+</aside>
+
+However, the desired target knowledge graph requires transforming each name into uppercase before generating the RDF literal:
+
+<aside class="ex-output">
+
+```turtle
+<http://example.com/person/1> ex:title "ALICE SMITH" .
+<http://example.com/person/2> ex:title "BOB JONES" .
+```
+
+</aside>
+
+RML-FNML addresses this gap by defining a standard, declarative mechanism to execute functions during the mapping evaluation process.
